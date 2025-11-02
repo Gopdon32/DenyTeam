@@ -1,0 +1,127 @@
+/* Шрифты */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700&family=Montserrat:wght@500;700&display=swap');
+
+/* Переменные */
+:root {
+  --green: hsl(158, 36%, 37%);
+  --gray: hsl(228, 12%, 48%);
+  --dark: hsl(212, 21%, 14%);
+  --bg: hsl(30, 38%, 92%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 375px;
+}
+
+/* Карточка */
+.card {
+  display: flex;
+  max-width: 600px;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Левая часть — изображение */
+.card__image {
+  aspect-ratio: 1 / 1;
+  background: url('../images/image-product-desktop.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-width: 300px;
+}
+
+/* Правая часть — контент */
+.card__content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__suptitle {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  letter-spacing: 5px;
+}
+
+.card__title {
+  color: var(--dark);
+  font-size: 2rem;
+  font-family: 'Fraunces', serif;
+  margin-bottom: 1rem;
+}
+
+.card__description {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.card__price-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card__price {
+  color: var(--green);
+  font-size: 2rem;
+  font-family: 'Fraunces', serif;
+}
+
+.card__old-price {
+  color: var(--gray);
+  text-decoration: line-through;
+}
+
+/* Кнопка */
+.card__btn {
+  color: white;
+  padding: 1rem;
+  position: relative;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  background-color: var(--green);
+}
+
+.card__btn::before {
+  content: '';
+  position: absolute;
+  left: 35px;
+  width: 50px;
+  height: 50px;
+  background-image: url(../images/icon-cart.svg);
+  background-repeat: no-repeat;
+}
+
+.card__btn:hover {
+  background-color: hsl(158, 36%, 27%);
+}
+
+/* Медиа - мобильный */
+@media (max-width: 660px) {
+  .card {
+    margin: 2em;
+  }
+  .card__image {
+    width: 100%;
+  }
+}
