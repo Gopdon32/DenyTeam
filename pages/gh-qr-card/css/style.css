@@ -1,0 +1,68 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Outfit:100,200,300,regular,500,600,700,800,900);
+
+/* Переменные */
+:root {
+  --bg-web: hsl(212, 45%, 89%);
+  --bg-card: #fff;
+  --card-shadow: 0 0 50px hsl(212, 47%, 82%);
+  --title: hsl(218, 44%, 22%);
+  --descr: hsl(216, 15%, 48%);
+}
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Outfit';
+}
+
+body {
+  max-width: 1920px;
+  min-width: 375px;
+  background-color: var(--bg-web);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Карточка */
+.card {
+  padding: 1rem;
+  max-width: 300px;
+  box-shadow: var(--card-shadow);
+  border-radius: 15px;
+  background-color: var(--bg-card);
+}
+
+/* Верхняя часть - картинка */
+.card__image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Нижняя часть - текст */
+.card__text {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.card__title {
+  color: var(--title);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card__description {
+  color: var(--descr);
+  margin: 1rem 0;
+}
