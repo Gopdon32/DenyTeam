@@ -1,0 +1,196 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Lexend+Deca:100,200,300,regular,500,600,700,800,900);
+
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+/* Переменные */
+:root {
+  --bg: hsl(233, 47%, 7%);
+  --bg-card: hsl(244, 37%, 16%);
+  --acent: hsl(277, 64%, 61%);
+  --def-clr: #fff;
+  --heading-clr: hsl(0, 0%, 100%);
+  --par-clr: hsla(0, 0%, 100%, 0.6);
+  --font-def: 300 15px/1.3 'Lexend Deca', sans-serif;
+}
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--def-clr);
+  font: var(--font-def);
+}
+
+html {
+  margin: 0 auto;
+  min-width: 380px;
+  max-width: 1920px;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.wrapper {
+  display: flex;
+  padding: 3rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 99vh;
+}
+
+/* Эффекты */
+.card__right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: 2;
+  background-color: var(--acent);
+}
+
+/* Карта */
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--bg-card);
+  border-radius: 5px;
+  box-shadow: 0 15px 5px 0px hsl(234, 44%, 8%);
+  overflow: hidden;
+  height: auto;
+  width: 800px;
+}
+.card__left,
+.card__right {
+  flex: 1;
+  flex-grow: 1;
+}
+
+.card__left {
+  display: flex;
+  padding: 3.5rem;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.card__text {}
+.text__title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+  .text__title span {
+    color: var(--acent);
+    font-size: inherit;
+    font-weight: inherit;
+  }
+.card__desc {
+  color: var(--par-clr);
+  margin: 1rem 1rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.card__stats {
+  display: flex;
+  margin: 4rem 0 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.stats {
+  line-height: 2;
+  letter-spacing: 1px;
+}
+  .stats span {
+    font: 700 1.5rem 'Inter';
+  }
+  .stats p {
+    color: var(--par-clr);
+    font-size: 0.8rem;
+  }
+.card__right {
+  position: relative;
+}
+.card__right img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Медиа */
+@media (max-width: 900px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  .card {
+    flex-basis: 60%;
+    flex-direction: column-reverse;
+  }
+  .card__right {}
+  .card__left {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .text__title {
+    font-size: 2rem;
+  }
+  .card__desc {
+    margin: 2vw 0 0 0;
+    font-size: 1rem;
+  }
+  .card__stats {
+    gap: 20px;
+    margin: 2rem 0 0 0;
+    flex-direction: column;
+  }
+  .stats span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .text__title {
+    font-size: 1.5rem;
+  }
+  .card__desc {
+    font-size: 0.87rem;
+    margin: 1rem 0 0 0;
+  }
+  .card__stats {
+    gap: 15px;
+    margin: 1.5rem 0 0 0;
+    flex-direction: column;
+  }
+  .stats span {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .stats p {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .text__title {
+    font-size: 1.1rem;
+  }
+  .card__desc {
+    font-size: 0.7rem;
+  }
+  .card__stats {
+    gap: 15px;
+    flex-direction: column;
+  }
+  .stats span {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .stats p {
+    font-size: 0.6rem;
+  }
+}
