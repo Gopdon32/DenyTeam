@@ -1,0 +1,162 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Red+Hat+Display:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+/* Переменные */
+:root {
+  --bg: url(../images/pattern-background-desktop.svg) no-repeat top/100%;
+  --bg-card: url(../images/illustration-hero.svg) no-repeat center/cover;
+  --txt-blue: hsl(223, 47%, 23%);
+  --txt-grey: hsl(224, 23%, 55%);
+  --btn-blue: hsl(245, 75%, 52%);
+  --hvr-clr: #766CF1;
+}
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+html {
+  margin: 0 auto;
+  min-width: 375px;
+  max-width: 1920px;
+}
+
+body {
+  padding: 1rem;
+  background: var(--bg);
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.i-wrapper {
+  padding: 3rem;
+}
+
+/* Эффекты */
+a:hover {
+  color: var(--hvr-clr);
+  text-decoration: none;
+}
+
+.pay__btn button:hover {
+  background-color: var(--hvr-clr);
+}
+
+.cancel__btn button:hover {
+  color: var(--txt-blue);
+}
+
+/* Карточка */
+.card {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px hsl(224, 23%, 70%);
+  max-width: 400px;
+}
+
+/* Фон карточки - шапка */
+.card__bg {
+  background: var(--bg-card);
+  min-height: 200px;
+}
+
+/* Основной текст - центр */
+.card__text {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.text__title {
+  color: var(--txt-blue);
+  margin: 1rem 0;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+.text__desc {
+  color: var(--txt-grey);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Тарифный план - центр */
+.card__info {
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info__plan {
+  position: relative;
+  line-height: 1.5;
+  margin-left: 5rem;
+}
+  .info__plan::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 40px;
+    height: 40px;
+    background: url(../images/icon-music.svg);
+  }
+
+.name__plan {
+  color: var(--txt-blue);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.price__plan {
+  color: var(--txt-grey);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.change a {
+  font-weight: 700;
+}
+
+/* Кнопки выбора - подвал */
+.card__buttons {
+  margin: 1rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.pay__btn {
+  width: 100%;
+}
+
+.pay__btn button {
+  width: 100%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 1rem 0;
+  font-weight: 600;
+  border-radius: 15px;
+  background-color: var(--btn-blue);
+}
+
+.cancel__btn button {
+  color: var(--txt-grey);
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+}
