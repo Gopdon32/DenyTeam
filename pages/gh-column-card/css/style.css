@@ -1,0 +1,138 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Lexend+Deca:100,200,300,regular,500,600,700,800,900);
+
+@import url(https://fonts.googleapis.com/css?family=Big+Shoulders:100,200,300,regular,500,600,700,800,900);
+
+/* Переменные */
+:root {
+  --gold: hsl(31, 77%, 52%);
+  --cyan: hsl(184, 100%, 22%);
+  --green: hsl(179, 100%, 13%);
+  --fnt-lexend: 300 15px/1.5 'Lexend Deca' , sans-serif;
+  --fnt-bigSh: 700 2rem/1 'Big Shoulders', sans-serif;
+}
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .3s ease;
+}
+
+html {
+  color: white;
+  font: var(--fnt-lexend);
+  margin: 0 auto;
+  min-width: 375px;
+  max-width: 1920px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 99vh;
+  padding: 2em;
+}
+
+/* Эффекты */
+#sedan button:hover,
+#suvs button:hover,
+#luxury button:hover {
+  background-color: transparent;
+  border: 2px solid white;
+  color: #fff;
+}
+
+/* Общий блок */
+.cards--block {
+  display: grid;
+  max-width: 900px;
+  grid-template-rows: repeat(1, 500px);
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Карта */
+.card--box {
+  display: flex;
+  padding: 3rem;
+  animation: loading 4s ease;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+  #sedan {
+    background: var(--gold);
+  }
+    #sedan button {
+      color: var(--gold);
+    }
+  #suvs {
+    background: var(--cyan);
+  }
+    #suvs button {
+      color: var(--cyan);
+    }
+  #luxury {
+    background: var(--green);
+  }
+    #luxury button {
+      color: var(--green);
+    }
+
+.card--img {
+  width: 55px;
+  height: auto;
+  display: block;
+}
+
+.card--title {
+  font: var(--fnt-bigSh);
+  margin: 2rem 0;
+}
+
+.card-desc {
+  color: hsla(0, 0%, 100%, 0.75);
+}
+
+.card--btn {
+  background-color: #fff;
+  border-radius: 30px;
+  font-weight: 400;
+  font: var(--fnt-lexend);
+  width: 70%;
+  border: 2px solid transparent;
+  padding: 1rem;
+}
+
+/* Медиа */
+@media (max-width: 820px) {
+  .cards--block {
+    max-width: 300px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+  }
+  .card--box {
+    justify-content: flex-start;
+  }
+  .card--btn {
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+/* Анимация */
+@keyframes loading {
+  from {
+    height: 0;
+    overflow: hidden;
+    transform: translateX(-350%);
+  }
+  to {
+    height: 100%;
+    overflow: hidden;
+    transform: translateX(0);
+  }
+}
