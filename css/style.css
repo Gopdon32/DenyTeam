@@ -1,1 +1,340 @@
-/* Here CSS code */
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Londrina+Solid:100,300,regular,900);
+
+/* Переменные */
+:root {
+  --Auburn: #ad2831;
+  --Falu-red: #800e13;
+  --Rosewood: #640d14;
+  --Black-bean-300: #38040e;
+  --Black-bean-200: #250902;
+
+  --bg-color: #351f1a;
+  --title: #ffdada;
+  --desc: #b8b8b8;
+  --txt: #fff;
+}
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1vw;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-family: "Londrina Solid", sans-serif;
+  text-decoration: none;
+  list-style: none;
+  transition: all 0.1s ease-in-out;
+}
+
+html {
+  color: var(--txt);
+  background: #0c0c0c url(../assets/images/background.svg) repeat;
+  scroll-behavior: smooth;
+}
+
+.wrapper {
+  padding: 3vw 7vw;
+}
+
+.main--block {
+  margin: 4vw 0;
+}
+
+.section--block {
+  margin: 0 0 10vw 0;
+}
+.section--title {
+  margin: 0 0 1vw 0;
+}
+.section--title p {
+  font-size: 3vw;
+  text-transform: uppercase;
+}
+
+/* Шапка */
+.nav--block {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: max-content;
+  position: relative;
+}
+.nav--list {
+  display: inherit;
+  align-items: center;
+  gap: 2vw;
+}
+#nav--left .nav--item--icn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 1vw;
+}
+#nav--left .nav--item {
+  padding: 0.5vw 1vw;
+}
+#nav--right .nav--item {
+  position: relative;
+  width: 100%;
+}
+.nav--link,
+.nav--link--hide {
+  color: var(--txt);
+}
+.nav--logo {
+  width: 4vw;
+}
+.nav-view {
+}
+.nav--item--icn img {
+  width: 1.2vw;
+}
+.nav--btn {
+  color: var(--txt);
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 1vw 1.2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+.nav--btn::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  transition: all 0.3s ease;
+  z-index: -1;
+  left: 0;
+}
+.nav--btn:hover:before {
+  content: "";
+  width: 100%;
+  background-color: var(--Falu-red);
+}
+/* Меню - скрытый блок */
+.nav--list--hide {
+  display: none;
+  padding: 1vw;
+}
+.nav--list--hide .nav--link:hover {
+  background-color: var(--Rosewood);
+}
+.nav--list--hide .nav--link {
+  padding: 0.5vw 2vw;
+  margin: 2vw 0;
+  line-height: 2;
+}
+.nav--block.open .nav--list--hide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Falu-red);
+  transform: translateY(3.5vw) translateX(-3.8vw);
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: max-content;
+  border-radius: 2vw 0 2vw 2vw;
+  overflow: hidden;
+}
+.nav--block.active #burger::before {
+  border-radius: 0 2vw 0 0;
+  background: var(--Falu-red);
+  width: 100%;
+}
+.nav--block.active #burger img {
+  transform: rotate(90deg);
+}
+
+/* Грид - секция */
+.grid--block {
+  gap: 1.5vw;
+  margin: 1vw 0;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: minmax(15vw);
+}
+.grid--box {
+  height: 100%;
+  min-width: max-content;
+  position: relative;
+  overflow: hidden;
+}
+.grid--box:hover {
+  margin: 0 1vw;
+  border-top: 0.1vw solid #fff;
+  border-bottom: 0.1vw solid #fff;
+}
+.grid--box--link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: brightness(50%);
+  color: var(--title);
+  font-size: 2.5vw;
+}
+.grid--box--link::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.grid--box--link:hover {
+  backdrop-filter: brightness(70%);
+}
+
+/* Грид - блок */
+#grid-item1 {
+  min-width: 20vw;
+  min-height: 30vw;
+  grid-column: span 2 / span 2;
+  grid-row: 4 / span 4;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  background: url(../assets/images/nft.jpeg) no-repeat center/cover;
+}
+#grid-item2 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  background: url(../assets/images/profile-card.png) no-repeat center/cover;
+}
+#grid-item3 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 6;
+  background: url(../assets/images/column-card.png) no-repeat center/cover;
+}
+#grid-item4 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 8;
+  background: url(../assets/images/stats-card.png) no-repeat center/cover;
+}
+#grid-item5 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 3;
+  grid-row-start: 3;
+  background: url(../assets/images/digital-bank.png) no-repeat center/cover;
+}
+#grid-item6 {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 5;
+  grid-row-start: 3;
+  background: url(../assets/images/social-link.png) no-repeat center/cover;
+}
+#grid-item7 {
+  grid-column: span 3 / span 3;
+  grid-row: span 2 / span 2;
+  grid-column-start: 7;
+  grid-row-start: 3;
+  background: url(../assets/images/more-works.jpg) no-repeat center/cover;
+}
+
+/* Мои работы - секция */
+.all--works--block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* Мои работы - блок */
+.my--work--box {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  overflow: hidden;
+}
+
+.work--header {
+  position: relative;
+}
+.work--header img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  position: relative;
+}
+#easy--dif::before,
+#medium--dif::before,
+#hard--dif::before {
+  content: "";
+  width: 0.7vw;
+  height: 0.7vw;
+  border-radius: 50%;
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  z-index: 9;
+}
+#easy--dif::before {
+  background-color: green;
+}
+#medium--dif::before {
+  background-color: orange;
+}
+#hard--dif::before {
+  background-color: red;
+}
+.work--main {
+  display: inherit;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.work--title {
+  color: #000;
+  font-weight: 900;
+  text-align: center;
+  font-size: 1.5vw;
+  width: 100vw;
+  background-color: #fff;
+}
+.work--title:hover {
+  color: var(--Rosewood);
+}
+.work--tag {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 0 0 0.2vw 0.2vw;
+  gap: 0.1vw;
+  overflow: hidden;
+}
+.work--tag p {
+  padding: 0.1vw 0.5vw;
+  font-weight: 100;
+}
+.html--tag {
+  background-color: orange;
+}
+.css--tag {
+  background-color: blue;
+}
+.work--dif {
+  position: relative;
+}
+#easy--dif {
+  color: green;
+}
+#medium--dif {
+  color: orange;
+}
+#hard--dif {
+  color: red;
+}
