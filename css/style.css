@@ -34,6 +34,7 @@ html {
   scroll-behavior: smooth;
   position: relative;
   max-height: 100vh;
+  min-width: 375px;
 }
 
 html::-webkit-scrollbar {
@@ -171,32 +172,35 @@ html::-webkit-scrollbar {
 .hiden {
   display: none;
 }
-.version--block {
+
+.version--block--wrapper {
+  position: absolute;
+  top: 4vw;
+  right: 23.5vw;
+  bottom: 5vw;
+  padding: 2vw;
+  height: max-content;
+  max-height: 50vh;
+  width: 15vw;
+  background-color: var(--Falu-red);
+  border-radius: 2vw 0 0 2vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 3;
 }
 .version--block--wrapper::-webkit-scrollbar {
   background-color: transparent;
   width: 0.2vw;
 }
+
 .version--block--wrapper::-webkit-scrollbar-track {
   background-color: #0009;
 }
+
 .version--block--wrapper::-webkit-scrollbar-thumb {
   background-color: var(--Auburn);
 }
-.version--block--wrapper {
-  position: absolute;
-  top: -3.1vw;
-  right: 22.9vw;
-  bottom: 5vw;
-  padding: 2vw;
-  height: 10vw;
-  width: 15vw;
-  transform: translateY(15vh);
-  background-color: var(--Falu-red);
-  border-radius: 2vw 0 2vw 2vw;
-  overflow: auto;
-  z-index: 3;
-}
+
 .version--title {
 }
 
