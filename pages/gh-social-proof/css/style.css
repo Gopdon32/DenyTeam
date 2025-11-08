@@ -1,0 +1,228 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=League+Spartan:100,200,300,regular,500,600,700,800,900);
+
+/* Переменные */
+:root {
+  --dark-clr: hsl(300, 43%, 22%);
+  --pink-clr: hsl(333, 80%, 67%);
+  --dark-pink-clr: hsl(303, 10%, 53%);
+
+  /* новые переменные для консистентных отступов/радиусов */
+  --gap-lg: 2vw;
+  --gap-xl: 5vw;
+  --card-pad: 2.5vw;
+  --card-radius: 1vw;
+  --base-font-size: 15px;
+}
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: var(--base-font-size);
+  font-family: "League Spartan", sans-serif;
+}
+
+html {
+  font-weight: 500;
+}
+
+.wrapper {
+  padding: 2vw 10vw;
+}
+
+/* Рейтинг - блок */
+.proof__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5vw 0;
+}
+
+.proof__hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1vw;
+}
+
+.proof__text {
+  width: 26vw;
+}
+
+.proof__text h1 {
+  color: var(--dark-clr);
+  font-size: 4vw;
+  font-weight: 700;
+}
+
+.proof__text p {
+  margin: 1vw 0 0 0;
+  color: var(--dark-pink-clr);
+  line-height: 1.5;
+  font-weight: 600;
+  font-size: 1vw;
+}
+
+.rating__box {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  line-height: 4.3;
+  margin-right: var(--gap-xl);
+}
+
+/* смещение между соседними блоками рейтинга */
+.rating__box + .rating__box {
+  margin-left: 3vw;
+}
+
+.stars {
+  letter-spacing: 0.5vw;
+}
+.stars img {
+  width: 0.9vw;
+}
+
+.rating p {
+  color: var(--dark-clr);
+  font-size: 1vw;
+  font-weight: 700;
+}
+
+.proof__response__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+/* карточки отзывов */
+.proof__response__box {
+  background-color: var(--dark-clr);
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+  border-radius: var(--card-radius);
+}
+
+/* сохранить стэк-эффект смещений у 2 и 3 карточки */
+.proof__response__box:nth-child(2) {
+  margin-top: 3vw;
+}
+.proof__response__box:nth-child(3) {
+  margin-top: 6vw;
+}
+
+.response__profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5vw;
+}
+
+.profile__img {
+  width: 3vw;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.profile__info {
+  line-height: 1.3;
+}
+
+/* Убрано дублирование font-size; оставлен единый размер */
+.profile__name {
+  color: #fff;
+  font-size: 1.2vw;
+}
+
+.profile__status {
+  color: var(--pink-clr);
+  font-size: 0.9vw;
+}
+
+.responsive__description p {
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1vw;
+}
+
+/* Медиа */
+@media (max-width: 800px) {
+  .wrapper {
+    padding: 10vw 20vw;
+    margin: 0 auto;
+  }
+
+  .proof__hero {
+    flex-direction: column;
+    gap: 2vw;
+    width: unset;
+  }
+
+  .proof__text {
+    text-align: center;
+    width: unset;
+  }
+
+  .proof__text h1 {
+    font-size: 7vw;
+  }
+  .proof__text p {
+    margin: 3vw 0;
+    font-weight: 400;
+    font-size: 3vw;
+  }
+
+  .rating__box {
+    flex-direction: column;
+    line-height: 1;
+    text-align: center;
+    gap: 1vw;
+    margin: 5vw 0;
+  }
+  .rating p {
+    font-size: 2.5vw;
+  }
+
+  .stars img {
+    width: 2.5vw;
+  }
+
+  .proof__response__block {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 3vw; /* заменил отдельное правило на явный gap */
+  }
+  .proof__response__box {
+    padding: 4vw;
+  }
+
+  .response__profile {
+    gap: 2vw;
+  }
+  .profile__img {
+    width: 4vw;
+  }
+  .profile__name {
+    font-size: 2vw;
+  }
+  .profile__status {
+    font-size: 2vw;
+  }
+  .responsive__description p {
+    font-size: 2.5vw;
+    font-weight: 400;
+  }
+
+  /* убрать дополнительные маргины у мобильной версии (сохранить вертикальный поток) */
+  .proof__response__box:nth-child(2),
+  .proof__response__box:nth-child(3) {
+    margin: 0;
+  }
+}
