@@ -1,0 +1,149 @@
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+/* По умолчанию */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed";
+  font-size: 13px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 375px;
+}
+
+.grid--box {
+  padding: 2vw 5vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+}
+
+/* Блоки */
+#block--1 {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  background: hsl(263, 55%, 52%);
+  color: white;
+}
+
+#block--2 {
+  grid-row: 1;
+  grid-column: 3;
+  background: hsl(217, 19%, 35%);
+  color: white;
+}
+
+#block--3 {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+
+#block--4 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#block--5 {
+  grid-row: 2;
+  grid-column: 2 / span 2;
+  background: hsl(219, 29%, 14%);
+  color: white;
+}
+
+/* Блок */
+.white-theme .main--title,
+.white-theme .profile--name,
+.white-theme .profile--status,
+.white-theme .footer--description {
+  color: hsl(217, 19%, 35%);
+}
+.grid--block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 1vw;
+  box-shadow: 50px 50px 50px #0003;
+  overflow: hidden;
+  padding: 2.5vh 2vw;
+  margin: 1vw;
+  gap: 1vw;
+}
+.header--profile {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5vw;
+}
+.profile--logo img {
+  width: 3vw;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.profile--info {
+  line-height: 1.5;
+}
+
+.profile--info p {
+  font-size: 1vw;
+}
+
+.profile--name {
+  font-size: 1.3vw;
+  font-weight: 450;
+}
+
+.main--title p {
+  font-size: 1.3vw;
+  font-weight: 600;
+}
+
+.footer--description p {
+  font-weight: 400;
+  font-size: 1vw;
+  line-height: 1.5;
+}
+
+/* Медиа */
+@media (max-width: 1000px) {
+  .wrapper {
+    padding: 2vw 30vw;
+  }
+  .grid--box {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    aspect-ratio: auto;
+  }
+  #block--1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  #block--2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  #block--3 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  #block--4 {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  #block--5 {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  .main--title p {
+    font-weight: 600;
+    font-size: 1.5vw;
+  }
+}
