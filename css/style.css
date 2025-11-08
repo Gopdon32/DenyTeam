@@ -14,6 +14,7 @@
   --desc: #b8b8b8;
   --txt: #fff;
 }
+
 /* По умолчанию */
 * {
   margin: 0;
@@ -31,6 +32,12 @@ html {
   color: var(--txt);
   background: #0c0c0c url(../assets/images/background.svg) repeat;
   scroll-behavior: smooth;
+  position: relative;
+  max-height: 100vh;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 .wrapper {
@@ -61,36 +68,42 @@ html {
   height: max-content;
   position: relative;
 }
+
 .nav--list {
   display: inherit;
   align-items: center;
   gap: 2vw;
 }
+
 #nav--left .nav--item--icn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0 1vw;
 }
+
 #nav--left .nav--item {
   padding: 0.5vw 1vw;
 }
+
 #nav--right .nav--item {
   position: relative;
   width: 100%;
 }
+
 .nav--link,
 .nav--link--hide {
   color: var(--txt);
 }
+
 .nav--logo {
   width: 4vw;
 }
-.nav-view {
-}
+
 .nav--item--icn img {
   width: 1.2vw;
 }
+
 .nav--btn {
   color: var(--txt);
   border: none;
@@ -102,6 +115,7 @@ html {
   justify-content: center;
   gap: 1vw;
 }
+
 .nav--btn::before {
   content: "";
   width: 0%;
@@ -111,46 +125,79 @@ html {
   z-index: -1;
   left: 0;
 }
+
 .nav--btn:hover:before {
   content: "";
   width: 100%;
   background-color: var(--Falu-red);
 }
+
 /* Меню - скрытый блок */
 .nav--list--hide {
   display: none;
   padding: 1vw;
 }
+
 .nav--list--hide .nav--link:hover {
   background-color: var(--Rosewood);
 }
+
 .nav--list--hide .nav--link {
-  padding: 0.5vw 2vw;
   margin: 2vw 0;
+  padding: 0.5vw 2vw;
   line-height: 2;
 }
+
 .nav--block.open .nav--list--hide {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--Falu-red);
+  flex-direction: column;
+  border-radius: 2vw 0 2vw 2vw;
   transform: translateY(3.5vw) translateX(-3.8vw);
+  overflow: hidden;
   position: absolute;
   z-index: 3;
+  width: max-content;
   left: 0;
   top: 0;
-  width: max-content;
+}
+.active {
+  background-color: var(--Falu-red);
+}
+
+/* Обновление - скрытый блок*/
+.hiden {
+  display: none;
+}
+.version--block {
+}
+.version--block--wrapper::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0.2vw;
+}
+.version--block--wrapper::-webkit-scrollbar-track {
+  background-color: #0009;
+}
+.version--block--wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--Auburn);
+}
+.version--block--wrapper {
+  position: absolute;
+  top: -3.1vw;
+  right: 22.9vw;
+  bottom: 5vw;
+  padding: 2vw;
+  height: 10vw;
+  width: 15vw;
+  transform: translateY(15vh);
+  background-color: var(--Falu-red);
   border-radius: 2vw 0 2vw 2vw;
-  overflow: hidden;
+  overflow: auto;
+  z-index: 3;
 }
-.nav--block.active #burger::before {
-  border-radius: 0 2vw 0 0;
-  background: var(--Falu-red);
-  width: 100%;
-}
-.nav--block.active #burger img {
-  transform: rotate(90deg);
+.version--title {
 }
 
 /* Грид - секция */
@@ -161,26 +208,24 @@ html {
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: minmax(15vw);
 }
+
 .grid--box {
   height: 100%;
   min-width: max-content;
   position: relative;
   overflow: hidden;
 }
-.grid--box:hover {
-  margin: 0 1vw;
-  border-top: 0.1vw solid #fff;
-  border-bottom: 0.1vw solid #fff;
-}
+
 .grid--box--link {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: brightness(50%);
-  color: var(--title);
   font-size: 2.5vw;
+  backdrop-filter: brightness(30%);
+  color: var(--title);
 }
+
 .grid--box--link::before {
   content: "";
   width: 100%;
@@ -189,8 +234,9 @@ html {
   left: 0;
   right: 0;
 }
+
 .grid--box--link:hover {
-  backdrop-filter: brightness(70%);
+  backdrop-filter: brightness(50%);
 }
 
 /* Грид - блок */
@@ -203,24 +249,28 @@ html {
   grid-row-start: 1;
   background: url(../assets/images/nft.jpeg) no-repeat center/cover;
 }
+
 #grid-item2 {
   grid-column: span 3 / span 3;
   grid-row: span 2 / span 2;
   grid-column-start: 3;
   background: url(../assets/images/profile-card.png) no-repeat center/cover;
 }
+
 #grid-item3 {
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
   grid-column-start: 6;
   background: url(../assets/images/column-card.png) no-repeat center/cover;
 }
+
 #grid-item4 {
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
   grid-column-start: 8;
   background: url(../assets/images/stats-card.png) no-repeat center/cover;
 }
+
 #grid-item5 {
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
@@ -228,6 +278,7 @@ html {
   grid-row-start: 3;
   background: url(../assets/images/digital-bank.png) no-repeat center/cover;
 }
+
 #grid-item6 {
   grid-column: span 2 / span 2;
   grid-row: span 2 / span 2;
@@ -235,6 +286,7 @@ html {
   grid-row-start: 3;
   background: url(../assets/images/social-link.png) no-repeat center/cover;
 }
+
 #grid-item7 {
   grid-column: span 3 / span 3;
   grid-row: span 2 / span 2;
@@ -247,9 +299,8 @@ html {
 .all--works--block {
   display: flex;
   flex-wrap: wrap;
-  gap: 1vw;
+  gap: 1.7vw;
   align-items: center;
-  /* justify-content: center; */
 }
 
 /* Мои работы - блок */
@@ -262,14 +313,29 @@ html {
 
 .work--header {
   position: relative;
+  aspect-ratio: 2 / 1;
+  max-height: 15vw;
+  overflow: hidden;
 }
+
 .work--header img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  position: relative;
 }
+
+.work--header::before {
+  content: "";
+  width: 100vw;
+  height: 100vw;
+  background-color: red;
+  position: absolute;
+  top: -1vw;
+  right: -1vw;
+  z-index: 9;
+}
+
 #easy--dif::before,
 #medium--dif::before,
 #hard--dif::before {
@@ -280,23 +346,29 @@ html {
   position: absolute;
   top: 1vw;
   right: 1vw;
-  z-index: 9;
+  z-index: 1;
 }
+
 #easy--dif::before {
   background-color: green;
 }
+
 #medium--dif::before {
   background-color: orange;
 }
+
 #hard--dif::before {
   background-color: red;
 }
+
 .work--main {
   display: inherit;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  position: relative;
 }
+
 .work--title {
   color: #000;
   font-weight: 900;
@@ -305,36 +377,48 @@ html {
   width: 100vw;
   background-color: #fff;
 }
+
 .work--title:hover {
   color: var(--Rosewood);
 }
+
 .work--tag {
   display: flex;
   width: fit-content;
   margin: 0 auto;
-  border-radius: 0 0 0.2vw 0.2vw;
+  border-radius: 0 0.2vw 0 0;
   gap: 0.1vw;
   overflow: hidden;
+  position: absolute;
+  top: -1.4vw;
+  left: 0;
 }
+
 .work--tag p {
   padding: 0.1vw 0.5vw;
   font-weight: 100;
 }
+
 .html--tag {
   background-color: orange;
 }
+
 .css--tag {
   background-color: blue;
 }
+
 .work--dif {
   position: relative;
 }
+
 #easy--dif {
   color: green;
 }
+
 #medium--dif {
   color: orange;
 }
+
 #hard--dif {
   color: red;
 }
