@@ -9,20 +9,19 @@
       href="assets/images/favicon-32x32.png"
       type="image/x-icon"
     />
-    <script defer src="js/menu.js"></script>
+    <script defer src="js/script.js"></script>
     <title>DenyTeam | Home</title>
   </head>
   <body>
-    <div class="load"></div>
     <div class="wrapper">
-      <!-- Header -->
+      <!-- Header - block -->
       <header class="header--block">
         <!-- Nav - block -->
         <nav class="nav--block">
           <!-- Left -->
           <ul class="nav--list" id="nav--left">
             <li class="nav--item">
-              <a href="#" class="nav--link">
+              <a href="https://gopdon32.github.io/DenyTeam/" class="nav--link">
                 <img
                   src="assets/images/logo.svg"
                   alt="Logo: DenyTeam"
@@ -37,10 +36,10 @@
           </ul>
           <!-- Right -->
           <ul class="nav--list" id="nav--right">
-            <li class="nav--item nav--item--icn" id="theme--bnt--box">
-              <button class="nav--btn" id="theme">
+            <li class="nav--item nav--item--icn">
+              <button class="nav--btn" id="version">
                 <img src="assets/images/theme.svg" alt="Theme Button" />
-                V. 1.0
+                V. <span id="btn-vers-placeh"></span>
               </button>
             </li>
             <li class="nav--item nav--item--icn" id="menu--btn--box">
@@ -50,26 +49,48 @@
               </button>
               <ul class="nav--list--hide">
                 <li class="nav--item">
-                  <a href="#" class="nav--link">Обо мне</a>
+                  <a href="#" class="nav--link" target="_blank">Обо мне</a>
                 </li>
                 <li class="nav--item">
-                  <a href="#" class="nav--link">Контакты</a>
+                  <a href="#" class="nav--link" target="_blank">Контакты</a>
                 </li>
                 <li class="nav--item">
-                  <a href="#" class="nav--link">Git</a>
+                  <a
+                    href="https://github.com/Gopdon32"
+                    class="nav--link"
+                    target="_blank"
+                    >Git</a
+                  >
                 </li>
                 <li class="nav--item">
-                  <a href="#" class="nav--link">F-Mentor</a>
+                  <a
+                    href="https://www.frontendmentor.io/profile/Gopdon32"
+                    target="_blank"
+                    class="nav--link"
+                    >F-Mentor</a
+                  >
                 </li>
               </ul>
             </li>
           </ul>
         </nav>
       </header>
-      <!-- //Header -->
+      <!-- //Header - block -->
+
+      <!-- Version - block -->
+      <section class="version--block hiden" id="versionBlock-hide">
+        <div class="version--block--wrapper">
+          <div class="version--title">
+            <p>V. <span id="blck-vers-placeh"></span></p>
+          </div>
+          <div class="version--change">- No changes</div>
+        </div>
+      </section>
+      <!-- //Version - block -->
 
       <!-- Main -->
       <main class="main--block">
+        <!-- Grid - section -->
         <section class="section--block">
           <!-- Grid - block -->
           <div class="grid--block">
@@ -82,6 +103,7 @@
                 >NFT Card</a
               >
             </article>
+            <!-- // -->
             <!-- Grid - box -->
             <article class="grid--box" id="grid-item2">
               <a
@@ -133,8 +155,9 @@
             </article>
           </div>
         </section>
+        <!-- //Grid - section -->
 
-        <!-- ALL MY WORKS - Block -->
+        <!-- All My Works - section -->
         <section class="section--block">
           <div class="section--title">
             <p id="my--works">My works</p>
@@ -143,7 +166,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/score-summary.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -161,7 +184,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/Blog-Preview.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -179,7 +202,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/Product-Card.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -197,7 +220,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/Ingredients.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -215,7 +238,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/Order-Plan.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -233,7 +256,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/QR.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -251,7 +274,7 @@
             <!-- Work Box -->
             <article class="my--work--box">
               <div class="work--header" id="easy--dif">
-                <img src="assets/images/nft.jpeg" alt="" />
+                <img src="assets/images/Huddle.png" alt="" />
               </div>
               <div class="work--main">
                 <a
@@ -268,6 +291,7 @@
             <!-- // -->
           </div>
         </section>
+        <!-- //All My Works - section -->
       </main>
       <!-- //Main -->
     </div>
