@@ -34,12 +34,7 @@ hr.ukraine {
 
 body {
   margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: "Inter Tight", sans-serif;
   background:
     linear-gradient(
       180deg,
@@ -85,6 +80,59 @@ body {
   }
 }
 
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.popup.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-inner {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 960px;
+  width: 90%;
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.popup-close {
+  background: none;
+  border: none;
+  color: #facc15;
+  font-size: 2rem;
+  cursor: pointer;
+  float: right;
+}
+
+.popup-gallery {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.popup-image-item img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
 /* Layout */
 
 .section {
@@ -102,61 +150,126 @@ body {
   backdrop-filter: blur(4px);
 }
 
+/* NAV BASE */
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.75);
+  padding: 12px 20px;
+  background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Ограничение ширины как у всего сайта */
 .nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
+  max-width: 1200px; /* ← ВОТ ЭТО ВЕРНУЛО ОГРАНИЧЕНИЕ */
+  margin: 0 auto; /* центрируем */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+/* LOGO */
+.logo a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
+  text-decoration: none;
 }
 
 .logo img {
-  height: 42px;
-  width: auto;
-  display: block;
+  width: 36px;
+  height: auto;
 }
 
+.logo p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* RIGHT SIDE */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .nav-phone {
-  color: #00ff66;
+  color: #facc15;
   font-weight: 600;
-  text-decoration: none;
-}
-
-.nav-tg {
-  color: #e5e7eb;
-  text-decoration: none;
-  font-weight: 500;
+  font-size: 1.05rem;
+  white-space: nowrap;
 }
 
 .nav-icon img {
   width: 26px;
   height: 26px;
-  display: block;
-  filter: brightness(1.2);
-  transition: 0.25s ease;
+  opacity: 0.9;
+  transition: 0.2s ease;
 }
 
 .nav-icon img:hover {
-  transform: scale(1.15);
-  filter: brightness(1.6);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 480px) {
+  .nav {
+    padding: 10px 14px;
+  }
+
+  .nav-inner {
+    gap: 8px;
+  }
+
+  .logo img {
+    width: 30px;
+  }
+
+  .logo p {
+    font-size: 0.95rem;
+  }
+
+  .nav-phone {
+    font-size: 0.9rem;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+
+  .nav-icon img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* SUPER SMALL DEVICES */
+@media (max-width: 360px) {
+  .nav-inner {
+    gap: 6px;
+  }
+
+  .nav-right {
+    justify-content: right;
+  }
+
+  .nav-phone {
+    font-size: 0.8rem;
+  }
+
+  .logo p {
+    font-size: 0.85rem;
+  }
+
+  .nav-icon img {
+    width: 20px;
+  }
 }
 
 /* Hero */
@@ -272,100 +385,199 @@ body {
   background: rgba(37, 99, 235, 0.06);
 }
 
-/* Hero warranty */
-.hero-warranty {
-  background: url(../src/images/BG.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  padding: 120px 20px;
+/* FULL WIDTH + NOISE */
+.cars-section {
   position: relative;
+  padding: 100px 40px;
   overflow: hidden;
 }
 
-/* Легкий затемнюючий шар для читабельності */
-.hero-warranty::before {
-  content: "";
+.cars-noise {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75));
-  backdrop-filter: blur(2px);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(96, 165, 250, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(250, 204, 21, 0.18),
+      transparent 55%
+    ),
+    #050814;
   z-index: 1;
 }
 
-.hero-warranty-inner {
+/* PREMIUM VIEW BUTTON */
+.car-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 26px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(250, 204, 21, 0.35);
+
+  color: #facc15;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 0 18px rgba(250, 204, 21, 0.25),
+    inset 0 0 12px rgba(250, 204, 21, 0.15);
+}
+
+.car-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 25px rgba(250, 204, 21, 0.45),
+    inset 0 0 18px rgba(250, 204, 21, 0.25);
+  border-color: rgba(250, 204, 21, 0.55);
+}
+
+.car-btn:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow:
+    0 0 12px rgba(250, 204, 21, 0.35),
+    inset 0 0 22px rgba(250, 204, 21, 0.35);
+}
+
+.cars-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.cars-container {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/* Заголовок */
-.hero-warranty-inner h2 {
-  font-size: 3.2rem;
+/* TITLE */
+.cars-title {
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 24px;
-  color: #ffffff;
-  letter-spacing: 1px;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
 }
 
-/* Підзаголовки */
-.warranty-highlight,
-.warranty-accent {
-  font-size: 1.7rem;
-  margin-bottom: 14px;
-  color: #f1f5f9;
-  font-weight: 500;
-  line-height: 1.4;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+/* SWITCHER */
+.cars-switcher {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
-/* Акцент на компенсацію */
-.warranty-accent {
-  font-weight: 700;
-  color: #60a5fa;
-}
-
-/* Український рядок */
-.warranty-ukraine {
-  font-size: 1.2rem;
-  margin-top: 20px;
-  color: #ffd54f;
+.car-pill {
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  color: #e5e7eb;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 
-/* Анімація плавної появи */
-.hero-warranty-inner > * {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease forwards;
+.car-pill:hover {
+  border-color: rgba(148, 163, 184, 0.8);
+  transform: translateY(-2px);
 }
 
-.hero-warranty-inner h2 {
-  animation-delay: 0.1s;
+.car-pill.active {
+  border-color: #facc15;
+  box-shadow: 0 0 18px rgba(250, 204, 21, 0.45);
 }
 
-.warranty-highlight {
-  animation-delay: 0.25s;
+/* DISPLAY */
+.cars-display {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
-.warranty-accent {
-  animation-delay: 0.4s;
-}
-
-.warranty-ukraine {
-  animation-delay: 0.55s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 900px) {
+  .cars-display {
+    grid-template-columns: 1fr;
   }
+}
+
+/* IMAGE */
+.cars-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* INFO */
+.cars-info {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 26px;
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+}
+
+.cars-info h3 {
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.car-price {
+  font-size: 1.5rem;
+  color: #facc15;
+  margin-bottom: 20px;
+}
+
+.car-specs li {
+  color: #e5e7eb;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+/* BUTTON */
+.car-btn {
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #3b82f6, #60a5fa);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.car-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.8);
 }
 
 /* ============================
@@ -720,6 +932,51 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* PREMIUM WARRANTY BLOCK — без обводки */
+
+.warranty .section-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 50px 60px;
+  border-radius: 22px;
+
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 35px rgba(250, 204, 21, 0.12),
+    0 18px 50px rgba(0, 0, 0, 0.7);
+}
+
+.warranty-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+}
+
+.warranty-text {
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.warranty-text strong {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.warranty-sub {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
 /* ============================
@@ -1126,7 +1383,7 @@ body {
 }
 
 /* ============================
-   FOOTER — PREMIUM DARK (UPGRADED TEXT)
+   FOOTER — PREMIUM DARK (UPGRADED + SOCIALS)
    ============================ */
 
 .footer {
@@ -1202,7 +1459,8 @@ body {
 
 /* Анімація появи */
 .footer-info p,
-.footer-qr img {
+.footer-qr img,
+.footer-socials {
   opacity: 0;
   transform: translateY(16px);
   animation: fadeUpFooter 0.8s ease forwards;
@@ -1217,10 +1475,14 @@ body {
 .footer-info p:nth-child(3) {
   animation-delay: 0.4s;
 }
-.footer-qr img {
+.footer-socials {
   animation-delay: 0.55s;
 }
+.footer-qr img {
+  animation-delay: 0.7s;
+}
 
+/* Карусель */
 .footer-carousel {
   position: absolute;
   inset: 0;
@@ -1231,7 +1493,6 @@ body {
   pointer-events: none;
 }
 
-/* ВСІ фото займають всю ширину */
 .footer-carousel img {
   position: absolute;
   top: 0;
@@ -1244,7 +1505,6 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* Затримки для кожного фото */
 .footer-carousel img:nth-child(1) {
   animation-delay: 0s;
 }
@@ -1255,7 +1515,6 @@ body {
   animation-delay: 12s;
 }
 
-/* Анімація */
 @keyframes footerCarousel {
   0% {
     opacity: 0;
@@ -1272,12 +1531,6 @@ body {
   100% {
     opacity: 0;
   }
-}
-
-/* Текст поверх */
-.footer-inner {
-  position: relative;
-  z-index: 2;
 }
 
 /* Легке затемнення поверх фото */
@@ -1297,48 +1550,72 @@ body {
   }
 }
 
-/* Animations */
+/* ============================
+   SOCIAL ICONS — PREMIUM
+   ============================ */
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+.footer-socials {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.fade-in.visible {
+.footer-icon img {
+  width: 34px;
+  height: 34px;
+  opacity: 0.85;
+  transition: 0.25s ease;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4));
+}
+
+.footer-icon img:hover {
   opacity: 1;
-  transform: translateY(0);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.45));
+}
+
+/* Телефон */
+.footer-phone {
+  color: #facc15;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-phone:hover {
+  color: #ffe58f;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+/* ============================
+   MOBILE
+   ============================ */
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-phone {
+    font-size: 1.05rem;
+  }
 }
 
 /* ============================
    PREMIUM HEADER — UKRAINIAN STYLE
    ============================ */
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
 
 /* ЛОГО + НАЗВА */
 .logo a {
@@ -1420,53 +1697,87 @@ body {
 }
 
 /* АДАПТАЦІЯ */
-@media (max-width: 900px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .logo a {
-    font-size: 1.2rem;
-  }
-
-  .nav-right {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-}
 
 /* ============================
    MOBILE OPTIMIZATION (≤ 900px)
    ============================ */
 
-@media (max-width: 900px) {
-  /* SECTION FIX */
-  /* HEADER */
-  .nav-inner {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 14px 16px;
-  }
-
-  .logo {
-    flex: 1 1 100%;
-  }
-
-  .logo svg {
-    height: 32px;
-  }
-
-  .nav-right {
-    flex: 1 1 100%;
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 600px) {
+  .car-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
     gap: 6px;
   }
+}
 
+@media (max-width: 600px) {
+  .popup-inner {
+    padding: 18px;
+    border-radius: 16px;
+    width: 92%;
+  }
+
+  .popup-close {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .popup-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .popup-image-item img {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cars-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .cars-switcher {
+    gap: 10px;
+  }
+
+  .car-pill {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .cars-display {
+    gap: 20px;
+  }
+
+  .cars-info {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .cars-info h3 {
+    font-size: 1.6rem;
+  }
+
+  .car-price {
+    font-size: 1.2rem;
+  }
+
+  .car-specs li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .cars-image img {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 900px) {
   /* HERO */
   .hero-inner {
     flex-direction: column-reverse;
