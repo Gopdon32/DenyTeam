@@ -458,19 +458,46 @@ function initCarousel() {
 
   function updateCarousel() {
     track.style.transform = `translateX(-${index * 100}%)`;
+
     dots.forEach(d => d.classList.remove("active"));
     if (dots[index]) dots[index].classList.add("active");
+
     if (counter) counter.textContent = index + 1;
   }
 
-  nextBtn && (nextBtn.onclick = () => { index = (index + 1) % slides.length; updateCarousel(); });
-  prevBtn && (prevBtn.onclick = () => { index = (index - 1 + slides.length) % slides.length; updateCarousel(); });
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    };
+  }
 
-  dots.forEach(dot => dot.addEventListener("click", () => { index = Number(dot.dataset.index); updateCarousel(); }));
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    };
+  }
 
-  // автоперелистывание (ненавязчиво)
-  const auto = setInterval(() => { index = (index + 1) % slides.length; updateCarousel(); }, 4000);
-  carousel.addEventListener("mouseenter", () => clearInterval(auto)); // остановка при наведении
+  dots.forEach(dot =>
+    dot.addEventListener("click", () => {
+      index = Number(dot.dataset.index);
+      updateCarousel();
+    })
+  );
+
+  let auto = setInterval(() => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  }, 3000);
+
+  carousel.addEventListener("mouseenter", () => clearInterval(auto));
+  carousel.addEventListener("mouseleave", () => {
+    auto = setInterval(() => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    }, 4000);
+  });
 
   updateCarousel();
 }
