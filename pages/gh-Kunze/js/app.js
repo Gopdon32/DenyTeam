@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const btn = form.querySelector("button[type=submit]");
       btn.textContent = "Дякуємо — заявка прийнята";
       btn.disabled = true;
-      setTimeout(() => { btn.textContent = "Надіслати заявку"; btn.disabled = false; }, 2500);
+      setTimeout(() => {
+        btn.textContent = "Надіслати заявку";
+        btn.disabled = false;
+      }, 2500);
     });
   }
 });
@@ -45,18 +48,19 @@ window.addEventListener("load", () => {
 
 function renderNav() {
   return `
-    <div class="nav">
+    <nav class="nav">
       <div class="nav-inner">
 
         <div class="logo">
           <a href="#">
-            <img src="src/images/logo.png" alt="Logo Kunze">
+            <img src="src/images/logo.png" alt="Kunze Logo">
             <p>Kunze Auto</p>
           </a>
         </div>
 
-        <div class="nav-right">
+        <div class="nav-right desktop">
           <a href="tel:+380756853150" class="nav-phone">+380 75 685 3150</a>
+          <a href="tel:+380732999777" class="nav-phone">+380 73 299 9777</a>
 
           <a href="https://t.me/kunze_auto" class="nav-icon" target="_blank">
             <img src="src/images/telegram.svg" alt="Telegram">
@@ -67,10 +71,42 @@ function renderNav() {
           </a>
         </div>
 
+        <button class="burger" aria-label="menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <div class="mobile-menu">
+
+      <!-- ИДЕАЛЬНЫЙ КРЕСТИК -->
+      <button class="close-menu" aria-label="close">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+      </button>
+
+      <a href="tel:+380756853150" class="mobile-phone">+380 75 685 3150</a>
+      <a href="tel:+380732999777" class="mobile-phone">+380 73 299 9777</a>
+
+      <div class="mobile-icons">
+        <a href="https://t.me/kunze_auto" target="_blank">
+          <img src="src/images/telegram.svg" alt="Telegram">
+        </a>
+        <a href="https://wa.me/380756853150" target="_blank">
+          <img src="src/images/whatsapp.svg" alt="WhatsApp">
+        </a>
       </div>
     </div>
+
+    <div class="menu-overlay"></div>
   `;
 }
+
+// где‑то после загрузки:
+document.getElementById("app").innerHTML = renderNav();
 
 function renderHero(car) {
   return `
@@ -130,7 +166,7 @@ function renderNewCarsBlock() {
             <button class="car-pill ${i === 0 ? "active" : ""}" onclick="selectNewCar('${c.id}')">
               ${c.model}
             </button>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -342,6 +378,7 @@ function renderContacts(car) {
           <p>
             Телефон:
             <a href="tel:${c.phone}">${c.phone}</a>
+            <a href="tel:${c.phone2}">${c.phone2}</a>
           </p>
 
           <p>
@@ -397,10 +434,14 @@ function selectNewCar(id) {
         <li>Привід: ${car.trims[0].drive}</li>
       `;
 
-    [img, name, price, specs].forEach((el) => el && el.classList.remove("fade-out"));
+    [img, name, price, specs].forEach(
+      (el) => el && el.classList.remove("fade-out"),
+    );
   }, 250);
 
-  document.querySelectorAll(".car-pill").forEach((el) => el.classList.remove("active"));
+  document
+    .querySelectorAll(".car-pill")
+    .forEach((el) => el.classList.remove("active"));
   const selector = `.car-pill[onclick="selectNewCar('${id}')"]`;
   const activeEl = document.querySelector(selector);
   if (activeEl) activeEl.classList.add("active");
@@ -415,7 +456,12 @@ function openGalleryPopup() {
 
   const popup = document.getElementById("galleryPopup");
   const content = document.getElementById("popupGalleryContent");
-  content.innerHTML = car.gallery.map(item => `<div class="popup-image-item"><img src="${item.src}" alt="${item.alt}"></div>`).join("");
+  content.innerHTML = car.gallery
+    .map(
+      (item) =>
+        `<div class="popup-image-item"><img src="${item.src}" alt="${item.alt}"></div>`,
+    )
+    .join("");
   popup.classList.add("open");
   popup.setAttribute("aria-hidden", "false");
 }
@@ -459,7 +505,7 @@ function initCarousel() {
   function updateCarousel() {
     track.style.transform = `translateX(-${index * 100}%)`;
 
-    dots.forEach(d => d.classList.remove("active"));
+    dots.forEach((d) => d.classList.remove("active"));
     if (dots[index]) dots[index].classList.add("active");
 
     if (counter) counter.textContent = index + 1;
@@ -479,11 +525,11 @@ function initCarousel() {
     };
   }
 
-  dots.forEach(dot =>
+  dots.forEach((dot) =>
     dot.addEventListener("click", () => {
       index = Number(dot.dataset.index);
       updateCarousel();
-    })
+    }),
   );
 
   let auto = setInterval(() => {
@@ -501,3 +547,32 @@ function initCarousel() {
 
   updateCarousel();
 }
+
+document.addEventListener("click", (e) => {
+  const burger = document.querySelector(".burger");
+  const menu = document.querySelector(".mobile-menu");
+  const overlay = document.querySelector(".menu-overlay");
+
+  if (!burger || !menu || !overlay) return;
+
+  // открыть меню
+  if (e.target.closest(".burger")) {
+    burger.classList.add("active");
+    menu.classList.add("active");
+    overlay.classList.add("active");
+  }
+
+  // закрыть по крестику
+  if (e.target.closest(".close-menu")) {
+    burger.classList.remove("active");
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  // закрыть по overlay
+  if (e.target.closest(".menu-overlay")) {
+    burger.classList.remove("active");
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+});
