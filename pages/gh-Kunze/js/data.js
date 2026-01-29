@@ -7,19 +7,22 @@ const navData = {
 
 const cars = [
   {
-    id: "bozhi-3x",
+    id: "bz3x",
     brand: "GAC Toyota",
-    model: "Bozhi 3X",
+    model: "BZ3X",
     year: 2025,
-    heroImage: "src/images/bozhi-3x-hero.jpg",
+
+    heroImage: "src/images/bz3x-hero.jpg",
     heroTagline: "Електромобіль нового покоління",
     descriptionShort:
       "Преміальна динаміка. Великий запас ходу. Офіційна гарантія виробника.",
+
     ua: {
       label: "Для України",
       symbol: "🇺🇦",
       note: "У разі заводського дефекту — повна компенсація або заміна авто",
     },
+
     status: {
       isNew: true,
       mileage: 0,
@@ -32,6 +35,7 @@ const cars = [
         "Доставка без пошкоджень",
       ],
     },
+
     warranty: {
       carYears: 5,
       batteryYears: 8,
@@ -44,32 +48,32 @@ const cars = [
         "Підтримка українською мовою",
       ],
     },
+
     trims: [
       {
         id: "610-max",
-        name: "Bozhi 3X 610 Max",
+        name: "BZ3X 610 Max",
         type: "EV",
         colors: ["Білий", "Сірий", "Чорний"],
         rangeKm: 610,
         batteryKwh: 67.92,
         powerHp: 152,
         drive: "Передній",
-        priceFrom: 28667,
-        priceTo: 28800,
+        price: 38500,
       },
       {
         id: "520-pro",
-        name: "Bozhi 3X 520 Pro",
+        name: "BZ3X 520 Pro",
         type: "EV",
         colors: ["Білий"],
         rangeKm: 520,
         batteryKwh: 58.37,
         powerHp: 152,
         drive: "Передній",
-        priceFrom: 25920,
-        priceTo: 26000,
+        price: 36500,
       },
     ],
+
     advantages: [
       "Великий запас ходу",
       "Надійність Toyota",
@@ -78,60 +82,56 @@ const cars = [
       "Преміальний салон",
       "Високий рівень безпеки",
     ],
+
     gallery: [
       {
         type: "exterior",
-        src: "src/images/bozhi-3x-exterior.png",
-        alt: "Екстер'єр Bozhi 3X",
+        src: "src/images/bz3x-exterior.png",
+        alt: "Екстер'єр BZ3X",
       },
       {
         type: "interior",
-        src: "src/images/bozhi-3x-interior.png",
-        alt: "Салон Bozhi 3X",
+        src: "src/images/bz3x-interior.png",
+        alt: "Салон BZ3X",
       },
       {
         type: "trunk",
-        src: "src/images/bozhi-3x-trunk.png",
-        alt: "Багажник Bozhi 3X",
+        src: "src/images/bz3x-trunk.png",
+        alt: "Багажник BZ3X",
       },
       {
         type: "engine",
-        src: "src/images/bozhi-3x-engine.png",
-        alt: "Моторний відсік Bozhi 3X",
+        src: "src/images/bz3x-engine.png",
+        alt: "Моторний відсік BZ3X",
       },
       {
         type: "inside1",
         src: "src/images/c1.jpg",
-        alt: "Салон Bozhi 3X",
+        alt: "Салон BZ3X",
       },
       {
         type: "inside2",
         src: "src/images/c2.jpg",
-        alt: "Салон Bozhi 3X",
+        alt: "Салон BZ3X",
       },
       {
         type: "inside3",
         src: "src/images/c3.jpg",
-        alt: "Салон Bozhi 3X",
+        alt: "Салон BZ3X",
       },
     ],
+
     contacts: {
       partner: "Kunze — офіційний партнер GAC Toyota",
       phone: "+38 (073) 29 99 777",
       telegram: "@kunze_auto",
       qrImage: "src/images/kunze-qr.png",
     },
+
     video: {
-      src: "src/videos/bozhi-3x-trailer.mp4",
+      src: "src/videos/bz3x-trailer.mp4",
       poster: "",
-      title: "Офіційний трейлер GAC Toyota Bozhi 3X",
-    },
-    heroWarranty: {
-      title: "GAC Toyota Bozhi 3X — електромобіль нового покоління",
-      guarantee: "Офіційна гарантія: 5 років на авто, 8 років на батарею",
-      compensation:
-        "У разі заводського дефекту — повна компенсація або заміна авто",
-      ukraine: "🔰 Підтримка українською | 🇺🇦 Гарантія для України",
+      title: "Офіційний трейлер GAC Toyota BZ3X",
     },
   },
 ];
