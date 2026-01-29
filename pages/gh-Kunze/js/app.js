@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const car = cars[0];
 
   app.innerHTML = `
+    ${renderNav(car)}
     ${renderHero(car)}
     ${renderHeroWarranty(car)}
     ${renderStatus(car)}
@@ -26,6 +27,37 @@ window.addEventListener("load", () => {
   if (preloader) preloader.style.display = "none";
   if (app) app.style.opacity = "1";
 });
+
+function renderNav() {
+  return `
+    <div class="nav">
+      <div class="nav-inner">
+
+        <div class="logo">
+          <a href="#">
+            <img src="src/images/logo.png" alt="Logo Kunze">
+            <p>Kunze Auto</p>
+          </a>
+        </div>
+
+        <div class="nav-right">
+          <a href="tel:+380756853150" class="nav-phone">+380 75 685 3150</a>
+
+          <a href="https://t.me/kunze_auto" class="nav-icon" target="_blank">
+            <img src="src/images/telegram.svg" alt="Telegram">
+          </a>
+
+          <a href="https://wa.me/380756853150" class="nav-icon" target="_blank">
+            <img src="src/images/whatsapp.svg" alt="WhatsApp">
+          </a>
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+renderNav();
 
 function renderHero(car) {
   return `
@@ -69,12 +101,24 @@ function renderHero(car) {
 
 function renderHeroWarranty(car) {
   return `
-    <section class="hero-warranty section fade-in">
-      <div class="section-inner hero-warranty-inner">
-        <h2>${car.heroWarranty.title}</h2>
-        <p class="warranty-highlight">${car.heroWarranty.guarantee}</p>
-        <p class="warranty-accent">${car.heroWarranty.compensation}</p>
-        <p class="warranty-ukraine">${car.heroWarranty.ukraine}</p>
+    <section class="hero-warranty fade-in section">
+      <div class="hero-warranty-inner">
+
+        <h2>Гарантія</h2>
+
+        <p class="warranty-highlight">
+          <strong>GAC Toyota гарантує:</strong>  
+          у випадку самовільного займання високовольтної батареї
+        </p>
+
+        <p class="warranty-accent">
+          Автомобіль буде <strong>повністю замінено на новий.</strong>
+        </p>
+
+        <p class="warranty-ukraine">
+          Преміальний рівень відповідальності та безпеки для кожного власника.
+        </p>
+
       </div>
     </section>
     <hr class="ukraine">
@@ -103,40 +147,23 @@ function renderStatus(car) {
 
 function renderWarranty(car) {
   return `
-    <section class="section warranty-with-video fade-in">
-      <div class="section-inner warranty-video-grid">
+    <section class="warranty section fade-in">
+      <div class="section-inner">
 
-        <div class="warranty-block">
-          <h2>Гарантія та безпека</h2>
-          <ul class="warranty-list">
-            ${car.warranty.notes.map((n) => `<li>${n}</li>`).join("")}
-          </ul>
+        <h2 class="warranty-title">Гарантія</h2>
 
-          <div class="warranty-meta">
-            <div><strong>${car.warranty.carYears} років</strong><span>гарантія на авто</span></div>
-            <div><strong>${car.warranty.batteryYears} років</strong><span>гарантія на батарею</span></div>
-          </div>
-        </div>
+        <p class="warranty-text">
+          <span class="warranty-accent">GAC Toyota гарантує:</span><br>
+          у випадку самовільного займання високовольтної батареї
+          автомобіль буде <strong>повністю замінено на новий.</strong>
+        </p>
 
-        <div class="video-block">
-          <div class="video-wrapper">
-            <video
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="auto"
-              poster="${car.video.poster}"
-            >
-              <source src="${car.video.src}" type="video/mp4">
-              Ваш браузер не підтримує відео.
-            </video>
-          </div>
-        </div>
+        <p class="warranty-sub">
+          Це один із найвищих рівнів відповідальності на ринку електромобілів.
+        </p>
 
       </div>
     </section>
-    <hr class="ukraine">
   `;
 }
 
@@ -165,7 +192,7 @@ function renderTrimCard(trim) {
         <li><strong>Потужність:</strong> ${trim.powerHp} к.с.</li>
         <li><strong>Привід:</strong> ${trim.drive}</li>
         <li><strong>Кольори:</strong> ${trim.colors.join(", ")}</li>
-        <li><strong>Ціна:</strong> від ${trim.priceFrom.toLocaleString("uk-UA")} $ до ${trim.priceTo.toLocaleString("uk-UA")} $</li>
+        <li><strong>Ціна:</strong> від ${trim.price.toLocaleString("uk-UA")} $</li>
       </ul>
       <a href="#contact-form" class="btn primary">Обрати цю комплектацію</a>
     </article>
@@ -337,30 +364,3 @@ function initCarousel() {
 
   updateCarousel();
 }
-
-function renderNav() {
-  const navRoot = document.getElementById("nav-root");
-
-  navRoot.innerHTML = `
-    <div class="nav">
-      <div class="nav-inner">
-
-        <div class="logo">
-          <a href="#">
-            <img src="src/images/logo.png" alt="Logo Kunze">
-            <p>Kunze Auto</p>
-          </a>
-        </div>
-        
-
-        <div class="nav-right">
-          <a href="tel:${navData.phone}" class="nav-phone">${navData.phone}</a>
-          <a href="https://t.me/${navData.telegram.replace("@", "")}" class="nav-tg">Telegram</a>
-        </div>
-
-      </div>
-    </div>
-  `;
-}
-
-renderNav();
