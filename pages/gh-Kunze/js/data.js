@@ -13,6 +13,7 @@ const cars = [
     brand: "GAC Toyota",
     model: "BZ3X",
     year: 2025,
+    loading: "lazy",
 
     heroImage: "src/images/bz3x-hero.jpg",
     heroTagline: "Електромобіль нового покоління",
@@ -41,13 +42,13 @@ const cars = [
     advantages: ["Великий запас ходу", "Надійність Toyota", "Сучасні технології GAC", "Економічність", "Преміальний салон", "Високий рівень безпеки"],
 
     gallery: [
-      { type: "exterior", src: "src/images/bz3x-exterior.png", alt: "Екстер'єр BZ3X" },
-      { type: "interior", src: "src/images/bz3x-interior.png", alt: "Салон BZ3X" },
-      { type: "trunk", src: "src/images/bz3x-trunk.png", alt: "Багажник BZ3X" },
-      { type: "engine", src: "src/images/bz3x-engine.png", alt: "Моторний відсік BZ3X" },
-      { type: "inside1", src: "src/images/c1.jpg", alt: "Салон BZ3X" },
-      { type: "inside2", src: "src/images/c2.jpg", alt: "Салон BZ3X" },
-      { type: "inside3", src: "src/images/c3.jpg", alt: "Салон BZ3X" },
+      { type: "exterior", src: "src/images/bz3x-exterior.png", alt: "Екстер'єр BZ3X", loading: "lazy" },
+      { type: "interior", src: "src/images/bz3x-interior.png", alt: "Салон BZ3X", loading: "lazy" },
+      { type: "trunk", src: "src/images/bz3x-trunk.png", alt: "Багажник BZ3X", loading: "lazy" },
+      { type: "engine", src: "src/images/bz3x-engine.png", alt: "Моторний відсік BZ3X", loading: "lazy" },
+      { type: "inside1", src: "src/images/c1.jpg", alt: "Салон BZ3X", loading: "lazy" },
+      { type: "inside2", src: "src/images/c2.jpg", alt: "Салон BZ3X", loading: "lazy" },
+      { type: "inside3", src: "src/images/c3.jpg", alt: "Салон BZ3X", loading: "lazy" },
     ],
 
     contacts: {
