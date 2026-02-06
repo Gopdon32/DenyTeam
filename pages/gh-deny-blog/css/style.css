@@ -1,0 +1,1100 @@
+/* ==========================================================================
+   ROOT VARIABLES
+   ========================================================================== */
+
+:root {
+  --bg: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --text: #111111;
+  --muted: #777777;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --border: #e2e2e7;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* DARK THEME */
+
+.theme-dark {
+  --bg: #050816;
+  --bg-secondary: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --border: #1f2937;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   GLOBAL RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.12), transparent 55%), var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background .25s ease, color .25s ease;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+h1, h2, h3, h4 {
+  margin: 0 0 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 10px;
+  max-width: 70ch;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: .2s;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.site-header {
+  position: relative;
+  top: 0;
+  z-index: 10002;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(to bottom, rgba(245,245,247,.9), rgba(245,245,247,.7));
+  border-bottom: 1px solid rgba(148,163,184,.25);
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-dark .site-header {
+  background: linear-gradient(to bottom, rgba(15,23,42,.9), rgba(15,23,42,.7));
+}
+
+/* ===========================
+   DESKTOP NAV
+   =========================== */
+
+.nav-desktop {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 15px;
+  opacity: .85;
+  transition: .2s;
+}
+
+.nav-desktop a:hover {
+  opacity: 1;
+}
+
+/* ===========================
+   BURGER BUTTON
+   =========================== */
+
+.burger {
+  width: 32px;
+  height: 26px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burger span {
+  width: 100%;
+  height: 3px;
+  background: var(--text);
+  border-radius: 3px;
+  transition: .3s;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* ===========================
+   MOBILE MENU
+   =========================== */
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  box-shadow: -4px 0 20px rgba(0,0,0,.2);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transform: translateX(110%);
+  transition: .35s ease;
+  z-index: 1000;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 17px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 900px) {
+  .nav-desktop {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+}
+
+/* ==========================================================================
+   SEARCH INPUT
+   ========================================================================== */
+
+#search-input {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  transition: .2s;
+}
+
+.theme-dark #search-input {
+  background: rgba(15,23,42,.9);
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn,
+.icon-btn,
+.nav-link {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.btn {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn:hover,
+.icon-btn:hover,
+.nav-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+.btn:active,
+.icon-btn:active,
+.nav-link:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.layout {
+  max-width: 960px;
+  margin: 32px auto 40px;
+  padding: 0 16px;
+}
+
+/* ==========================================================================
+   ADMIN LAYOUT
+   ========================================================================== */
+
+.layout-admin {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 960px) {
+  .layout-admin {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   POSTS LIST
+   ========================================================================== */
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  border: 1px solid rgba(148,163,184,.35);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--accent-soft);
+}
+
+.post-card h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.post-card p {
+  max-width: 100% !important;
+}
+
+.read-more {
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* FIXED MULTILINE EXCERPT */
+.post-card .excerpt {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  line-height: 1.45 !important;
+}
+
+
+/* ==========================================================================
+   SINGLE POST
+   ========================================================================== */
+
+.post-full {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 24px 24px 28px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: var(--shadow-soft);
+}
+
+.post-full h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.post-full .date {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
+
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  font-size: 14px;
+}
+/* ==========================================================================
+   MODAL (UNIFIED)
+   ========================================================================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  width: 100%;
+  max-width: 680px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h2 {
+  margin-bottom: 16px;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text);
+}
+
+.modal-content textarea {
+  min-height: 120px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 12px 24px 18px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ==========================================================================
+   COMMENTS
+   ========================================================================== */
+
+.comments-section {
+  margin-top: 32px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px 22px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.comments-section h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.comment {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.comment-header {
+  margin-bottom: 6px;
+}
+
+.comment-body {
+  white-space: pre-wrap;
+}
+
+.comment-user {
+  font-weight: 600;
+}
+
+.comment-date {
+  color: var(--muted);
+}
+
+.comment-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  resize: vertical;
+}
+
+.comment-delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 16px;
+}
+
+.comment:hover .comment-delete-btn {
+  opacity: 1;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   FILTERS
+   ========================================================================== */
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.theme-dark .filters select,
+.theme-dark .filters input {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+}
+
+/* ==========================================================================
+   POST META
+   ========================================================================== */
+
+.post-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tags {
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   LIKES
+   ========================================================================== */
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.15);
+}
+
+.post-likes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.like-btn.liked {
+  color: red;
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   POST COVERS
+   ========================================================================== */
+
+.post-cover {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+}
+
+.post-full-cover {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+}
+/* ==========================================================================
+   ADMIN PANELS
+   ========================================================================== */
+
+.panel {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: var(--shadow-soft);
+}
+
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 18px;
+}
+
+.panel input,
+.panel textarea,
+.panel select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.theme-dark .panel input,
+.theme-dark .panel textarea,
+.theme-dark .panel select {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+}
+
+.panel textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* ==========================================================================
+   ADMIN LISTS
+   ========================================================================== */
+
+.admin-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.admin-post strong {
+  font-size: 14px;
+}
+
+.admin-post .muted {
+  font-size: 12px;
+}
+
+.admin-post select {
+  width: auto;
+  min-width: 120px;
+}
+
+.admin-post input[type="color"] {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+}
+
+/* ==========================================================================
+   AUTH FORMS
+   ========================================================================== */
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.auth-container {
+  display: flex;
+  gap: 40px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.auth-block {
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+}
+
+.auth-block.hidden {
+  display: none;
+}
+
+.auth-block h2 {
+  margin-bottom: 20px;
+}
+
+.auth-block form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.auth-block input {
+  background: var(--bg-secondary);
+  border: none;
+  border-bottom: 2px solid var(--border);
+  margin: 5px 0;
+  padding: 5px;
+  color: var(--text);
+}
+.auth-block .btn {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.switcher {
+  margin-top: 20px;
+  text-align: center;
+  opacity: .7;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.switcher:hover {
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .auth-container {
+    flex-direction: column;
+  }
+}
+
+/* Робимо реєстраційну форму такою ж, як логін */
+.auth-card {
+  background: var(--bg-secondary);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth-card h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Стиль форми — такий самий як у login-block */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Стиль інпутів — 1-в-1 як у логіні */
+.auth-form input {
+  background: var(--bg-secondary);
+  border: none;
+  border-bottom: 2px solid var(--border);
+  padding: 5px;
+  margin: 5px 0;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+/* Кнопка — така ж як у логіні */
+.auth-form .btn {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Нотатка під формою — аналог switcher */
+.auth-note {
+  margin-top: 20px;
+  text-align: center;
+  opacity: .7;
+  transition: .2s;
+}
+
+.auth-note:hover {
+  opacity: 1;
+}
+
+
+
+/* ==========================================================================
+   PROFILE PAGE
+   ========================================================================== */
+
+.profile-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.profile-page > h1 {
+  flex: 0 0 100%;
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.profile-info,
+.profile-actions {
+  flex: 1 1 0;
+  min-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    flex-direction: column;
+  }
+
+  .profile-info,
+  .profile-actions {
+    width: 100%;
+  }
+}
+
+.profile-info {
+  background: var(--bg-secondary);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.profile-actions {
+  background: var(--bg-secondary);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.profile-actions h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.profile-actions label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.profile-actions input[type="text"],
+.profile-actions input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  margin-bottom: 16px;
+  font-size: 15px;
+  transition: 0.2s;
+  color: var(--text);
+}
+
+.profile-actions input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.avatar-big {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avatar-small {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.profile-actions button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: 0.2s;
+}
+
+.profile-actions button:hover {
+  opacity: 0.9;
+}
+
+.profile-actions button:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTONS
+   ========================================================================== */
+
+.post-actions-floating {
+  position: fixed;
+  right: 26px;
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 50;
+}
+
+.fab-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: 0.2s ease;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1);
+}
+
+.fab-btn.danger {
+  background: #e53935;
+}
+
+.post-actions-floating.hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   QUILL EDITOR
+   ========================================================================== */
+
+.ql-toolbar {
+  border-radius: 6px 6px 0 0;
+}
+
+.ql-container {
+  border-radius: 0 0 6px 6px;
+  min-height: 200px;
+  font-size: 16px;
+}
+
+.ql-editor {
+  min-height: 200px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .post-actions-floating {
+    right: 16px;
+    top: 110px;
+  }
+
+  .fab-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .modal-content {
+    padding: 18px;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--bg-secondary);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Типи повідомлень */
+.toast.success {
+  background: #2ecc71;
+  color: #fff;
+}
+.toast.error {
+  background: #e74c3c;
+  color: #fff;
+}
+.toast.info {
+  background: #3498db;
+  color: #fff;
+}
+.toast.success-neon {
+  background: #00ff99;
+  color: #000;
+  box-shadow: 0 0 20px #00ff99;
+}
