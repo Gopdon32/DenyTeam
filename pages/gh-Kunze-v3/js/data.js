@@ -198,7 +198,6 @@ const cars = [
     ],
     gallery: [
       "models/id4/front-view.jpg",
-      "models/id4/side-view.jpg",
       "models/id4/front-left.jpg",
       "models/id4/front-right.jpg",
       "models/id4/rear-left.jpg",
