@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kunze — GAC Toyota Дилер</title>
+  <meta name="description" content="Офіційний дилер GAC Toyota. Електромобілі BZ3X, Yuan Plus, Song Plus. Гарантія, доставка, фінансування." />
+  <meta name="theme-color" content="#0066cc" />
+  
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="shortcut icon" href="src/images/favicon-16x16.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="spinner"></div>
+    <p>Завантаження…</p>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="app" class="app-root"></div>
+
+  <!-- Image Gallery Popup -->
+  <div id="galleryPopup" class="gallery-popup" inert>
+    <button class="gallery-popup-close" aria-label="Закрити">&times;</button>
+    <div class="gallery-popup-content">
+      <button class="gallery-prev" aria-label="Попередня">‹</button>
+      <img id="galleryImage" src="" alt="Car Photo" class="gallery-image" />
+      <button class="gallery-next" aria-label="Наступна">›</button>
+      <div class="gallery-counter"><span id="current">1</span>/<span id="total">1</span></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script type="module" src="js/lang.js"></script>
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
