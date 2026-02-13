@@ -309,7 +309,7 @@ const cars = [
     heroImage: "models/rav4/front-view.jpg",
     descriptionShort: "Урфривна гібридна RAV4",
     trims: [
-      { id: "base", name: "RAV4 2.5 Hybrid", price: 40000, colors: ["Білий"], rangeKm: 1350, batteryKwh: 0, powerHp: 203, drive: "Повний" },
+      { id: "base", name: "RAV4 2.5 Hybrid", price: 48000, colors: ["Білий"], rangeKm: 1350, batteryKwh: 0, powerHp: 203, drive: "Повний" },
     ],
     gallery: [
       "models/rav4/front-view.jpg",
