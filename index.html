@@ -1,338 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon-32x32.png"
-      type="image/x-icon"
-    />
-    <script defer src="js/script.js"></script>
-    <title>DenyTeam | Home</title>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- Header - block -->
-      <header class="header--block">
-        <!-- Nav - block -->
-        <nav class="nav--block">
-          <!-- Left -->
-          <ul class="nav--list" id="nav--left">
-            <li class="nav--item">
-              <a href="https://gopdon32.github.io/DenyTeam/" class="nav--link">
-                <img
-                  src="assets/images/logo.svg"
-                  alt="Logo: DenyTeam"
-                  class="nav--logo"
-                />
-              </a>
-            </li>
-            <li class="nav--item nav--item--icn">
-              <img src="assets/images/user.svg" alt="User View" />
-              <p class="nav-view">3</p>
-            </li>
-          </ul>
-          <!-- Right -->
-          <ul class="nav--list" id="nav--right">
-            <li class="nav--item nav--item--icn">
-              <button class="nav--btn" id="version">
-                <img src="assets/images/theme.svg" alt="Theme Button" />
-                V. <span id="btn-vers-placeh"></span>
-              </button>
-            </li>
-            <li class="nav--item nav--item--icn" id="menu--btn--box">
-              <button class="nav--btn" id="burger">
-                <img src="assets/images/menu.svg" alt="Menu Button" />
-                MENU
-              </button>
-              <ul class="nav--list--hide">
-                <li class="nav--item">
-                  <a href="#" class="nav--link" target="_blank">Обо мне</a>
-                </li>
-                <li class="nav--item">
-                  <a href="#" class="nav--link" target="_blank">Контакты</a>
-                </li>
-                <li class="nav--item">
-                  <a
-                    href="https://github.com/Gopdon32"
-                    class="nav--link"
-                    target="_blank"
-                    >Git</a
-                  >
-                </li>
-                <li class="nav--item">
-                  <a
-                    href="https://www.frontendmentor.io/profile/Gopdon32"
-                    target="_blank"
-                    class="nav--link"
-                    >F-Mentor</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DenyTeam | Premium Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading">
+
+    <div id="progress-bar"></div>
+    <div id="cursor-glow"></div>
+
+    <div id="app">
+        <header>
+            <div class="container header-flex">
+                <div class="logo">DENY<b>TEAM</b></div>
+                
+                <nav class="user-switcher">
+                    <a href="?user=me" class="user-link" id="nav-me">Денис</a>
+                    <a href="?user=friend" class="user-link" id="nav-friend">Алексей</a>
+                    <a href="?user=girl" class="user-link" id="nav-girl">Ангелина</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button id="lang-switch" class="lang-btn">EN</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="profile-section container">
+            <div class="profile-card premium-layout">
+                <div class="profile-aside">
+                    <div class="avatar-wrapper">
+                        <div class="avatar"></div>
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div class="social-links-grid" id="social-container">
+                        </div>
+                </div>
+
+                <div class="profile-main">
+                    <div class="badge-row" id="user-badges">
+                        </div>
+                    <h1 id="about-name"></h1>
+                    <p class="user-role" id="hero-subtitle"></p>
+                    
+                    <div class="bio-container">
+                        <p id="about-text"></p>
+                    </div>
+
+                    <div class="user-meta-info">
+                        <div class="meta-item">
+                            <span class="meta-label" id="label-projects">Проекты</span>
+                            <span class="meta-value" id="count-projects">0</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label" id="label-status">Статус</span>
+                            <span class="meta-value status-text" id="status-text">...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-section container">
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="project-search" placeholder="Поиск проектов..." class="search-input">
+            </div>
+        </section>
+
+        <nav class="filter-bar container">
+            <button class="filter-btn active" data-cat="all" id="filter_all">Все</button>
+            <button class="filter-btn" data-cat="layout" id="filter_layout">Верстка</button>
+            <button class="filter-btn" data-cat="js" id="filter_js">JavaScript</button>
         </nav>
-      </header>
-      <!-- //Header - block -->
 
-      <!-- Version - block -->
-      <section class="version--block hiden" id="versionBlock-hide">
-        <div class="version--block--wrapper">
-          <div class="version--title">
-            <p>V. <span id="blck-vers-placeh"></span></p>
-          </div>
-          <div class="version--change">- Fix size</div>
-        </div>
-      </section>
-      <!-- //Version - block -->
+        <main class="container">
+            <div class="section-header">
+                <h2 id="works-title" class="section-label">Мои работы</h2>
+                <div class="grid-stats" id="filter-stats"></div>
+            </div>
+            <div id="projects-grid" class="grid"></div>
+        </main>
 
-      <!-- Main -->
-      <main class="main--block">
-        <!-- Grid - section -->
-        <section class="section--block">
-          <!-- Grid - block -->
-          <div class="grid--block">
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item1">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-nft-card"
-                target="_blank"
-                class="grid--box--link"
-                >NFT Card</a
-              >
-            </article>
-            <!-- // -->
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item2">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-profile-card"
-                target="_blank"
-                class="grid--box--link"
-                >Profile Card</a
-              >
-            </article>
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item3">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-column-card"
-                target="_blank"
-                class="grid--box--link"
-                >Column Card</a
-              >
-            </article>
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item4">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-stats-card"
-                target="_blank"
-                class="grid--box--link"
-                >Stats Card</a
-              >
-            </article>
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item5">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-digitalbank-landing"
-                target="_blank"
-                class="grid--box--link"
-                >Digital Bank</a
-              >
-            </article>
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item6">
-              <a
-                href="https://gopdon32.github.io/DenyTeam/pages/gh-social-link-page"
-                target="_blank"
-                class="grid--box--link"
-                >Social Link</a
-              >
-            </article>
-            <!-- Grid - box -->
-            <article class="grid--box" id="grid-item7">
-              <a href="#my--works" class="grid--box--link">More Work...</a>
-            </article>
-          </div>
-        </section>
-        <!-- //Grid - section -->
-
-        <!-- All My Works - section -->
-        <section class="section--block">
-          <div class="section--title">
-            <p id="my--works">My works</p>
-          </div>
-          <div class="all--works--block">
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/score-summary.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-score-summary"
-                  class="work--title"
-                  >Score Summary</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-logo">DENY<b>TEAM</b></div>
+                <p id="footer-text"></p>
+                <div class="copyright">
+                    &copy; 2026 Project Hub Premium Concept
                 </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/Blog-Preview.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-blog-preview"
-                  class="work--title"
-                  >Blog Preview</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/Product-Card.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-preview-card"
-                  class="work--title"
-                  >Preview Card</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/Ingredients.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-ingredients"
-                  class="work--title"
-                  >Ingredients</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/Order-Plan.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-order-plan"
-                  class="work--title"
-                  >Order Plan</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/QR.png" alt="" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-qr-card"
-                  class="work--title"
-                  >QR Card</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img src="assets/images/Huddle.png" alt="Hudle Post" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-huddle"
-                  class="work--title"
-                  >Hudle</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="easy--dif">
-                <img
-                  src="assets/images/grid-sections.png"
-                  alt="Grid Sections Post"
-                />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-grid-sections"
-                  class="work--title"
-                  >Grid Sections</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-            <!-- Work Box -->
-            <article class="my--work--box">
-              <div class="work--header" id="medium--dif">
-                <img src="assets/images/fylo.png" alt="Fylo page" />
-              </div>
-              <div class="work--main">
-                <a
-                  href="https://gopdon32.github.io/DenyTeam/pages/gh-fylo"
-                  class="work--title"
-                  >Fylo</a
-                >
-                <div class="work--tag">
-                  <p class="html--tag">#HTML</p>
-                  <p class="css--tag">#CSS</p>
-                </div>
-              </div>
-            </article>
-            <!-- // -->
-          </div>
-        </section>
-        <!-- //All My Works - section -->
-      </main>
-      <!-- //Main -->
+            </div>
+        </footer>
     </div>
-  </body>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div id="modal-data"></div>
+        </div>
+    </div>
+    
+    <div id="toast-container"></div>
+    <button id="scroll-top" class="scroll-btn"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script type="module" src="js/app.js"></script>
+</body>
 </html>
