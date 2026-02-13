@@ -144,7 +144,7 @@ function renderCatalogCard(car) {
         <img src="${car.heroImage}" alt="${car.brand} ${car.model}" class="card-image" />
         <span class="card-badge">NEW</span>
         <div class="card-flag">
-          <img src="src/images/flag-ua.svg" alt="Україна" title="Україна" />
+          <img src="src/images/logo.png" alt="Україна" title="Україна" />
         </div>
       </div>
 
@@ -157,7 +157,7 @@ function renderCatalogCard(car) {
           </div>
         </div>
         
-        <div class="card-price">${t.priceFrom} ${formatPrice(car.trims[0].price)} ₴</div>
+        <div class="card-price">${t.priceFrom} ${formatPrice(car.trims[0].price)} $</div>
 
         <p class="card-description">${t.descriptionMap[car.descriptionShort] || car.descriptionShort}</p>
 
@@ -220,7 +220,7 @@ function renderModelHero(car) {
 
           <div class="model-hero-info">
             <h1>${car.brand} ${car.model} ${car.year}</h1>
-            <div class="card-price">${t.priceFrom} ${formatPrice(car.trims[0].price)} ₴</div>
+            <div class="card-price">${t.priceFrom} ${formatPrice(car.trims[0].price)} $</div>
             <p class="model-hero-desc">${t.descriptionMap[car.descriptionShort] || car.descriptionShort}</p>
 
             <div class="model-hero-features">
@@ -285,7 +285,7 @@ function renderTrimsSection(car) {
           ${car.trims.map((trim, idx) => `
             <div class="trim-card">
               <div class="trim-name">${trim.name}</div>
-              <div class="trim-price">${formatPrice(trim.price)} ₴</div>
+              <div class="trim-price">${formatPrice(trim.price)} $</div>
               
               <div class="trim-specs">
                 <div class="trim-spec">
@@ -329,8 +329,11 @@ function renderTrimsSection(car) {
 function renderVideoReviewSection(car) {
   const t = LANG[currentLang];
 
+  if (!car.video) return "";
+
+  const poster = getPoster(car);
+
   return `
-    <!--
     <section class="video-review">
       <div class="container">
         <div class="video-review-title">
@@ -339,16 +342,21 @@ function renderVideoReviewSection(car) {
         </div>
 
         <div class="video-wrapper">
-          <video controls>
-            <source src="path/to/video.mp4" type="video/mp4">
+          <video controls preload="metadata" poster="${poster}">
+            <source src="${car.video}" type="video/mp4">
             ${t.videoNotSupported}
           </video>
         </div>
       </div>
     </section>
-    -->
   `;
 }
+
+
+function getPoster(car) {
+  return car.gallery?.[0] || car.heroImage || "";
+}
+
 
 function renderPdfSection(car) {
   const t = LANG[currentLang];
@@ -453,7 +461,7 @@ function renderNavbar() {
 
           <div class="navbar-brand" onclick="navigateTo('')">
             <span class="navbar-brand-text">KUNZE</span>
-            <span style="opacity: 0.6;">Auto</span>
+            <span style="opacity: 0.6;"></span>
           </div>
 
           <div class="navbar-menu" id="navMenu">
@@ -525,7 +533,7 @@ function renderFooter() {
           <div class="footer-section">
             <h4>${t.footerWorkHours}</h4>
             <ul>
-              <li><strong>${t.footerWeekdays}:</strong> 08:00 - 18:00</li>
+              <li><strong>${t.footerWeekdays}:</strong> 10:00 - 19:00</li>
               <li><strong>${t.footerLunch}:</strong> 13:00 - 14:00</li>
               <li><strong>${t.footerWeekend}:</strong> 10:00 - 16:00</li>
               <li><a href="#">${t.footerBuyOnline}</a></li>

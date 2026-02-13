@@ -9,6 +9,7 @@ const cars = [
     year: 2025,
     heroImage: "models/BZ3x/610/front-view.jpg",
     descriptionShort: "Преміальна динаміка. Великий запас ходу. Офіційна гарантія виробника.",
+    video: "src/videos/bozhi-3x-trailer.mp4",
 
     trims: [
       {
