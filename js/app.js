@@ -228,6 +228,8 @@ async function publishPost() {
         const fileData = await res.json();
         // Декодируем UTF-8 base64
         const db = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        const descRu = document.getElementById('adm-desc-ru').value;
+        const descEn = document.getElementById('adm-desc-en').value || descRu; // Если EN пустое, берем RU
 
         // 2. Формируем новый пост
         const newPost = {
@@ -261,6 +263,7 @@ async function publishPost() {
         });
 
         if (putRes.ok) {
+            localStorage.setItem('gh_token', token); // Запоминаем токен после первого успеха
             showToast("Успешно опубликовано!");
             setTimeout(() => location.reload(), 1500);
         } else {
@@ -302,6 +305,13 @@ function setupEventListeners() {
             document.getElementById('admin-panel').style.display = 'block';
             clicks = 0;
         }
+
+    // Автоподстановка токена при открытии
+    const savedToken = localStorage.getItem('gh_token');
+    if (savedToken) {
+        const tokenInput = document.getElementById('adm-token');
+        if (tokenInput) tokenInput.value = savedToken;
+    }
     };
 
     // Переключатель языка
@@ -355,6 +365,16 @@ function setupEventListeners() {
         if (e.target.id === 'admin-panel') e.target.style.display = 'none';
     };
 }
+
+document.getElementById('adm-file').onchange = function(e) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        // Записываем картинку в скрытое поле в формате Base64
+        document.getElementById('adm-img').value = reader.result;
+        showToast("Картинка готова!");
+    };
+    reader.readAsDataURL(e.target.files[0]);
+};
 
 // Запуск
 init();
