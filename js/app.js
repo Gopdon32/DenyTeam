@@ -18,9 +18,12 @@ const GH_SETTINGS = {
  */
 async function init() {
     try {
+        // Добавляем метку времени (timestamp), чтобы избежать кэширования
+        const timestamp = Date.now(); 
+        
         const [langRes, dbRes] = await Promise.all([
-            fetch('./lang.json'),
-            fetch('./data/projects.json')
+            fetch(`./lang.json?v=${timestamp}`),
+            fetch(`./data/projects.json?v=${timestamp}`) // Вот здесь главный секрет скорости обновления
         ]);
         
         dictionary = await langRes.json();
