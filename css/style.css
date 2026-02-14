@@ -457,6 +457,28 @@ header {
     font-weight: 700;
 }
 
+/* Ограничение текста в описании карточки */
+.card-content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Количество видимых строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    
+    /* Фиксируем минимальную высоту, чтобы кнопки "Детали" были на одном уровне */
+    min-height: 4.8em; 
+}
+
+/* При наведении на карточку текст становится чуть ярче */
+.card:hover .card-content p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 /* Кнопка "Детали" */
 .btn-open {
     margin-top: auto;
@@ -480,15 +502,16 @@ header {
 }
 
 /* ==========================================================================
-    [6] МОДАЛЬНОЕ ОКНО (ПОЛНОЕ ИСПРАВЛЕНИЕ)
+    [6] МОДАЛЬНОЕ ОКНО (ПОЛНОЕ ИСПРАВЛЕНИЕ + СКРОЛЛ)
    ========================================================================== */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 100000; /* Поднял z-index, чтобы быть выше всего */
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
+    display: none; /* Переключается через JS (flex при открытии) */
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -498,16 +521,60 @@ header {
 .modal-content {
     background: var(--bg-surface);
     width: 100%;
-    max-width: 650px; /* Оптимальная ширина */
+    max-width: 650px;
     border-radius: 28px;
     border: 1px solid var(--border);
     position: relative;
-    overflow: hidden; /* Важно для обрезки картинки сверху */
+    
+    /* ИСПРАВЛЕНИЕ СКРОЛЛА */
+    max-height: 90vh; /* Окно не выше 90% высоты экрана */
+    overflow-y: auto; /* Включаем вертикальный скролл */
+    overflow-x: hidden;
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: var(--accent-green) transparent;
+    
     animation: modalSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
 }
 
-/* Обнуляем падинги для modal-data, так как структура внутренняя */
+/* Кастомный скроллбар для Chrome/Safari */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--accent-green);
+    border-radius: 10px;
+}
+
+/* Кнопка закрытия (Крестик), которая всегда на виду */
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 110;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.modal-close-btn:hover {
+    background: var(--accent-green);
+    color: #000;
+}
+
+/* Обнуляем падинги для modal-data */
 #modal-data {
     padding: 0 !important;
 }
@@ -525,7 +592,6 @@ header {
 .modal-header-overlay {
     position: absolute;
     inset: 0;
-    /* Затемнение снизу вверх для читаемости заголовка */
     background: linear-gradient(to top, var(--bg-surface) 10%, transparent 100%);
     padding: 30px;
     display: flex;
@@ -557,7 +623,7 @@ header {
     padding: 30px;
 }
 
-/* Полоска с мета-данными (Дата и Теги) */
+/* Полоска с мета-данными */
 .modal-meta-bar {
     display: flex;
     flex-wrap: wrap;
@@ -592,17 +658,12 @@ header {
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
     font-size: 1rem;
+    word-wrap: break-word; /* Чтобы длинные слова не рвали верстку */
 }
 
 /* Стек технологий */
 .tech-section {
     margin-top: 25px;
-}
-
-.tech-section h4 {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    margin-bottom: 10px;
 }
 
 .tech-icons {
@@ -620,13 +681,13 @@ header {
 }
 
 .btn-open.primary-action {
-    flex: 2; /* Кнопка демо шире */
+    flex: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     background: var(--accent-green);
-    color: #000;
+    color: #000 !important;
     padding: 14px;
     border-radius: 12px;
     font-weight: 700;
@@ -650,12 +711,16 @@ header {
     transition: 0.3s;
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+/* Анимация появления */
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Адаптив для мобилок */
 @media (max-width: 600px) {
+    .modal { padding: 10px; }
+    .modal-content { border-radius: 20px; max-height: 95vh; }
     .modal-header-img { height: 180px; }
     .modal-header-text h2 { font-size: 1.5rem; }
     .modal-footer-actions { flex-direction: column; }
