@@ -35,21 +35,19 @@
     "themeClass": "default-mode",
     "posts": [
       {
-        "title": "Digital Bank",
+        "title": "Test",
+        "image": "https://img.freepik.com/free-vector/creative-glowing-abstract-background_1302-5882.jpg?semt=ais_user_personalization&w=740&q=80",
+        "link": "https://img.freepik.com/free-vector/creative-glowing-abstract-background_1302-5882.jpg?semt=ais_user_personalization&w=740&q=80",
+        "date": "2026-02-14",
         "tags": [
-          "JS",
-          "Logic",
-          "UI"
+          "jjjjjjjj"
         ],
-        "category": "js",
-        "image": "assets/images/digital-bank.png",
-        "link": "pages/gh-digitalbank-landing/index.html",
+        "category": "Test",
+        "featured": true,
         "desc": {
-          "ru": "Интерфейс цифрового банка с логикой на JS. Полный цикл обработки транзакций в браузере.",
-          "en": "Digital bank interface with JS logic. Full transaction cycle handled in-browser."
-        },
-        "date": "2024-03-01",
-        "featured": true
+          "ru": "Тест",
+          "en": "Test"
+        }
       },
       {
         "title": "NFT Card",
