@@ -226,11 +226,12 @@ window.publishPost = async function() {
         cat: document.getElementById('adm-category').value.trim(),
         tags: document.getElementById('adm-tags').value.trim(),
         img: document.getElementById('adm-img').value,
-        descRu: document.getElementById('adm-desc-ru').value.trim()
+        descRu: document.getElementById('adm-desc-ru').value.trim(),
+        link: document.getElementById('adm-link').value || "#"
     };
 
-    if (!fields.title || !fields.cat || !fields.tags || !fields.img || !fields.descRu || !token) {
-        window.showToast("Заполните все поля и токен!");
+    if (!fields.title || !fields.img || !token) {
+        window.showToast("Заполни заголовок, фото и токен!");
         return;
     }
 
@@ -242,14 +243,12 @@ window.publishPost = async function() {
         const res = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
         const fileData = await res.json();
         
-        if (res.status !== 200) throw new Error("GitHub Token Error");
-
         const db = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
 
         const newPost = {
             title: fields.title,
             image: fields.img,
-            link: document.getElementById('adm-link').value || "#",
+            link: fields.link,
             date: new Date().toISOString().split('T')[0],
             tags: fields.tags.split(',').map(t => t.trim()),
             category: fields.cat,
@@ -260,36 +259,39 @@ window.publishPost = async function() {
             }
         };
 
+        // 1. ОБНОВЛЯЕМ ЛОКАЛЬНО (Мгновенно)
         if (editIdx > -1) {
-            db[targetUser].posts[editIdx] = newPost;
+            users[targetUser].posts[editIdx] = newPost;
         } else {
-            db[targetUser].posts.unshift(newPost);
+            users[targetUser].posts.unshift(newPost);
         }
+        
+        // Перерисовываем экран сразу
+        render(); 
+        window.showToast("Готово! Идет сохранение в GitHub...");
 
+        // 2. ОТПРАВЛЯЕМ НА ГИТХАБ (В фоне)
         const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(db, null, 2))));
         
-        const putRes = await fetch(url, {
+        await fetch(url, {
             method: 'PUT',
             headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                message: `CMS: ${editIdx > -1 ? 'Update' : 'Add'} ${newPost.title}`,
+                message: `CMS: ${fields.title}`,
                 content: updatedContent,
                 sha: fileData.sha
             })
         });
 
-        if (putRes.ok) {
-            localStorage.setItem('gh_token', token);
-            window.showToast("Успешно сохранено!");
-            setTimeout(() => location.reload(), 1000);
-        } else {
-            throw new Error("API Error");
-        }
-    } catch (err) {
-        console.error(err);
-        window.showToast("Ошибка: " + err.message);
+        // Закрываем админку
+        document.getElementById('admin-panel').style.display = 'none';
         btn.disabled = false;
         btn.innerText = "ОПУБЛИКОВАТЬ";
+        
+    } catch (err) {
+        console.error(err);
+        window.showToast("Ошибка сохранения!");
+        btn.disabled = false;
     }
 };
 
