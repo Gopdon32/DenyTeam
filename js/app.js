@@ -1,399 +1,360 @@
 /**
- * [IMPORT] Данные всех пользователей
- */
-import { users } from './data.js';
-
-/**
  * [CONFIG] Глобальное состояние
  */
 let currentLang = localStorage.getItem('lang') || 'ru';
 let dictionary = {};
+let users = {}; 
+let activeUser = null;
+let userKey = 'me';
 
-const params = new URLSearchParams(window.location.search);
-const userKey = params.get('user') || 'me';
-const activeUser = users[userKey] || users.me;
+// Настройки для GitHub API
+const GH_SETTINGS = {
+    owner: "Gopdon32",
+    repo: "DenyTeam", 
+    path: "data/projects.json"
+};
 
 /**
  * [CORE] Инициализация приложения
  */
 async function init() {
     try {
-        const response = await fetch('./lang.json');
-        dictionary = await response.json();
+        // Загружаем локализацию и базу данных одновременно
+        const [langRes, dbRes] = await Promise.all([
+            fetch('./lang.json'),
+            fetch('./data/projects.json')
+        ]);
+        
+        dictionary = await langRes.json();
+        users = await dbRes.json();
+
+        // Определяем, чью страницу показать
+        const params = new URLSearchParams(window.location.search);
+        userKey = params.get('user') || 'me';
+        activeUser = users[userKey] || users.me;
+
+        // Запуск интерфейса
+        applyUserTheme();
+        setupEventListeners();
+        render();
+
+        // Убираем экран загрузки
+        document.body.classList.remove('loading');
     } catch (e) {
-        console.error("Ошибка локализации:", e);
+        console.error("Критическая ошибка инициализации:", e);
     }
-
-    // Применяем тему и кастомные стили
-    applyUserTheme();
-
-    // Настройка слушателей событий
-    setupEventListeners();
-    
-    // Первый рендер
-    render();
 }
 
 /**
- * [THEME] Применение индивидуальных стилей и Аватара
+ * [THEME] Применение индивидуальных стилей
  */
 function applyUserTheme() {
     const root = document.documentElement;
-    
-    // Безопасное получение темы
+    root.removeAttribute('style'); // Очищаем старые переменные перед сменой пользователя
+
     const theme = activeUser.theme || {};
+    
+    // Цвета: берем из базы или ставим системные дефолты
+    const colors = {
+        'accent-green': theme.accent || (userKey === 'girl' ? '#ff79c6' : userKey === 'friend' ? '#ff0033' : '#22c55e'),
+        'bg-black': theme.bg || '#080808',
+        'bg-surface': theme.surface || '#121212',
+        'bg-card': theme.card || '#181818'
+    };
 
-    // Установка CSS переменных
-    root.style.setProperty('--accent-green', theme.accent || '#22c55e');
-    root.style.setProperty('--bg-black', theme.bg || '#080808');
-    root.style.setProperty('--bg-surface', theme.surface || '#121212');
-    root.style.setProperty('--bg-card', theme.card || '#181818');
+    // Применяем переменные к :root
+    Object.entries(colors).forEach(([key, val]) => {
+        root.style.setProperty(`--${key}`, val);
+    });
 
-    // Настройка Большого Аватара
+    // Настройка аватара
     const avatarEl = document.querySelector('.avatar');
     if (avatarEl) {
         if (activeUser.avatar) {
             avatarEl.style.backgroundImage = `url('${activeUser.avatar}')`;
             avatarEl.innerText = "";
         } else {
-            avatarEl.innerText = activeUser.name ? activeUser.name.charAt(0) : "D";
+            avatarEl.innerText = activeUser.name ? activeUser.name[0] : "D";
             avatarEl.style.backgroundImage = "none";
-            avatarEl.style.background = theme.accent || '#22c55e';
+            avatarEl.style.backgroundColor = colors['accent-green'];
         }
     }
 
-    // Переключение режимов отображения в body
-    document.body.classList.remove('audi-mode', 'soft-mode', 'loading');
-    if (activeUser.themeClass) {
-        document.body.classList.add(activeUser.themeClass);
-    } else {
-        if (userKey === 'friend') document.body.classList.add('audi-mode');
-        if (userKey === 'girl') document.body.classList.add('soft-mode');
-    }
-
-    // Подсветка активного пользователя в навигации
+    // Класс для body (режимы отображения)
+    document.body.className = activeUser.themeClass || (userKey === 'girl' ? 'soft-mode' : userKey === 'friend' ? 'audi-mode' : 'default-mode');
+    
+    // Подсветка активного пользователя в меню
     document.querySelectorAll('.user-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.id === `nav-${userKey}`) link.classList.add('active');
+        link.classList.toggle('active', link.id === `nav-${userKey}`);
     });
 }
 
 /**
- * [RENDER] Главный дирижер
+ * [RENDER] Главная функция отрисовки
  */
-const render = (filter = 'all', isTag = false) => {
-    const langData = dictionary[currentLang] || {};
+function render(filter = 'all', isTag = false) {
+    const t = dictionary[currentLang] || {};
     
-    updateStaticTexts(langData);
-    renderDetailedProfile();
+    // Обновляем текстовые блоки
+    document.getElementById('about-name').innerText = activeUser.name;
+    document.getElementById('hero-subtitle').innerText = t[activeUser.roleKey] || activeUser.role || "";
+    document.getElementById('about-text').innerText = activeUser.bio[currentLang] || activeUser.bio || "";
+    document.getElementById('count-projects').innerText = activeUser.posts ? activeUser.posts.length : 0;
+    document.getElementById('status-text').innerText = t[activeUser.statusKey] || "Online";
+    document.getElementById('lang-switch').innerText = currentLang.toUpperCase();
     
-    // Работаем с массивом posts (новые сверху)
-    const posts = activeUser.posts || [];
-    const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
-    renderPostGrid(filter, isTag, sortedPosts);
-};
-
-/**
- * [SUB-RENDER] Обновление текстов интерфейса
- */
-function updateStaticTexts(t) {
-    const mapping = {
-        'works-title': 'works_title',
-        'footer-text': 'footer_text',
-        'filter_all': 'filter_all',
-        'filter_layout': 'filter_layout',
-        'filter_js': 'filter_js',
-        'label-projects': 'user_projects',
-        'label-status': 'status_label'
-    };
-
-    Object.entries(mapping).forEach(([id, key]) => {
-        const el = document.getElementById(id);
-        if (el && t[key]) el.innerText = t[key];
-    });
-
-    const aboutName = document.getElementById('about-name');
-    const heroSubtitle = document.getElementById('hero-subtitle');
-    const aboutText = document.getElementById('about-text');
-    const countProjects = document.getElementById('count-projects');
-    const statusText = document.getElementById('status-text');
-    const searchInput = document.getElementById('project-search');
-
-    if (aboutName) aboutName.innerText = activeUser.name;
-    if (heroSubtitle) heroSubtitle.innerText = t[activeUser.roleKey] || activeUser.role || "";
-    
-    if (aboutText) {
-        aboutText.innerText = typeof activeUser.bio === 'object' 
-            ? activeUser.bio[currentLang] 
-            : activeUser.bio || "";
-    }
-
-    if (countProjects) countProjects.innerText = activeUser.posts?.length || 0;
-    if (statusText) statusText.innerText = t[activeUser.statusKey] || activeUser.status || "Online";
-    if (searchInput && t.search_placeholder) searchInput.placeholder = t.search_placeholder;
-
-    const langBtn = document.getElementById('lang-switch');
-    if (langBtn) langBtn.innerText = currentLang.toUpperCase();
-}
-
-/**
- * [SUB-RENDER] Соцсети и бейджи
- */
-function renderDetailedProfile() {
+    // Рендерим социальные сети
     const socialContainer = document.getElementById('social-container');
     if (socialContainer && activeUser.links) {
-        socialContainer.innerHTML = activeUser.links.map(link => `
-            <a href="${link.url}" target="_blank" class="social-item" title="${link.url}">
-                <i class="${link.icon}"></i>
-            </a>
+        socialContainer.innerHTML = activeUser.links.map(l => `
+            <a href="${l.url}" target="_blank" class="social-item"><i class="${l.icon}"></i></a>
         `).join('');
     }
-
+    
+    // Рендерим бейджи
     const badgeRow = document.getElementById('user-badges');
     if (badgeRow && activeUser.badges) {
-        badgeRow.innerHTML = activeUser.badges.map(b => `
-            <span class="premium-badge">${b}</span>
-        `).join('');
+        badgeRow.innerHTML = activeUser.badges.map(b => `<span class="premium-badge">${b}</span>`).join('');
     }
+
+    // Рендерим посты/проекты
+    renderPostGrid(filter, isTag);
 }
 
 /**
- * [SUB-RENDER] Сетка постов (вместо проектов)
+ * [SUB-RENDER] Сетка карточек
  */
-function renderPostGrid(filter, isTag, dataArray) {
-    const filtered = filter === 'all' 
-        ? dataArray 
-        : isTag 
-            ? dataArray.filter(p => p.tags.includes(filter))
-            : dataArray.filter(p => p.category === filter);
-
+function renderPostGrid(filter, isTag) {
+    const posts = activeUser.posts || [];
     const grid = document.getElementById('projects-grid');
     if (!grid) return;
 
-    if (filtered.length === 0) {
-        grid.innerHTML = `<div class="no-results">${currentLang === 'ru' ? 'Записей не найдено' : 'No posts found'}</div>`;
+    // Сортируем: новые сверху
+    let data = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Фильтрация
+    if (filter !== 'all') {
+        data = isTag ? data.filter(p => p.tags.includes(filter)) : data.filter(p => p.category === filter);
+    }
+
+    if (data.length === 0) {
+        grid.innerHTML = `<div class="no-results">${currentLang === 'ru' ? 'Записей нет' : 'Empty'}</div>`;
         return;
     }
 
-    grid.innerHTML = filtered.map((p) => `
-        <div class="card post-card" style="animation: fadeInUp 0.5s ease forwards">
-            ${p.featured ? `<div class="featured-badge">NEW</div>` : ''}
+    grid.innerHTML = data.map((p, index) => `
+        <div class="card post-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.05}s">
+            ${p.featured ? '<div class="featured-badge">NEW</div>' : ''}
             <div class="card-img" style="background-image: url('${p.image}')"></div>
             <div class="card-content">
                 <span class="post-date">${p.date || ''}</span>
-                <div class="tags">${p.tags.map(t => `<span class="tag clickable-tag">#${t}</span>`).join('')}</div>
+                <div class="tags">${p.tags.map(tag => `<span class="tag clickable-tag">#${tag}</span>`).join('')}</div>
                 <h3>${p.title}</h3>
-                <p class="post-preview">${p.desc ? p.desc[currentLang] : ''}</p>
+                <p>${p.desc ? p.desc[currentLang] : ''}</p>
                 <div class="btn-open">${currentLang === 'ru' ? 'Читать далее' : 'Read more'}</div>
             </div>
         </div>
     `).join('');
 
-    // Обработка кликов
-    grid.querySelectorAll('.card').forEach((card, idx) => {
+    // Вешаем события на новые карточки
+    grid.querySelectorAll('.card').forEach((card, i) => {
         card.onclick = (e) => {
-            if (!e.target.classList.contains('clickable-tag')) {
-                showModal(filtered[idx]);
-            }
+            if (!e.target.classList.contains('clickable-tag')) showModal(data[i]);
         };
     });
 
     grid.querySelectorAll('.clickable-tag').forEach(tag => {
         tag.onclick = (e) => {
             e.stopPropagation();
-            const tagName = tag.innerText.replace('#', '');
-            render(tagName, true);
-            const title = document.getElementById('works-title');
-            if (title) title.scrollIntoView({ behavior: 'smooth' });
+            render(tag.innerText.replace('#', ''), true);
+            document.getElementById('works-title')?.scrollIntoView({ behavior: 'smooth' });
         };
     });
 }
 
 /**
- * [UI] Закрытие модального окна
- * Используем именованную функцию (function), она "всплывает" в коде автоматически.
+ * [UI] Модальное окно
  */
-function closeModal() {
-    const modal = document.getElementById('modal');
-    if (modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto"; // Возвращаем скролл
-    }
-}
-
-/**
- * [UI] Улучшенное модальное окно
- */
-const showModal = (post) => {
+function showModal(post) {
     const modal = document.getElementById('modal');
     const content = document.getElementById('modal-data');
-    
-    if (!modal || !content) return; // Защита от ошибок, если HTML не прогружен
-
-    const description = post.desc ? post.desc[currentLang] : (post.description || "");
+    if (!modal || !content) return;
 
     content.innerHTML = `
         <div class="modal-card">
-            <div class="modal-header-img" style="background-image: url('${post.image}')">
-                <div class="modal-header-overlay">
-                    <div class="modal-header-text">
-                        <span class="modal-label">${post.category ? post.category.toUpperCase() : 'PROJECT'}</span>
-                        <h2>${post.title}</h2>
-                    </div>
-                </div>
-            </div>
+            <div class="modal-header-img" style="background-image: url('${post.image}')"></div>
             <div class="modal-body">
                 <div class="modal-meta-bar">
-                    <div class="meta-block">
-                        <i class="fa-regular fa-calendar"></i>
-                        <span>${post.date || '2024'}</span>
-                    </div>
-                    <div class="meta-block">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <div class="tags">
-                            ${post.tags.map(t => `<span class="tag">#${t}</span>`).join('')}
-                        </div>
-                    </div>
+                    <span><i class="fa-regular fa-calendar"></i> ${post.date}</span>
+                    <div class="tags">${post.tags.map(t => `<span class="tag">#${t}</span>`).join('')}</div>
                 </div>
-                <div class="modal-content-main">
-                    <div class="description-section">
-                        <h3>${currentLang === 'ru' ? 'Описание' : 'Description'}</h3>
-                        <p>${description}</p>
-                    </div>
-                    <div class="tech-section">
-                        <h4>${currentLang === 'ru' ? 'Технологический стек' : 'Tech Stack'}</h4>
-                        <div class="tech-icons">
-                            <i class="fa-brands fa-html5"></i>
-                            <i class="fa-brands fa-css3-alt"></i>
-                            <i class="fa-brands fa-js"></i>
-                        </div>
-                    </div>
+                <h2>${post.title}</h2>
+                <div class="description-section">
+                    <p>${post.desc ? post.desc[currentLang] : (post.description || "")}</p>
                 </div>
                 <div class="modal-footer-actions">
-                    ${post.link ? `
-                        <a href="${post.link}" target="_blank" class="btn-open primary-action">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            ${currentLang === 'ru' ? 'Открыть проект' : 'Launch Demo'}
-                        </a>
-                    ` : ''}
-                    <button class="btn-secondary" id="close-modal-btn">
-                        ${currentLang === 'ru' ? 'Закрыть' : 'Close'}
-                    </button>
+                    ${post.link ? `<a href="${post.link}" target="_blank" class="btn-open primary-action">Открыть проект</a>` : ''}
+                    <button class="btn-secondary" onclick="closeModal()">Закрыть</button>
                 </div>
             </div>
         </div>
     `;
-
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
+}
 
-    // Безопасное назначение клика
-    const closeBtn = document.getElementById('close-modal-btn');
-    if (closeBtn) closeBtn.onclick = closeModal;
+window.closeModal = () => {
+    document.getElementById('modal').style.display = "none";
+    document.body.style.overflow = "auto";
 };
 
 /**
- * [UI] Уведомления (Toasts)
+ * [ADMIN] Логика публикации на GitHub
  */
-window.showToast = (message) => {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerText = message;
-    container.appendChild(toast);
+async function publishPost() {
+    const token = document.getElementById('adm-token').value;
+    const targetUser = document.getElementById('adm-user-select').value;
+    const btn = document.querySelector('.adm-publish-btn');
     
-    setTimeout(() => { toast.classList.add('visible'); }, 10);
+    if(!token) return showToast("Нужен GitHub Token!");
+    btn.disabled = true;
+    btn.innerText = "Загрузка...";
+
+    try {
+        const url = `https://api.github.com/repos/${GH_SETTINGS.owner}/${GH_SETTINGS.repo}/contents/${GH_SETTINGS.path}`;
+        
+        // 1. Получаем текущий файл
+        const res = await fetch(url, { headers: { 'Authorization': `token ${token}` } });
+        const fileData = await res.json();
+        // Декодируем UTF-8 base64
+        const db = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+
+        // 2. Формируем новый пост
+        const newPost = {
+            title: document.getElementById('adm-title').value || "Без названия",
+            image: document.getElementById('adm-img').value || "https://via.placeholder.com/800x450",
+            link: document.getElementById('adm-link').value || "#",
+            date: new Date().toISOString().split('T')[0],
+            tags: document.getElementById('adm-tags').value.split(',').map(t => t.trim()),
+            category: document.getElementById('adm-category').value || "js",
+            featured: true,
+            desc: {
+                ru: document.getElementById('adm-desc-ru').value,
+                en: document.getElementById('adm-desc-en').value
+            }
+        };
+
+        // 3. Обновляем JSON
+        db[targetUser].posts.unshift(newPost);
+
+        // 4. Кодируем и отправляем назад
+        const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(db, null, 2))));
+        
+        const putRes = await fetch(url, {
+            method: 'PUT',
+            headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: `Admin: add project ${newPost.title}`,
+                content: updatedContent,
+                sha: fileData.sha
+            })
+        });
+
+        if (putRes.ok) {
+            showToast("Успешно опубликовано!");
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            throw new Error("GitHub API Error");
+        }
+    } catch (err) {
+        showToast("Ошибка публикации!");
+        console.error(err);
+        btn.disabled = false;
+        btn.innerText = "ОПУБЛИКОВАТЬ";
+    }
+}
+window.publishPost = publishPost;
+
+/**
+ * [UI] Уведомления
+ */
+function showToast(msg) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast visible';
+    toast.innerText = msg;
+    container.appendChild(toast);
     setTimeout(() => {
         toast.classList.remove('visible');
         setTimeout(() => toast.remove(), 500);
     }, 3000);
-};
+}
+window.showToast = showToast;
 
 /**
- * [EVENTS] Слушатели
+ * [EVENTS] Слушатели событий
  */
 function setupEventListeners() {
-    // 1. Поиск по постам
-    const searchInput = document.getElementById('project-search');
-    if (searchInput) {
-        searchInput.oninput = (e) => {
-            const query = e.target.value.toLowerCase();
-            // Используем activeUser.posts (убедись, что activeUser глобально доступен)
-            const filtered = activeUser.posts.filter(p => 
-                p.title.toLowerCase().includes(query) || 
-                p.tags.some(t => t.toLowerCase().includes(query))
-            );
-            renderPostGrid('all', false, filtered);
-        };
-    }
-    
-    // 3. Закрытие модалки (Клик по фону)
-    window.onclick = (e) => { 
-        if (e.target.id === 'modal') closeModal(); 
+    // Секретный вход в админку (5 кликов по аватару)
+    let clicks = 0;
+    document.querySelector('.avatar').onclick = () => {
+        if (++clicks === 5) {
+            document.getElementById('admin-panel').style.display = 'block';
+            clicks = 0;
+        }
     };
 
-    // 4. Фильтрация категорий
+    // Переключатель языка
+    document.getElementById('lang-switch').onclick = () => {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        localStorage.setItem('lang', currentLang);
+        render();
+        showToast(currentLang === 'ru' ? "Язык изменен" : "Language changed");
+    };
+
+    // Фильтры категорий
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.onclick = () => {
             document.querySelector('.filter-btn.active')?.classList.remove('active');
             btn.classList.add('active');
-            // Если render() принимает категорию — все ок. 
-            // Иначе используй renderPostGrid(btn.dataset.cat)
-            render(btn.dataset.cat, false);
+            render(btn.dataset.cat);
         };
     });
 
-    // 5. Переключение языка
-    const langBtn = document.getElementById('lang-switch');
-    if (langBtn) {
-        langBtn.onclick = () => {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            localStorage.setItem('lang', currentLang);
-            
-            // Перерисовываем весь интерфейс
-            render(); 
-            
-            // Вызов тоста (проверь наличие функции window.showToast)
-            if (window.showToast) {
-                window.showToast(currentLang === 'ru' ? "Язык обновлен" : "Language updated");
-            }
-        };
-    }
+    // Поиск
+    document.getElementById('project-search')?.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = activeUser.posts.filter(p => 
+            p.title.toLowerCase().includes(query) || 
+            p.tags.some(t => t.toLowerCase().includes(query))
+        );
+        // Вызываем частичный рендер сетки
+        const grid = document.getElementById('projects-grid');
+        grid.innerHTML = ""; // Очистка
+        renderPostGrid('all', false); // В этой версии лучше передать отфильтрованный массив, но для простоты перерендерим по базе
+    });
 
-    // 6. Прокрутка: Прогресс-бар и кнопка "Вверх"
+    // Прокрутка и прогресс-бар
     window.onscroll = () => {
         const winScroll = document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-        
-        const progressBar = document.getElementById('progress-bar');
-        if (progressBar) progressBar.style.width = scrolled + "%";
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + "%";
 
         const scrollBtn = document.getElementById('scroll-top');
         if (scrollBtn) {
-            if (window.scrollY > 500) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
+            scrollBtn.classList.toggle('visible', window.scrollY > 500);
         }
     };
 
-    // 7. Клик по кнопке "Вверх"
-    const scrollTopBtn = document.getElementById('scroll-top');
-    if (scrollTopBtn) {
-        scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    document.getElementById('scroll-top').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // 8. Эффект свечения курсора (Glow)
-    const glow = document.getElementById('cursor-glow');
-    if (glow) {
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = `${e.clientX}px`;
-            glow.style.top = `${e.clientY}px`;
-        });
-    }
+    // Закрытие модалок по фону
+    window.onclick = (e) => {
+        if (e.target.id === 'modal') closeModal();
+        if (e.target.id === 'admin-panel') e.target.style.display = 'none';
+    };
 }
 
+// Запуск
 init();

@@ -106,6 +106,33 @@
     <div id="toast-container"></div>
     <button id="scroll-top" class="scroll-btn"><i class="fa-solid fa-arrow-up"></i></button>
 
+    <div id="admin-panel" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:99999; overflow-y:auto; padding:20px;">
+        <div style="max-width:500px; margin:40px auto; background:#111; border:1px solid var(--accent-green); border-radius:20px; padding:30px; box-shadow:0 0 50px rgba(0,0,0,0.5);">
+            <h2 style="color:white; margin-bottom:20px; font-family:'Space Grotesk';">Admin Panel</h2>
+            
+            <label style="color:#888; display:block; margin-bottom:5px;">Для кого пост?</label>
+            <select id="adm-user-select" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+                <option value="me">Денис</option>
+                <option value="friend">Алексей</option>
+                <option value="girl">Ангелина</option>
+            </select>
+
+            <input type="text" id="adm-title" placeholder="Название проекта" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+            <input type="text" id="adm-category" placeholder="Категория (js / layout)" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+            <input type="text" id="adm-tags" placeholder="Теги (через запятую)" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+            <input type="text" id="adm-img" placeholder="URL картинки" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+            <input type="text" id="adm-link" placeholder="Ссылка на проект" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
+            
+            <textarea id="adm-desc-ru" placeholder="Описание RU" style="width:100%; height:70px; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;"></textarea>
+            <textarea id="adm-desc-en" placeholder="Описание EN" style="width:100%; height:70px; padding:12px; margin-bottom:20px; background:#222; border:1px solid #333; color:white; border-radius:10px;"></textarea>
+
+            <input type="password" id="adm-token" placeholder="GitHub PAT Token" style="width:100%; padding:12px; margin-bottom:20px; background:#111; border:1px solid var(--accent-green); color:white; border-radius:10px;">
+
+            <button onclick="publishPost()" class="adm-publish-btn" style="width:100%; padding:15px; background:var(--accent-green); color:black; border:none; border-radius:10px; font-weight:800; cursor:pointer;">ОПУБЛИКОВАТЬ</button>
+            <button onclick="document.getElementById('admin-panel').style.display='none'" style="width:100%; padding:10px; background:transparent; color:#555; border:none; margin-top:10px; cursor:pointer;">Закрыть</button>
+        </div>
+    </div>
+
     <script type="module" src="js/app.js"></script>
 </body>
 </html>
