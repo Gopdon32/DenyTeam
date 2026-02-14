@@ -9,18 +9,54 @@
       "en": "Specializing in high-performance interfaces and complex animations. Expert in React, markup, and pure JS logic."
     },
     "avatar": "assets/profile/me.webp",
-    "badges": ["Pro Developer", "UI Expert", "Mentor"],
+    "badges": [
+      "Pro Developer",
+      "UI Expert",
+      "Mentor"
+    ],
     "links": [
-      { "icon": "fa-brands fa-github", "url": "https://github.com/Gopdon32" },
-      { "icon": "fa-brands fa-telegram", "url": "https://t.me/Remaster_33" },
-      { "icon": "fa-brands fa-instagram", "url": "https://t.me/Remaster_33" },
-      { "icon": "fa-solid fa-envelope", "url": "mailto:goldmaster2003@gmail.com" }
+      {
+        "icon": "fa-brands fa-github",
+        "url": "https://github.com/Gopdon32"
+      },
+      {
+        "icon": "fa-brands fa-telegram",
+        "url": "https://t.me/Remaster_33"
+      },
+      {
+        "icon": "fa-brands fa-instagram",
+        "url": "https://t.me/Remaster_33"
+      },
+      {
+        "icon": "fa-solid fa-envelope",
+        "url": "mailto:goldmaster2003@gmail.com"
+      }
     ],
     "themeClass": "default-mode",
     "posts": [
       {
+        "title": "Test",
+        "image": "https://img.freepik.com/free-vector/creative-glowing-abstract-background_1302-5882.jpg?semt=ais_user_personalization&w=740&q=80",
+        "link": "https://img.freepik.com/free-vector/creative-glowing-abstract-background_1302-5882.jpg?semt=ais_user_personalization&w=740&q=80",
+        "date": "2026-02-14",
+        "tags": [
+          "Test",
+          "Test"
+        ],
+        "category": "Test",
+        "featured": true,
+        "desc": {
+          "ru": "Тест",
+          "en": "Test"
+        }
+      },
+      {
         "title": "Digital Bank",
-        "tags": ["JS", "Logic", "UI"],
+        "tags": [
+          "JS",
+          "Logic",
+          "UI"
+        ],
         "category": "js",
         "image": "assets/images/digital-bank.png",
         "link": "pages/gh-digitalbank-landing/index.html",
@@ -33,7 +69,11 @@
       },
       {
         "title": "NFT Card",
-        "tags": ["HTML", "CSS", "UI"],
+        "tags": [
+          "HTML",
+          "CSS",
+          "UI"
+        ],
         "category": "layout",
         "image": "assets/images/nft.jpeg",
         "link": "pages/gh-nft-card/index.html",
@@ -46,7 +86,10 @@
       },
       {
         "title": "Order Plan",
-        "tags": ["Frontend", "Design"],
+        "tags": [
+          "Frontend",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Order-Plan.png",
         "link": "pages/gh-order-plan/index.html",
@@ -59,7 +102,10 @@
       },
       {
         "title": "Huddle Landing",
-        "tags": ["Flexbox", "CSS"],
+        "tags": [
+          "Flexbox",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Huddle.png",
         "link": "pages/gh-huddle/index.html",
@@ -72,7 +118,10 @@
       },
       {
         "title": "Blog Preview",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Blog-Preview.png",
         "link": "pages/gh-blog-preview/index.html",
@@ -85,7 +134,9 @@
       },
       {
         "title": "Column Card",
-        "tags": ["CSS Grid"],
+        "tags": [
+          "CSS Grid"
+        ],
         "category": "layout",
         "image": "assets/images/column-card.png",
         "link": "pages/gh-column-card/index.html",
@@ -98,7 +149,10 @@
       },
       {
         "title": "Fylo Landing",
-        "tags": ["Responsive", "UI"],
+        "tags": [
+          "Responsive",
+          "UI"
+        ],
         "category": "layout",
         "image": "assets/images/fylo.png",
         "link": "pages/gh-fylo/index.html",
@@ -111,7 +165,10 @@
       },
       {
         "title": "Grid Sections",
-        "tags": ["CSS Grid", "Layout"],
+        "tags": [
+          "CSS Grid",
+          "Layout"
+        ],
         "category": "layout",
         "image": "assets/images/grid-sections.png",
         "link": "pages/gh-grid-sections/index.html",
@@ -124,7 +181,10 @@
       },
       {
         "title": "Ingredients Component",
-        "tags": ["UI", "Logic"],
+        "tags": [
+          "UI",
+          "Logic"
+        ],
         "category": "js",
         "image": "assets/images/Ingredients.png",
         "link": "pages/gh-ingredients/index.html",
@@ -137,7 +197,10 @@
       },
       {
         "title": "QR Code Component",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/QR.png",
         "link": "pages/gh-qr-card/index.html",
@@ -150,7 +213,10 @@
       },
       {
         "title": "Social Proof",
-        "tags": ["CSS", "Design"],
+        "tags": [
+          "CSS",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Social-Proof.png",
         "link": "pages/gh-social-proof/index.html",
@@ -163,7 +229,10 @@
       },
       {
         "title": "Stats Card",
-        "tags": ["Typography", "CSS"],
+        "tags": [
+          "Typography",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/stats-card.png",
         "link": "pages/gh-stats-card/index.html",
@@ -176,7 +245,10 @@
       },
       {
         "title": "Score Summary",
-        "tags": ["JS", "UI"],
+        "tags": [
+          "JS",
+          "UI"
+        ],
         "category": "js",
         "image": "assets/images/score-summary.png",
         "link": "pages/gh-score-summary/index.html",
@@ -189,7 +261,10 @@
       },
       {
         "title": "Social Links",
-        "tags": ["Profile", "Links"],
+        "tags": [
+          "Profile",
+          "Links"
+        ],
         "category": "layout",
         "image": "assets/images/social-link.png",
         "link": "pages/gh-social-link-page/index.html",
@@ -212,16 +287,28 @@
       "en": "Merging cars and code. Building digital garages."
     },
     "avatar": "assets/profile/bro.webp",
-    "badges": ["Quattro Expert", "V8 Engine"],
+    "badges": [
+      "Quattro Expert",
+      "V8 Engine"
+    ],
     "links": [
-      { "icon": "fa-solid fa-car", "url": "#" },
-      { "icon": "fa-brands fa-instagram", "url": "https://www.instagram.com/_alexey__22_/" }
+      {
+        "icon": "fa-solid fa-car",
+        "url": "#"
+      },
+      {
+        "icon": "fa-brands fa-instagram",
+        "url": "https://www.instagram.com/_alexey__22_/"
+      }
     ],
     "themeClass": "audi-mode",
     "posts": [
       {
         "title": "Quattro Configurator",
-        "tags": ["Three.js", "3D"],
+        "tags": [
+          "Three.js",
+          "3D"
+        ],
         "category": "js",
         "image": "assets/images/quatro.webp",
         "link": "#",
@@ -244,15 +331,24 @@
       "en": "Emotional UI design. Aesthetics in every pixel."
     },
     "avatar": "assets/profile/love.webp",
-    "badges": ["Aesthetic Queen", "Figma Pro"],
+    "badges": [
+      "Aesthetic Queen",
+      "Figma Pro"
+    ],
     "links": [
-      { "icon": "fa-brands fa-dribbble", "url": "#" }
+      {
+        "icon": "fa-brands fa-dribbble",
+        "url": "#"
+      }
     ],
     "themeClass": "soft-mode",
     "posts": [
       {
         "title": "Minimalist Blog",
-        "tags": ["Design", "Aesthetic"],
+        "tags": [
+          "Design",
+          "Aesthetic"
+        ],
         "category": "layout",
         "image": "https://images.unsplash.com/photo-1516550893923-42d28e5677af?q=80&w=500",
         "link": "#",
