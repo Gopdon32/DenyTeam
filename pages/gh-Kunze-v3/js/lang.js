@@ -10,14 +10,14 @@ const LANG = {
     /* ============================
        HERO-БЛОК
     ============================ */
-    heroTitle: "Кунзе автомобільний салон",
+    heroTitle: "Kunze — автомобільний салон",
     heroSubtitle: "Преміальні моделі, фінансування та доставка в Україну — демонстрація високої якості",
 
     /* ============================
        ГАРАНТІЯ
     ============================ */
     guaranteeTitle: "Гарантія на акумулятор",
-    guaranteeText: "GAC Toyota гарантує, що у разі самозаймання акумулятора автомобіль буде замінено на новий.",
+    guaranteeText: "Офіційна гарантія на високовольтну батарею від GAC Toyota.",
 
     /* ============================
        КАТАЛОГ
@@ -34,7 +34,7 @@ const LANG = {
     trimsSubtitle: "Виберіть комплектацію, яка вам найбільше підходить",
     power: "к.с.",
     battery: "кВт⋅ч",
-    range: "км запасу",
+    range: "км",
     drive: "Привід",
     colors: "Кольори",
     testDrive: "Замовити тест-драйв",
@@ -147,10 +147,10 @@ const LANG = {
     office: "Office",
 
     heroTitle: "Kunze Auto Salon",
-    heroSubtitle: "High‑end models, financing cooperation and delivery to Ukraine — showcasing premium quality",
+    heroSubtitle: "High‑end models, financing and delivery to Ukraine — showcasing premium quality",
 
     guaranteeTitle: "Battery Warranty",
-    guaranteeText: "GAC Toyota guarantees that in case of battery ignition, the vehicle will be replaced with a new one.",
+    guaranteeText: "Official high‑voltage battery warranty from GAC Toyota.",
 
     catalogTitle: "Our Car Catalog",
     catalogSubtitle: "Choose a model and explore all specifications, prices and trims",
@@ -161,7 +161,7 @@ const LANG = {
     trimsSubtitle: "Choose the configuration that suits you best",
     power: "hp",
     battery: "kWh",
-    range: "km range",
+    range: "km",
     drive: "Drive",
     colors: "Colors",
     testDrive: "Book a test drive",

@@ -169,6 +169,10 @@ h4 { font-size: 1.25rem; }
   box-shadow: var(--shadow);
 }
 
+#navMenu {
+  transition: transform .25s ease, opacity .25s ease;
+}
+
 .navbar-content {
   display: flex;
   justify-content: space-between;
@@ -1355,20 +1359,31 @@ h4 { font-size: 1.25rem; }
 .contacts-section {
   background: var(--bg-dark);
   color: var(--text-light);
-  padding: 60px 0;
+  padding: 70px 0;
   margin-top: 40px;
 }
 
 .contacts-title {
   text-align: center;
-  margin-bottom: 40px;
-  color: var(--text-light);
+  margin-bottom: 45px;
 }
 
+.contacts-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.contacts-title p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* GRID */
 .contacts-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
 }
 
 @media (max-width: 767px) {
@@ -1377,40 +1392,48 @@ h4 { font-size: 1.25rem; }
   }
 }
 
-.contact-item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 25px;
+/* CONTACT CARD */
+.contact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 28px;
   border-radius: var(--radius-lg);
-  transition: all var(--transition);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
 }
 
-.contact-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+.contact-card:hover {
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--secondary);
+  transform: translateY(-3px);
 }
 
-.contact-label {
-  color: var(--text-gray);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  margin-bottom: 5px;
+/* TEXT */
+.contact-card strong {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
 }
 
-.contact-value {
-  color: var(--text-light);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+.contact-card span[aria-hidden="true"] {
+  margin-right: 6px;
+  opacity: 0.9;
 }
 
-.contact-phone {
-  color: var(--secondary);
+.contact-card a.contact-phone {
+  display: inline-block;
+  margin-top: 12px;
   font-size: 1.25rem;
   font-weight: 700;
+  color: var(--secondary);
+  transition: color 0.2s ease;
 }
+
+.contact-card a.contact-phone:hover {
+  color: var(--primary);
+}
+
 
 /* ========================================
    FOOTER

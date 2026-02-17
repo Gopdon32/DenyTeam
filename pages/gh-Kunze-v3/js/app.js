@@ -21,13 +21,22 @@ const APP_CONFIG = {
 
 let currentGalleryIndex = 0;
 let currentGallery = [];
+let currentCar = null;
 
+// Language initialization (safe)
 let currentLang = localStorage.getItem('lang');
 
+// Normalize value (e.g., "UA", "Ua", " ua ")
+if (typeof currentLang === 'string') {
+  currentLang = currentLang.trim().toLowerCase();
+}
+
+// Fallback if invalid or missing
 if (!currentLang || !LANG[currentLang]) {
   currentLang = 'ua';
   localStorage.setItem('lang', 'ua');
 }
+
 
 
 function setLanguage(lang) {
@@ -144,14 +153,14 @@ function renderCatalogCard(car) {
   const t = LANG[currentLang];
 
   return `
-    <div class="catalog-card" onclick="navigateTo('#/model/${car.slug}')">
-      <div class="card-image-wrapper">
-        <img src="${car.heroImage}" alt="${car.brand} ${car.model}" class="card-image" />
+    <div class="catalog-card">
+      <a href="#/model/${car.slug}" class="card-image-wrapper" aria-label="${car.brand} ${car.model}">
+        <img src="${car.heroImage}" alt="${getAlt(car, car.heroImage)}" class="card-image" loading="lazy" decoding="async" width="400" height="300" />
         <span class="card-badge">NEW</span>
         <div class="card-flag">
           <img src="src/images/logo.png" alt="Україна" title="Україна" />
         </div>
-      </div>
+      </a>
 
       <div class="card-content">
         <div class="card-header">
@@ -164,13 +173,20 @@ function renderCatalogCard(car) {
         
         <div class="card-price">${t.priceFrom} ${formatPrice(car.trims[0].price)} $</div>
 
-        <p class="card-description">${t.descriptionMap[car.descriptionShort] || car.descriptionShort}</p>
+        <p class="card-description">
+          ${t.descriptionMap[car.descriptionShort] || car.descriptionShort}
+        </p>
 
         <div class="card-footer">
-          <button class="btn btn-primary btn-small" onclick="navigateTo('#/model/${car.slug}')">
+          <a href="#/model/${car.slug}" class="btn btn-primary btn-small">
             ${t.details}
-          </button>
-          <button class="btn btn-secondary btn-small" onclick="contactUs('${car.model}')">
+          </a>
+
+          <button 
+            class="btn btn-secondary btn-small" 
+            onclick="contactUs('${car.model}')"
+            type="button"
+          >
             ${t.order}
           </button>
         </div>
@@ -178,6 +194,7 @@ function renderCatalogCard(car) {
     </div>
   `;
 }
+
 
 
 // ============================================================================
@@ -203,7 +220,9 @@ function renderModelPage(car) {
   window.scrollTo(0, 0);
 
   currentGalleryIndex = 0;
+  currentCar = car;
   currentGallery = car.gallery || [];
+
 
   initMobileMenu();
   setupGalleryInteraction();
@@ -220,7 +239,8 @@ function renderModelHero(car) {
       <div class="container">
         <div class="model-hero-content">
           <div class="model-hero-image">
-            <img src="${car.heroImage}" alt="${car.brand} ${car.model}" />
+            <img src="${car.heroImage}" alt="${getAlt(car, car.heroImage)}" class="model-hero-img" loading="eager" decoding="async" width="1600" height="900" />
+
           </div>
 
           <div class="model-hero-info">
@@ -294,22 +314,22 @@ function renderTrimsSection(car) {
               
               <div class="trim-specs">
                 <div class="trim-spec">
-                  <span class="trim-spec-label">Power</span>
+                  <span class="trim-spec-label">${t.power}</span>
                   <span class="trim-spec-value">${trim.powerHp} ${t.power}</span>
                 </div>
 
                 <div class="trim-spec">
-                  <span class="trim-spec-label">Battery</span>
+                  <span class="trim-spec-label">${t.battery}</span>
                   <span class="trim-spec-value">${trim.batteryKwh} ${t.battery}</span>
                 </div>
 
                 <div class="trim-spec">
-                  <span class="trim-spec-label">Range</span>
+                  <span class="trim-spec-label">${t.range}</span>
                   <span class="trim-spec-value">${trim.rangeKm} ${t.range}</span>
                 </div>
 
                 <div class="trim-spec">
-                  <span class="trim-spec-label">Drive</span>
+                  <span class="trim-spec-label">${t.drive}</span>
                   <span class="trim-spec-value">${t.driveMap[trim.drive] || trim.drive}</span>
                 </div>
 
@@ -347,7 +367,7 @@ function renderVideoReviewSection(car) {
         </div>
 
         <div class="video-wrapper">
-          <video controls preload="metadata" poster="${poster}">
+          <video controls preload="none" loading="lazy" poster="${poster}" width="1600" height="900" >
             <source src="${car.video}" type="video/mp4">
             ${t.videoNotSupported}
           </video>
@@ -356,6 +376,8 @@ function renderVideoReviewSection(car) {
     </section>
   `;
 }
+
+
 
 
 function getPoster(car) {
@@ -385,7 +407,7 @@ function renderPdfSection(car) {
             return `
               <a href="${pdf}" target="_blank" class="pdf-link">
                 <span class="pdf-icon">📄</span>
-                <span class="pdf-name">${fileName.replace(/.pdf$/, '').replace(/-/g, ' ')}</span>
+                <span class="pdf-name">${fileName.replace(/.pdf$/, '').replace(/-/g, ' ').trim()}</span>
               </a>
             `;
           }).join('')}
@@ -399,9 +421,7 @@ function renderPdfSection(car) {
 function renderGallerySection(car) {
   const t = LANG[currentLang];
 
-  if (!car.gallery || car.gallery.length === 0) {
-    return '';
-  }
+  if (!car.gallery || car.gallery.length === 0) return '';
 
   return `
     <section class="gallery-section">
@@ -414,7 +434,15 @@ function renderGallerySection(car) {
         <div class="gallery-grid">
           ${car.gallery.map((img, idx) => `
             <div class="gallery-item" onclick="openGallery(${idx})">
-              <img src="${img}" alt="Фото ${idx + 1}" />
+              <img 
+                src="${img}" 
+                alt="${getAlt(car, img)}"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="400"
+                height="300"
+              />
             </div>
           `).join('')}
         </div>
@@ -422,6 +450,8 @@ function renderGallerySection(car) {
     </section>
   `;
 }
+
+
 
 
 function renderContactsSection() {
@@ -437,9 +467,9 @@ function renderContactsSection() {
 
         <div class="contacts-grid">
           ${APP_CONFIG.STORES.map((store, index) => `
-            <div class="footer-contact" id="footer-contact">
+            <div class="contact-card" ${index === 0 ? 'id="footer-contact"' : ''}>
               <strong>${t.office} ${index + 1}</strong><br>
-              📍 ${store.address}<br>
+              <span aria-hidden="true">📍</span> ${store.address}<br>
               <a href="tel:${APP_CONFIG.PRIMARY_PHONE.replace(/\s+/g, '')}" class="contact-phone">
                 ${APP_CONFIG.PRIMARY_PHONE}
               </a>
@@ -450,6 +480,8 @@ function renderContactsSection() {
     </section>
   `;
 }
+
+
 
 
 // ============================================================================
@@ -470,7 +502,7 @@ function renderNavbar() {
           </div>
 
           <div class="navbar-menu" id="navMenu">
-            <a href="#catalog-container" onclick="handleMenuClick(event, 'catalog')">
+            <a href="#" onclick="handleMenuClick(event, 'catalog')">
               ${t.navCatalog}
             </a>
             <a href="#" onclick="handleMenuClick(event, 'contacts')">
@@ -505,7 +537,7 @@ function renderNavbar() {
             <img src="src/icons/social/usa.svg" class="lang-flag" onclick="setLanguage('en')" />
           </div>
 
-          <button class="navbar-toggle" id="mobileToggle">
+          <button class="navbar-toggle" id="mobileToggle" aria-label="Меню" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -531,7 +563,7 @@ function renderFooter() {
   const t = LANG[currentLang];
 
   return `
-    <footer>
+    <footer aria-label="Футер сайту">
       <div class="container">
         <div class="footer-content">
 
@@ -549,9 +581,9 @@ function renderFooter() {
             <h4>${t.footerContacts}</h4>
 
             ${APP_CONFIG.STORES.map((store, index) => `
-              <div class="footer-contact" id="footer-contact">
+              <div class="footer-contact" ${index === 0 ? 'id="footer-contact"' : ''}>
                 <strong>${t.office} ${index + 1}</strong><br>
-                📍 ${store.address}<br>
+                <span aria-hidden="true">📍</span> ${store.address}<br>
                 <a href="tel:${APP_CONFIG.PRIMARY_PHONE.replace(/\s+/g, '')}" class="contact-phone">
                   ${APP_CONFIG.PRIMARY_PHONE}
                 </a>
@@ -584,6 +616,7 @@ function renderFooter() {
 }
 
 
+
 // ============================================================================
 // GALLERY POPUP
 // ============================================================================
@@ -591,32 +624,28 @@ function renderFooter() {
 function openGallery(index) {
   currentGalleryIndex = index;
 
-  // Ensure gallery is loaded for current model
-  if (currentGallery.length === 0) {
-    const modelMatch = window.location.hash.match(/#\/model\/([a-z0-9\-]+)/);
-    if (modelMatch) {
-      const car = cars.find(c => c.slug === modelMatch[1]);
-      if (car?.gallery) {
-        currentGallery = car.gallery;
-      }
-    }
-  }
+  if (!currentGallery || currentGallery.length === 0) return;
 
   const popup = document.getElementById('galleryPopup');
   const img = document.getElementById('galleryImage');
   const current = document.getElementById('current');
   const total = document.getElementById('total');
 
-  if (currentGallery.length > 0) {
-    img.src = currentGallery[currentGalleryIndex];
-    current.textContent = currentGalleryIndex + 1;
-    total.textContent = currentGallery.length;
+  const file = currentGallery[currentGalleryIndex];
 
-    popup.classList.add('open');
-    popup.removeAttribute('inert');
-    document.body.style.overflow = 'hidden';
-  }
+  img.loading = "eager";
+  img.decoding = "async";
+  img.src = file;
+  img.alt = getAlt(currentCar, file);
+
+  current.textContent = currentGalleryIndex + 1;
+  total.textContent = currentGallery.length;
+
+  popup.classList.add('open');
+  popup.removeAttribute('inert');
+  document.body.style.overflow = 'hidden';
 }
+
 
 function closeGallery() {
   const popup = document.getElementById('galleryPopup');
@@ -647,62 +676,41 @@ function setupGalleryInteraction() {
   const nextBtn = document.querySelector('.gallery-next');
   const prevBtn = document.querySelector('.gallery-prev');
 
-  // Buttons
   closeBtn?.addEventListener('click', closeGallery);
   nextBtn?.addEventListener('click', nextGallery);
   prevBtn?.addEventListener('click', prevGallery);
 
-  // Click outside to close
   popup?.addEventListener('click', (e) => {
     if (e.target === popup) closeGallery();
   });
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (!popup?.classList.contains('open')) return;
+    if (!popup.classList.contains('open')) return;
 
     if (e.key === 'Escape') closeGallery();
     if (e.key === 'ArrowRight') nextGallery();
     if (e.key === 'ArrowLeft') prevGallery();
   });
 
-  // ============================
-  // SWIPE + DRAG FIX
-  // ============================
-
+  // Swipe
   let startX = 0;
   let isDragging = false;
-  let isTouchMode = false; // ← ключове
+  let isTouchMode = false;
 
   const MIN_SWIPE = 50;
-  const SWIPE_DELAY = 200;
-  let lastSwipe = 0;
 
-  function triggerSwipe(diff) {
-    const now = Date.now();
-    if (now - lastSwipe < SWIPE_DELAY) return;
-    lastSwipe = now;
-
-    if (Math.abs(diff) < MIN_SWIPE) return;
-
-    if (diff < 0) nextGallery();
-    else prevGallery();
-  }
-
-  // TOUCH (mobile)
   popup.addEventListener('touchstart', (e) => {
-    isTouchMode = true; // ← після першого touch ми блокуємо mouse
+    isTouchMode = true;
     startX = e.changedTouches[0].clientX;
   });
 
   popup.addEventListener('touchend', (e) => {
     const diff = e.changedTouches[0].clientX - startX;
-    triggerSwipe(diff);
+    if (Math.abs(diff) > MIN_SWIPE) diff < 0 ? nextGallery() : prevGallery();
   });
 
-  // DRAG (desktop only)
   popup.addEventListener('mousedown', (e) => {
-    if (isTouchMode) return; // ← мобільний? блокуємо drag
+    if (isTouchMode) return;
     isDragging = true;
     startX = e.clientX;
   });
@@ -712,7 +720,7 @@ function setupGalleryInteraction() {
     isDragging = false;
 
     const diff = e.clientX - startX;
-    triggerSwipe(diff);
+    if (Math.abs(diff) > MIN_SWIPE) diff < 0 ? nextGallery() : prevGallery();
   });
 
   popup.addEventListener('mouseleave', () => {
@@ -720,9 +728,12 @@ function setupGalleryInteraction() {
   });
 }
 
+
 // ============================================================================
-// MOBILE MENU
+// MOBILE MENU (final optimized version)
 // ============================================================================
+
+let closeMenuHandler = null;
 
 function initMobileMenu() {
   const toggle = document.getElementById('mobileToggle');
@@ -730,7 +741,7 @@ function initMobileMenu() {
 
   if (!toggle || !menu) return;
 
-  // Remove old listeners by cloning
+  // Remove old listeners
   const newToggle = toggle.cloneNode(true);
   toggle.parentNode.replaceChild(newToggle, toggle);
 
@@ -741,6 +752,12 @@ function initMobileMenu() {
     e.stopPropagation();
     toggleBtn.classList.toggle('active');
     menu.classList.toggle('active');
+
+    const isOpen = toggleBtn.classList.contains('active');
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+
+    // 🔥 Блокуємо скрол сторінки
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   });
 
   // Close menu when clicking a link
@@ -748,16 +765,26 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       toggleBtn.classList.remove('active');
       menu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = 'auto';
     });
   });
 
-  // Close menu when clicking outside navbar
-  document.addEventListener('click', (e) => {
+  // Close menu when clicking outside
+  if (closeMenuHandler) {
+    document.removeEventListener('click', closeMenuHandler);
+  }
+
+  closeMenuHandler = (e) => {
     if (!e.target.closest('.navbar')) {
       toggleBtn.classList.remove('active');
       menu.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = 'auto';
     }
-  });
+  };
+
+  document.addEventListener('click', closeMenuHandler);
 }
 
 // ============================================================================
@@ -779,35 +806,41 @@ function handleMenuClick(e, action) {
   const toggle = document.getElementById('mobileToggle');
   const menu = document.getElementById('navMenu');
 
+  // Закриваємо меню
   if (toggle && menu) {
     toggle.classList.remove('active');
     menu.classList.remove('active');
   }
 
+  // Функція, яка викликається після рендера головної
   function scrollAfterLoad(targetId) {
     const isHome = window.location.hash === '' || window.location.hash === '#';
 
-    // Якщо ми НЕ на головній (відкрита модель)
+    // Якщо ми НЕ на головній (тобто на сторінці моделі)
     if (!isHome) {
       sessionStorage.setItem('scrollTarget', targetId);
       window.location.hash = ''; // повертаємось на головну
       return;
     }
 
-    // Якщо вже на головній — просто скролимо
-    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    // Якщо вже на головній — чекаємо рендер і скролимо
+    setTimeout(() => {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
   }
 
+  // Обробка пунктів меню
   if (action === 'catalog') {
     scrollAfterLoad('catalog-container');
 
   } else if (action === 'contacts') {
-    scrollAfterLoad('footer-contact');
+    scrollAfterLoad('footer-contact'); // ← працює стабільно
 
   } else if (action === 'order') {
     contactUs();
   }
 }
+
 
 // Після зміни hash (коли повернулись з моделі на головну)
 window.addEventListener('hashchange', () => {
@@ -821,6 +854,7 @@ window.addEventListener('hashchange', () => {
     sessionStorage.removeItem('scrollTarget');
   }
 });
+
 
 function contactUs(model = '') {
   const t = LANG[currentLang];
@@ -841,6 +875,62 @@ function formatPrice(price) {
   if (!price) return 'N/A';
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
+
+function getAlt(car, img) {
+  const uaAlt = altMap[car.slug]?.[img];
+
+  // Якщо є український alt → повертаємо його
+  if (uaAlt) {
+    // Якщо мова англійська → автоматичний переклад
+    if (currentLang === 'en') {
+      return translateAltToEnglish(uaAlt, car);
+    }
+    return uaAlt;
+  }
+
+  // Якщо alt немає → fallback
+  return currentLang === 'en'
+    ? `${car.brand} ${car.model} — photo`
+    : `${car.brand} ${car.model} — фото`;
+}
+
+function translateAltToEnglish(uaAlt, car) {
+  // Автоматичний переклад ключових слів
+  return uaAlt
+    .replace('передній вигляд', 'front view')
+    .replace('вигляд збоку', 'side view')
+    .replace('передній лівий ракурс', 'front-left angle')
+    .replace('передній правий ракурс', 'front-right angle')
+    .replace('задній вигляд', 'rear view')
+    .replace('задній лівий ракурс', 'rear-left angle')
+    .replace('задній правий ракурс', 'rear-right angle')
+    .replace('панорамний дах', 'sunroof')
+    .replace('багажник', 'trunk')
+    .replace('рух', 'driving')
+    .replace('ключ', 'key')
+    .replace('моторний відсік', 'engine bay')
+    .replace('салон', 'interior')
+    .replace('панель приладів', 'dashboard')
+    .replace('водійське сидіння', 'driver seat')
+    .replace('пасажирське сидіння', 'passenger seat')
+    .replace('зарядний порт', 'charging port')
+    .replace('фара', 'headlight')
+    .replace('двері водія', 'driver door')
+    .replace('версія з люком', 'sunroof version')
+    .replace('версія без люка', 'no-sunroof version')
+    .replace('основний ракурс', 'main angle')
+    .replace('білий', 'white')
+    .replace('чорний', 'black')
+    .replace('помаранчевий', 'orange')
+    .replace('помаранчева', 'orange')
+    .replace('помаранчеві', 'orange')
+    .replace('ряд', 'row')
+    .replace('сидіння', 'seats')
+    .replace('фото', 'photo')
+    .replace(' — ', ' — ');
+}
+
+
 
 
 window.navigateTo = navigateTo;

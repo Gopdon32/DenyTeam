@@ -2,19 +2,47 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kunze — GAC Toyota Дилер</title>
-  <meta name="description" content="Офіційний дилер GAC Toyota. Електромобілі BZ3X, Yuan Plus, Song Plus. Гарантія, доставка, фінансування." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Kunze Auto — Офіційний дилер GAC Toyota в Україні</title>
+
+  <meta name="description" content="Офіційний дилер GAC Toyota в Україні. Електромобілі BZ3X, Yuan Plus, Song Plus, Qin L, ID.4 та інші. Гарантія виробника, швидка доставка, фінансування." />
   <meta name="theme-color" content="#0066cc" />
-  
-  <link rel="stylesheet" href="css/style.css?v=2" />
-  <link rel="shortcut icon" href="src/images/favicon-16x16.png" type="image/x-icon" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://kunzeauto.com/" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Kunze Auto — Офіційний дилер GAC Toyota в Україні" />
+  <meta property="og:description" content="Електромобілі BZ3X, Yuan Plus, Song Plus, Qin L, ID.4 та інші. Гарантія виробника, швидка доставка, фінансування." />
+  <meta property="og:image" content="https://kunzeauto.com/src/images/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kunzeauto.com/" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:site_name" content="Kunze Auto" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kunze Auto — Офіційний дилер GAC Toyota в Україні" />
+  <meta name="twitter:description" content="Електромобілі BZ3X, Yuan Plus, Song Plus, Qin L, ID.4 та інші. Гарантія виробника, швидка доставка, фінансування." />
+  <meta name="twitter:image" content="https://kunzeauto.com/src/images/og-image.jpg" />
+
+  <!-- Fonts Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS Optimization -->
+  <link rel="preload" href="css/style.css?v=2" as="style" />
+  <link rel="stylesheet" href="css/style.css?v=2" media="all" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="src/images/favicon-16x16.png" type="image/png" />
 </head>
 
 <body>
   <!-- Preloader -->
-  <div id="preloader" class="preloader">
+  <div id="preloader" class="preloader" aria-hidden="true" role="presentation">
     <div class="spinner"></div>
     <p>Завантаження…</p>
   </div>
@@ -25,18 +53,31 @@
   <!-- Image Gallery Popup -->
   <div id="galleryPopup" class="gallery-popup" inert>
     <button class="gallery-popup-close" aria-label="Закрити">&times;</button>
+
     <div class="gallery-popup-content">
       <button class="gallery-prev" aria-label="Попередня">‹</button>
-      <img id="galleryImage" src="" alt="Car Photo" class="gallery-image" />
+
+      <img 
+        id="galleryImage" 
+        src="" 
+        alt="Фото автомобіля" 
+        class="gallery-image"
+        width="1600"
+        height="900"
+      />
+
       <button class="gallery-next" aria-label="Наступна">›</button>
-      <div class="gallery-counter"><span id="current">1</span>/<span id="total">1</span></div>
+
+      <div class="gallery-counter">
+        <span id="current">1</span>/<span id="total">1</span>
+      </div>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/lang.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
-
+  <!-- Scripts (non-blocking) -->
+  <script src="js/alt.js" defer></script>
+  <script src="js/lang.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
