@@ -22,8 +22,13 @@ const APP_CONFIG = {
 let currentGalleryIndex = 0;
 let currentGallery = [];
 
-import { LANG } from './lang.js';
-let currentLang = localStorage.getItem('lang') || 'ua';
+let currentLang = localStorage.getItem('lang');
+
+if (!currentLang || !LANG[currentLang]) {
+  currentLang = 'ua';
+  localStorage.setItem('lang', 'ua');
+}
+
 
 function setLanguage(lang) {
   currentLang = lang;

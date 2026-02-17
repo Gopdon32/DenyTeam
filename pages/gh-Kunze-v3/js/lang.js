@@ -1,4 +1,4 @@
-export const LANG = {
+const LANG = {
   ua: {
     /* ============================
        НАВІГАЦІЯ
@@ -141,37 +141,22 @@ export const LANG = {
      АНГЛІЙСЬКА ВЕРСІЯ
   ============================================================ */
   en: {
-    /* ============================
-       NAVIGATION
-    ============================ */
     navCatalog: "Catalog",
     navContacts: "Contacts",
     navOrder: "Order",
     office: "Office",
 
-    /* ============================
-       HERO
-    ============================ */
     heroTitle: "Kunze Auto Salon",
     heroSubtitle: "High‑end models, financing cooperation and delivery to Ukraine — showcasing premium quality",
 
-    /* ============================
-       WARRANTY
-    ============================ */
     guaranteeTitle: "Battery Warranty",
     guaranteeText: "GAC Toyota guarantees that in case of battery ignition, the vehicle will be replaced with a new one.",
 
-    /* ============================
-       CATALOG
-    ============================ */
     catalogTitle: "Our Car Catalog",
     catalogSubtitle: "Choose a model and explore all specifications, prices and trims",
     details: "More details",
     order: "Order",
 
-    /* ============================
-       TRIMS
-    ============================ */
     trimsTitle: "Trims & Prices",
     trimsSubtitle: "Choose the configuration that suits you best",
     power: "hp",
@@ -182,27 +167,15 @@ export const LANG = {
     testDrive: "Book a test drive",
     contactUs: "Contact us",
 
-    /* ============================
-       PDF
-    ============================ */
     pdfTitle: "Technical Specifications",
     pdfSubtitle: "Download a PDF with detailed model specifications",
 
-    /* ============================
-       GALLERY
-    ============================ */
     galleryTitle: "Photo Gallery",
     gallerySubtitle: "Browse detailed photos",
 
-    /* ============================
-       CONTACTS
-    ============================ */
     contactsTitle: "Contact us",
     contactsSubtitle: "Our team is ready to answer all your questions",
 
-    /* ============================
-       FOOTER
-    ============================ */
     footerWorkHours: "Working hours",
     footerWeekdays: "Weekdays",
     footerLunch: "Lunch",
@@ -211,23 +184,14 @@ export const LANG = {
     footerContacts: "Contacts",
     phoneLabel: "Phones",
 
-    /* ============================
-       VIDEO
-    ============================ */
     videoTitle: "Video Review",
     videoSubtitle: "Watch detailed video reviews",
     videoNotSupported: "Your browser does not support video.",
 
-    /* ============================
-       FORMS
-    ============================ */
     contactModel: "I'm interested in",
     contactGeneral: "I would like to get more information",
     priceFrom: "from",
 
-    /* ============================
-       MAPS
-    ============================ */
     colorsMap: {
       "Білий": "White",
       "Сірий": "Gray",
@@ -239,9 +203,6 @@ export const LANG = {
       "Повний": "All-wheel drive"
     },
 
-    /* ============================
-       DESCRIPTIONS
-    ============================ */
     descriptionMap: {
       "Преміальна динаміка. Великий запас ходу. Офіційна гарантія виробника.":
         "Premium dynamics. Long range. Official manufacturer warranty.",
