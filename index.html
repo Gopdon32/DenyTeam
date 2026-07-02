@@ -1,160 +1,142 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DenyTeam | Premium Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="loading">
-
+<!doctype html>
+<html lang="ua">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DenyTeam</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="loading">
+    <div id="preloader">
+      <div class="preloader-box">
+        <div class="preloader-ring"></div>
+        <p>Loading DenyTeam...</p>
+      </div>
+    </div>
     <div id="progress-bar"></div>
     <div id="cursor-glow"></div>
 
     <div id="app">
-        <header>
-            <div class="container header-flex">
-                <div class="logo">DENY<b>TEAM</b></div>
-                
-                <nav class="user-switcher">
-                    <a href="?user=me" class="user-link" id="nav-me">Денис</a>
-                    <a href="?user=friend" class="user-link" id="nav-friend">Алексей</a>
-                    <a href="?user=girl" class="user-link" id="nav-girl">Ангелина</a>
-                </nav>
+      <header>
+        <div class="container header-flex">
+          <button
+            id="burger-btn"
+            class="burger-btn"
+            aria-label="Toggle navigation menu"
+          >
+            <span></span>
+          </button>
 
-                <div class="header-actions">
-                    <button id="lang-switch" class="lang-btn">EN</button>
-                </div>
+          <div class="logo">DENY<b>TEAM</b></div>
+
+          <nav class="user-switcher" aria-label="Main navigation">
+            <a href="?user=me" class="user-link" id="nav-me">Портфоліо</a>
+            <a href="?user=blog" class="user-link" id="nav-blog">Блог</a>
+            <a href="?user=games" class="user-link" id="nav-games">Ігри</a>
+          </nav>
+
+          <div class="header-actions">
+            <button id="lang-switch" class="lang-btn">EN</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="profile-section container">
+        <div class="profile-card premium-layout">
+          <div class="profile-aside">
+            <div class="avatar-wrapper">
+              <div class="avatar"></div>
+              <div class="online-indicator"></div>
             </div>
-        </header>
+            <div class="social-links-grid" id="social-container"></div>
+          </div>
 
-        <section class="profile-section container">
-            <div class="profile-card premium-layout">
-                <div class="profile-aside">
-                    <div class="avatar-wrapper">
-                        <div class="avatar"></div>
-                        <div class="online-indicator"></div>
-                    </div>
-                    <div class="social-links-grid" id="social-container"></div>
-                </div>
+          <div class="profile-main">
+            <div class="badge-row" id="user-badges"></div>
+            <h1 id="about-name"></h1>
+            <p class="user-role" id="hero-subtitle"></p>
 
-                <div class="profile-main">
-                    <div class="badge-row" id="user-badges"></div>
-                    <h1 id="about-name"></h1>
-                    <p class="user-role" id="hero-subtitle"></p>
-                    
-                    <div class="bio-container">
-                        <p id="about-text"></p>
-                    </div>
-
-                    <div class="user-meta-info">
-                        <div class="meta-item">
-                            <span class="meta-label" id="label-projects">Проекты</span>
-                            <span class="meta-value" id="count-projects">0</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label" id="label-status">Статус</span>
-                            <span class="meta-value status-text" id="status-text">...</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="bio-container">
+              <p id="about-text"></p>
             </div>
-        </section>
 
-        <section class="search-section container">
-            <div class="search-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="project-search" placeholder="Поиск проектов..." class="search-input">
+            <div class="user-meta-info">
+              <div class="meta-item">
+                <span class="meta-label" id="label-projects">Проєкти</span>
+                <span class="meta-value" id="count-projects">0</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label" id="label-status">Статус</span>
+                <span class="meta-value status-text" id="status-text">...</span>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <nav class="filter-bar container">
-            <button class="filter-btn active" data-cat="all" id="filter_all">Все</button>
-            <button class="filter-btn" data-cat="layout" id="filter_layout">Верстка</button>
-            <button class="filter-btn" data-cat="js" id="filter_js">JavaScript</button>
-        </nav>
+      <section class="search-section container">
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input
+            type="text"
+            id="project-search"
+            placeholder="Пошук проєктів..."
+            class="search-input"
+          />
+        </div>
+      </section>
 
-        <main class="container">
-            <div class="section-header">
-                <h2 id="works-title" class="section-label">Мои работы</h2>
-                <div class="grid-stats" id="filter-stats"></div>
-            </div>
-            <div id="projects-grid" class="grid"></div>
-        </main>
+      <nav class="filter-bar container">
+        <button class="filter-btn active" data-cat="all" id="filter_all">
+          Усі
+        </button>
+        <button class="filter-btn" data-cat="layout" id="filter_layout">
+          Верстка / Дизайн
+        </button>
+        <button class="filter-btn" data-cat="js" id="filter_js">
+          JavaScript / Скрипти
+        </button>
+      </nav>
 
-        <footer>
-            <div class="container footer-content">
-                <div class="footer-logo">DENY<b>TEAM</b></div>
-                <p id="footer-text"></p>
-                <div class="copyright">
-                    &copy; 2026 Project Hub Premium Concept
-                </div>
-            </div>
-        </footer>
+      <main class="container">
+        <div class="section-header">
+          <h2 id="works-title" class="section-label">Мої роботи</h2>
+          <div class="grid-stats" id="filter-stats"></div>
+        </div>
+        <div id="projects-grid" class="grid"></div>
+        <div class="pagination-wrapper">
+          <div id="pagination" class="pagination"></div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="container footer-content">
+          <div class="footer-logo">DENY<b>TEAM</b></div>
+          <p id="footer-text"></p>
+          <div class="copyright">&copy; 2026 DenyTeam</div>
+        </div>
+      </footer>
     </div>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <div id="modal-data"></div>
-        </div>
+      <div class="modal-content">
+        <div id="modal-data"></div>
+      </div>
     </div>
-    
+
     <div id="toast-container"></div>
-    <button id="scroll-top" class="scroll-btn"><i class="fa-solid fa-arrow-up"></i></button>
-
-    <div id="admin-panel" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:99999; overflow-y:auto; padding:20px;">
-        <div style="max-width:600px; margin:20px auto; background:#111; border:1px solid var(--accent-green); border-radius:20px; padding:30px; box-shadow:0 0 50px rgba(0,0,0,0.5);">
-            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                <h2 style="color:white; font-family:'Space Grotesk'; margin:0;">DenyTeam CMS</h2>
-                <button onclick="document.getElementById('admin-panel').style.display='none'" style="background:none; border:none; color:#555; cursor:pointer; font-size:24px;">&times;</button>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-bottom:20px;">
-                <button type="button" class="filter-btn active" id="btn-tab-list">Список</button>
-                <button type="button" class="filter-btn" id="btn-tab-form">Добавить</button>
-            </div>
-
-            <div id="admin-list-tab">
-                <select id="adm-manage-user" onchange="window.loadAdminList()" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                    <option value="me">Денис</option>
-                    <option value="friend">Алексей</option>
-                    <option value="girl">Ангелина</option>
-                </select>
-                <div id="admin-posts-container" style="display:grid; gap:10px;"></div>
-            </div>
-
-            <div id="admin-form-tab" style="display:none;">
-                <input type="hidden" id="edit-index" value="-1">
-                <label style="color:#888; display:block; margin-bottom:5px;">Для кого?</label>
-                <select id="adm-user-select" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                    <option value="me">Денис</option>
-                    <option value="friend">Алексей</option>
-                    <option value="girl">Ангелина</option>
-                </select>
-
-                <input type="text" id="adm-title" placeholder="Название проекта *" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                <input type="text" id="adm-category" placeholder="Категория (js / layout) *" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                <input type="text" id="adm-tags" placeholder="Теги (через запятую) *" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                
-                <div style="margin-bottom: 15px; padding: 10px; border: 1px dashed #444; border-radius: 10px;">
-                    <label style="color: #888; font-size: 12px; display: block; margin-bottom: 5px;">Картинка проекта *</label>
-                    <input type="file" id="adm-file" accept="image/*" style="width: 100%; color: white; font-size: 12px;">
-                    <input type="hidden" id="adm-img"> 
-                </div>
-
-                <input type="text" id="adm-link" placeholder="Ссылка на проект" style="width:100%; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;">
-                <textarea id="adm-desc-ru" placeholder="Описание RU *" style="width:100%; height:70px; padding:12px; margin-bottom:10px; background:#222; border:1px solid #333; color:white; border-radius:10px;"></textarea>
-                <textarea id="adm-desc-en" placeholder="Описание EN (необязательно)" style="width:100%; height:70px; padding:12px; margin-bottom:20px; background:#222; border:1px solid #333; color:white; border-radius:10px;"></textarea>
-
-                <input type="password" id="adm-token" placeholder="GitHub PAT Token *" style="width:100%; padding:12px; margin-bottom:20px; background:#111; border:1px solid var(--accent-green); color:white; border-radius:10px;">
-
-                <button onclick="publishPost()" id="adm-save-btn" class="adm-publish-btn" style="width:100%; padding:15px; background:var(--accent-green); color:black; border:none; border-radius:10px; font-weight:800; cursor:pointer;">ОПУБЛИКОВАТЬ</button>
-            </div>
-        </div>
-    </div>
+    <button id="scroll-top" class="scroll-btn">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script type="module" src="js/app.js"></script>
-</body>
+  </body>
 </html>
