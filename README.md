@@ -1,30 +1,31 @@
-# Hi, I'm Denys! 👋
-An aspiring Junior Frontend Developer based in Hamburg, Germany.  
-I hold a Bachelor of Science (B.Sc.) in Computer Science and focus on building clean, responsive, and pixel-perfect web interfaces.
+# 🌐 DenyTeam — Custom Frontend Portfolio Platform
+
+Welcome to the central repository of my frontend ecosystem. This project is a custom-built, highly optimized personal portfolio website that dynamically manages, filters, and renders my web development works.
+
+ℹ️ **Live Showcase:** You can view the fully operational interactive portfolio here: [https://gopdon32.github.io/DenyTeam/](https://gopdon32.github.io/DenyTeam/)
 
 ---
 
-## 🚀 My Frontend Portfolio
+## 🛠️ Architecture & Technical Features
 
-Here is a collection of my web development projects, components, and responsive layouts. You can open and test each project live in your browser:
+Instead of hardcoding components, I designed this platform to follow clean and scalable software engineering principles:
 
-### 🌐 Full Landing Pages & Web Applications
-* 🏦 **Digital Bank Landing Page** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-digitalbank-landing/)
-* 📂 **Fylo File Hosting Landing Page** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-fylo/)
-* ✍️ **Personal Blog Preview Application** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-blog-preview/)
-
-### 📊 Interactive UI Components & Cards
-* 📱 **QR Code Component** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-qr-card/)
-* 🛒 **Product Preview Card** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-preview-card/)
-* 📈 **Stats Card Component** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-stats-card/)
-* 👥 **Social Links Profile Page** — [Live Demo](https://gopdon32.github.io/DenyTeam/pages/gh-social-link-page/)
+* 🗄️ **Dynamic Data Management (CMS-like):** Project data, descriptions, dates, and images are managed via a structured local configuration layer (`lang.json` / `data/`).
+* 🔍 **Interactive Filtering System:** Built-in client-side filtering logic allowing users to seamlessly sort projects by tags (e.g., "All", "Layout/HTML/CSS", "JavaScript Core").
+* 📦 **Modular Architecture:** The repository serves as a monorepo-style structure where independent sub-projects are neatly organized inside the `/pages/` directory and routed dynamically.
+* 📱 **Advanced Responsive Layouts:** Optimized for high performance and fluid responsiveness across all viewports using modern CSS Grid, Flexbox, and Mobile-First strategies.
 
 ---
 
-## 🛠️ Tech Stack & Tools
-* **Languages:** HTML5, CSS3, JavaScript (ES6+)
-* **Layouts:** Flexbox, CSS Grid, Responsive Web Design (Mobile-First)
-* **Design & Tools:** Figma, VS Code, Git & GitHub
+## 📂 Repository Structure Highlights
+
+* `/pages/` — Contains isolated, standalone production-ready UI web apps, components, and responsive pages.
+* `/js/` & `/css/` — Main architecture driving the central portfolio engine, themes, and animations.
+* `/data/` — Configuration schemas and data objects driving the dynamic portfolio content.
 
 ---
-📫 **How to reach me:** Connect with me on [LinkedIn](https://www.linkedin.com/in/denys-salamakhin-165792388/)
+
+## 🚀 Technical Stack
+* **Core:** Semantic HTML5, Advanced CSS3 (Grid/Flexbox/Variables), JavaScript (ES6+ Architecture)
+* **Design System:** Translated from precision Figma templates into clean production code
+* **Environment:** VS Code, Git version control, GitHub Actions / Pages deployment
