@@ -1,10 +1,31 @@
-![](https://komarev.com/ghpvc/?username=gopdon32)
-<h1>Hi, i`m Denys! </h1>
-<p>I am from Ukraine. <br>
-I live in Hamburg, Germany. <br>
-I am studying to become a web developer and practice every day! <br>
-<br>
-This is my favorite activity, and I always make time for it!</p>
-<br>
+# 🌐 DenyTeam — Custom Frontend Portfolio Platform
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=gopdon32&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+Welcome to the central repository of my frontend ecosystem. This project is a custom-built, highly optimized personal portfolio website that dynamically manages, filters, and renders my web development works.
+
+ℹ️ **Live Showcase:** You can view the fully operational interactive portfolio here: [https://gopdon32.github.io/DenyTeam/](https://gopdon32.github.io/DenyTeam/)
+
+---
+
+## 🛠️ Architecture & Technical Features
+
+Instead of hardcoding components, I designed this platform to follow clean and scalable software engineering principles:
+
+* 🗄️ **Dynamic Data Management (CMS-like):** Project data, descriptions, dates, and images are managed via a structured local configuration layer (`lang.json` / `data/`).
+* 🔍 **Interactive Filtering System:** Built-in client-side filtering logic allowing users to seamlessly sort projects by tags (e.g., "All", "Layout/HTML/CSS", "JavaScript Core").
+* 📦 **Modular Architecture:** The repository serves as a monorepo-style structure where independent sub-projects are neatly organized inside the `/pages/` directory and routed dynamically.
+* 📱 **Advanced Responsive Layouts:** Optimized for high performance and fluid responsiveness across all viewports using modern CSS Grid, Flexbox, and Mobile-First strategies.
+
+---
+
+## 📂 Repository Structure Highlights
+
+* `/pages/` — Contains isolated, standalone production-ready UI web apps, components, and responsive pages.
+* `/js/` & `/css/` — Main architecture driving the central portfolio engine, themes, and animations.
+* `/data/` — Configuration schemas and data objects driving the dynamic portfolio content.
+
+---
+
+## 🚀 Technical Stack
+* **Core:** Semantic HTML5, Advanced CSS3 (Grid/Flexbox/Variables), JavaScript (ES6+ Architecture)
+* **Design System:** Translated from precision Figma templates into clean production code
+* **Environment:** VS Code, Git version control, GitHub Actions / Pages deployment
