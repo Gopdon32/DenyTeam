@@ -4,7 +4,7 @@ backend:
   branch: "main"
   auth_type: "implicit"
   local_backend: false
-  app_id: "Ov23liCffDpzNbJ9SL19"
+  client_id: "Ov23liCffDpzNbJ9SL19"
   base_url: "https://api.netlify.com"
   site_id: "denyteam"
 
