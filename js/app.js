@@ -303,7 +303,7 @@ function showModal(post) {
           <div class="description-section">
             <p>${desc}</p>
           </div>
-          <div class="post-content markdown-content" aria-live="polite">
+          <div class="modal-main-content post-content markdown-content" aria-live="polite">
             <p>Завантаження...</p>
           </div>
           <div class="modal-footer-actions">
@@ -396,7 +396,7 @@ function hidePreloader() {
 }
 
 async function loadPostContent(post) {
-  const container = document.querySelector(".post-content");
+  const container = document.querySelector(".modal-main-content");
   if (!container) return;
 
   const path =
@@ -405,23 +405,32 @@ async function loadPostContent(post) {
   try {
     let res = await fetch(path);
     if (!res.ok) {
-      // fallback to raw.githubusercontent.com
       const rawUrl = `https://raw.githubusercontent.com/Gopdon32/DenyTeam/main/${path}`;
       res = await fetch(rawUrl);
     }
     if (!res.ok) throw new Error("Not found");
+
     let text = await res.text();
-    // remove YAML frontmatter if present
     text = text.replace(/^---\n[\s\S]*?\n---\n/, "");
+
+    const headingMatch = text.match(/^\s*(#{1,2})\s*(.+?)\s*\n+/);
+    if (headingMatch) {
+      const headingText = headingMatch[2].trim();
+      const normalize = str =>
+        str
+          .toLowerCase()
+          .replace(/[^a-z0-9а-яёіїєґ]+/gi, " ")
+          .trim();
+      if (normalize(headingText) === normalize(post.title)) {
+        text = text.slice(headingMatch[0].length);
+      }
+    }
+
     const html = typeof marked !== "undefined" ? marked.parse(text) : text;
     container.innerHTML = html;
-    // highlight code blocks if Prism is available
-    try {
-      if (window.Prism && typeof window.Prism.highlightAll === "function") {
-        window.Prism.highlightAll();
-      }
-    } catch (e) {
-      console.warn("Prism highlight failed", e);
+
+    if (window.Prism && typeof window.Prism.highlightAll === "function") {
+      window.Prism.highlightAll();
     }
   } catch (err) {
     console.error("Failed to load post content", err);

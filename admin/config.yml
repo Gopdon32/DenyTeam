@@ -1,20 +1,9 @@
 backend:
-  name: github
-  repo: "Gopdon32/DenyTeam"
-  branch: "main"
-  auth_type: "oauth"
-  # Disable local backend so CMS uses GitHub OAuth to commit files
-  local_backend: false
-  # Explicit Netlify site slug for auth proxy
-  site_id: "charming-sherbet-9d1521"
-  # To enable login, register a GitHub OAuth App and set the callback URL below
-  # 1) Register OAuth App in GitHub (Settings → Developer settings → OAuth Apps)
-  # 2) Set Authorization callback URL to: https://charming-sherbet-9d1521.netlify.app/admin/
-  # 3) Copy Client ID and paste it below
-  client_id: "Ov23liCffDpzNbJ9SL19"
+  name: git-gateway
+  branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
   - name: "posts"
@@ -25,7 +14,27 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["layout", "js", "blog"],
+          default: "blog",
+        }
       - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Обкладинка картки", name: "image", widget: "image" }
+      - {
+          label: "Description UA",
+          name: "desc_ua",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "Description EN",
+          name: "desc_en",
+          widget: "text",
+          required: false,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "projects_json"
