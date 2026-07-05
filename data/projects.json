@@ -308,13 +308,13 @@
           "Верстка"
         ],
         "category": "blog",
-        "image": "assets/images/blog-intro.webp",
+        "image": "/assets/images/more-works.jpg",
         "link": "#",
         "desc": {
           "ua": "Покроковий розбір перетворення командного сайту у портфоліо.",
           "en": ""
         },
-        "date": "2026-06-20",
+        "date": "2026-06-20T00:00:00.000Z",
         "featured": false
       },
       {
