@@ -1,9 +1,13 @@
 ---
-title: "Як я модернізував свій сайт-портфоліо"
-date: "2026-06-20"
-tags: ["UI/UX", "Верстка"]
-slug: "yak-ja-modernizuvav-svij-sajt-portfolio"
-excerpt: "Покроковий розбір перетворення командного сайту у портфоліо."
+title: Як я модернізував свій сайт-портфоліо
+date: 2026-06-20
+tags:
+  - UI/UX
+  - Верстка
+slug: yak-ja-modernizuvav-svij-sajt-portfolio
+excerpt: Покроковий розбір перетворення командного сайту у портфоліо.
+category: blog
+image: /assets/images/more-works.jpg
 ---
 
 # Як я модернізував свій сайт-портфоліо
