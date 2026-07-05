@@ -36,6 +36,24 @@
     "themeClass": "default-mode",
     "posts": [
       {
+        "title": "Blog Preview",
+        "slug": "blog-preview",
+        "content_path": "content/portfolio/blog-preview.md",
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
+        "category": "layout",
+        "image": "assets/images/Blog-Preview.png",
+        "link": "pages/gh-blog-preview/index.html",
+        "desc": {
+          "ua": "Прев’ю-картка блогу з акцентом на типографіку та читабельність.",
+          "en": "Blog preview card with focus on typography and readability."
+        },
+        "date": "2025-12-03T16:10:00.000Z",
+        "featured": false
+      },
+      {
         "title": "Ingredients Component",
         "slug": "ingredients-component",
         "content_path": "content/portfolio/ingredients-component.md",
@@ -196,24 +214,6 @@
           "en": "Stats preview card demonstrating color overlays."
         },
         "date": "2023-12-20",
-        "featured": false
-      },
-      {
-        "title": "Blog Preview",
-        "slug": "blog-preview",
-        "content_path": "content/portfolio/blog-preview.md",
-        "tags": [
-          "HTML",
-          "CSS"
-        ],
-        "category": "layout",
-        "image": "assets/images/Blog-Preview.png",
-        "link": "pages/gh-blog-preview/index.html",
-        "desc": {
-          "ua": "Прев’ю-картка блогу з акцентом на типографіку та читабельність.",
-          "en": "Blog preview card with focus on typography and readability."
-        },
-        "date": "2023-12-05",
         "featured": false
       },
       {
