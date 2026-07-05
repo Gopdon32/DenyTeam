@@ -2,10 +2,10 @@ backend:
   name: github
   repo: "Gopdon32/DenyTeam"
   branch: "main"
-  auth_type: "proxy"
+  auth_type: "implicit"
   local_backend: false
   app_id: "Ov23liCffDpzNbJ9SL19"
-  base_url: "https://auth.decapcms.org/callback"
+  base_url: "https://api.netlify.com/auth"
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
