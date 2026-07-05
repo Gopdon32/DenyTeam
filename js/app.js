@@ -239,12 +239,13 @@ function renderPostGrid(
   grid.innerHTML = pageData
     .map((project, index) => {
       const desc = getLocalizedDescription(project);
+      const dateValue = project.date ? String(project.date).split("T")[0] : "";
       return `
         <div class="card post-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.05}s">
             ${project.featured ? '<div class="featured-badge">NEW</div>' : ""}
             <div class="card-img" style="background-image: url('${project.image}')"></div>
             <div class="card-content">
-                <span class="post-date">${project.date || ""}</span>
+                <span class="post-date">${dateValue}</span>
                 <div class="tags">${project.tags
                   .map(tag => `<span class="tag clickable-tag">#${tag}</span>`)
                   .join("")}</div>
@@ -289,12 +290,13 @@ function showModal(post) {
   const actionText = getText("btn_demo") || "Open";
   const closeText = getText("btn_close") || "Close";
 
+  const modalDate = post.date ? String(post.date).split("T")[0] : "";
   content.innerHTML = `
       <div class="modal-card">
         <div class="modal-header-img" style="background-image: url('${post.image}')"></div>
         <div class="modal-body">
           <div class="modal-meta-bar">
-            <span><i class="fa-regular fa-calendar"></i> ${post.date}</span>
+            <span><i class="fa-regular fa-calendar"></i> ${modalDate}</span>
             <div class="tags">${post.tags
               .map(tag => `<span class="tag">#${tag}</span>`)
               .join("")}</div>
