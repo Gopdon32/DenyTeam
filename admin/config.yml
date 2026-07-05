@@ -6,22 +6,76 @@ media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts"
+  - name: "portfolio"
+    label: "Портфоліо"
+    folder: "content/portfolio"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Tags", name: "tags", widget: "list" }
       - {
           label: "Category",
           name: "category",
-          widget: "select",
-          options: ["layout", "js", "blog"],
+          widget: "hidden",
+          default: "layout",
+        }
+      - { label: "Обкладинка картки", name: "image", widget: "image" }
+      - {
+          label: "Description UA",
+          name: "desc_ua",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "Description EN",
+          name: "desc_en",
+          widget: "text",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "games"
+    label: "Ігри"
+    folder: "content/games"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Category", name: "category", widget: "hidden", default: "js" }
+      - { label: "Обкладинка картки", name: "image", widget: "image" }
+      - {
+          label: "Description UA",
+          name: "desc_ua",
+          widget: "text",
+          required: false,
+        }
+      - {
+          label: "Description EN",
+          name: "desc_en",
+          widget: "text",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Блог"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "hidden",
           default: "blog",
         }
-      - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Обкладинка картки", name: "image", widget: "image" }
       - {
           label: "Description UA",

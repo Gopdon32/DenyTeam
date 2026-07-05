@@ -2,11 +2,32 @@ const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 
-const POSTS_DIR = path.join(__dirname, "..", "content", "posts");
 const DATA_FILE = path.join(__dirname, "..", "data", "projects.json");
+const SOURCES = [
+  {
+    dir: path.join(__dirname, "..", "content", "blog"),
+    section: "blog",
+    defaultCategory: "blog",
+  },
+  {
+    dir: path.join(__dirname, "..", "content", "portfolio"),
+    section: "me",
+    defaultCategory: "layout",
+  },
+  {
+    dir: path.join(__dirname, "..", "content", "games"),
+    section: "games",
+    defaultCategory: "js",
+  },
+  {
+    dir: path.join(__dirname, "..", "content", "posts"),
+    section: null,
+    defaultCategory: "blog",
+  },
+];
 
-function readPost(file) {
-  const full = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
+function readPost(filePath) {
+  const full = fs.readFileSync(filePath, "utf8");
   const fm = full.match(/^---\n([\s\S]*?)\n---\n/);
   let meta = {};
   if (fm) {
@@ -50,48 +71,61 @@ function buildDesc(meta) {
   return desc;
 }
 
+function collectFiles(directory) {
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory).filter(f => f.endsWith(".md"));
+}
+
 function generate() {
   const db = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
-  const posts = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith(".md"));
-
   const generated = {
     me: [],
     blog: [],
     games: [],
   };
 
-  posts.forEach(file => {
-    const { meta } = readPost(file);
-    const slug = meta.slug || file.replace(/\.md$/, "");
-    const category = String(meta.category || "blog")
-      .trim()
-      .toLowerCase();
-    const section = sectionForCategory(category);
+  SOURCES.forEach(source => {
+    const files = collectFiles(source.dir);
+    files.forEach(file => {
+      const filePath = path.join(source.dir, file);
+      const { meta } = readPost(filePath);
+      const slug = meta.slug || file.replace(/\.md$/, "");
+      const category = String(meta.category || source.defaultCategory)
+        .trim()
+        .toLowerCase();
+      const section = source.section || sectionForCategory(category);
 
-    generated[section].push({
-      title: meta.title || slug,
-      slug,
-      content_path: `content/posts/${file}`,
-      tags: normalizeTags(meta.tags),
-      category,
-      image: meta.image || "assets/images/blog-intro.webp",
-      link: meta.link || "#",
-      desc: buildDesc(meta),
-      date: meta.date || new Date().toISOString().slice(0, 10),
-      featured: !!meta.featured,
+      generated[section].push({
+        title: meta.title || slug,
+        slug,
+        content_path: path
+          .relative(path.join(__dirname, ".."), filePath)
+          .replace(/\\/g, "/"),
+        tags: normalizeTags(meta.tags),
+        category,
+        image: meta.image || "assets/images/blog-intro.webp",
+        link: meta.link || "#",
+        desc: buildDesc(meta),
+        date: meta.date || new Date().toISOString().slice(0, 10),
+        featured: !!meta.featured,
+      });
     });
   });
 
+  const output = { ...db };
+
   Object.keys(generated).forEach(section => {
-    db[section] = db[section] || {};
-    const existing = Array.isArray(db[section].posts) ? db[section].posts : [];
-    const manualPosts = existing.filter(post => !post.content_path);
-    db[section].posts = [...manualPosts, ...generated[section]].sort(
+    output[section] = output[section] || {};
+    const existingPosts = Array.isArray(output[section].posts)
+      ? output[section].posts
+      : [];
+    const manualPosts = existingPosts.filter(post => !post.content_path);
+    output[section].posts = [...manualPosts, ...generated[section]].sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
   });
 
-  fs.writeFileSync(DATA_FILE, JSON.stringify(db, null, 2), "utf8");
+  fs.writeFileSync(DATA_FILE, JSON.stringify(output, null, 2), "utf8");
   console.log(
     "Generated index for posts:",
     Object.entries(generated).reduce((sum, [, list]) => sum + list.length, 0),
