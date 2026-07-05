@@ -157,7 +157,7 @@ header .container {
 
 /* Навигация по пользователям */
 .user-switcher {
-  display: none;
+  display: none !important;
   order: 2;
   display: flex;
   flex-wrap: wrap;
