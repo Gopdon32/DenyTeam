@@ -63,13 +63,13 @@
           "CSS"
         ],
         "category": "js",
-        "image": "assets/images/digitalbank.webp",
+        "image": "/assets/images/digitalbank.webp",
         "link": "pages/gh-digitalbank-landing/index.html",
         "desc": {
           "ua": "Лендінг цифрового банку.",
           "en": "Digital bank landing page."
         },
-        "date": "2025-10-12",
+        "date": "2025-10-12T00:00:00.000Z",
         "featured": false
       },
       {
