@@ -1,16 +1,16 @@
 ---
-title: "Перший проект портфоліо"
+title: "РџРµСЂС€РёР№ РїСЂРѕРµРєС‚ РїРѕСЂС‚С„РѕР»С–Рѕ"
 date: "2026-07-05"
 tags:
   - Portfolio
   - Design
 category: "layout"
 image: "assets/images/portfolio-intro.webp"
-desc_ua: "Початковий проект портфоліо для перевірки CMS."
+desc_ua: "РџРѕС‡Р°С‚РєРѕРІРёР№ РїСЂРѕРµРєС‚ РїРѕСЂС‚С„РѕР»С–Рѕ РґР»СЏ РїРµСЂРµРІС–СЂРєРё CMS."
 desc_en: "Starter portfolio project for CMS testing."
 featured: false
 ---
 
-# Перший проект портфоліо
+# РџРµСЂС€РёР№ РїСЂРѕРµРєС‚ РїРѕСЂС‚С„РѕР»С–Рѕ
 
-Опис проекту...
+РћРїРёСЃ РїСЂРѕРµРєС‚Сѓ...

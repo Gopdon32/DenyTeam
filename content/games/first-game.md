@@ -1,16 +1,16 @@
 ---
-title: "Перша гра"
+title: "РџРµСЂС€Р° РіСЂР°"
 date: "2026-07-05"
 tags:
   - Game
   - JavaScript
 category: "js"
 image: "assets/images/game-intro.webp"
-desc_ua: "Початкова гра для каталогу ігор у CMS."
+desc_ua: "РџРѕС‡Р°С‚РєРѕРІР° РіСЂР° РґР»СЏ РєР°С‚Р°Р»РѕРіСѓ С–РіРѕСЂ Сѓ CMS."
 desc_en: "Starter game entry for the CMS games catalog."
 featured: false
 ---
 
-# Перша гра
+# РџРµСЂС€Р° РіСЂР°
 
-Опис гри...
+РћРїРёСЃ РіСЂРё...
