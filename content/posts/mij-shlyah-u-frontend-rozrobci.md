@@ -1,9 +1,15 @@
 ---
-title: "Мій шлях у Frontend розробці"
-date: "2026-06-19"
-tags: ["Веб-разработка", "Frontend"]
-slug: "mij-shlyah-u-frontend-rozrobci"
-excerpt: "Історія про те, як я починав і що допомогло у розвитку."
+excerpt: Історія про те, як я починав і що допомогло у розвитку.
+slug: mij-shlyah-u-frontend-rozrobci
+title: Мій шлях у Frontend розробці
+date: 2026-06-19
+category: blog
+tags:
+  - Веб-разработка
+  - Frontend
+image: /assets/images/blog-intro.webp
+desc_ua: Мій шлях
+desc_en: My weg
 ---
 
 # Мій шлях у Frontend розробці
