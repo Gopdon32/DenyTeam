@@ -69,7 +69,9 @@
           "de": "Digitalbank Landingpage."
         },
         "date": "2025-10-12",
-        "featured": false
+        "featured": false,
+        "slug": "digitalbank",
+        "content_path": "content/portfolio/digitalbank.md"
       },
       {
         "title": "Ingredients Component",
@@ -86,7 +88,9 @@
           "de": "Interaktive Zutatenkomponente mit dynamischer Liste."
         },
         "date": "2024-04-10",
-        "featured": false
+        "featured": false,
+        "slug": "ingredients-component",
+        "content_path": "content/portfolio/ingredients-component.md"
       },
       {
         "title": "Score Summary",
@@ -103,7 +107,9 @@
           "de": "Ergebniszusammenfassung mit dynamischer Punktauswertung."
         },
         "date": "2024-03-15",
-        "featured": false
+        "featured": false,
+        "slug": "score-summary",
+        "content_path": "content/portfolio/score-summary.md"
       },
       {
         "title": "Fylo Landing",
@@ -120,7 +126,9 @@
           "de": "Dunkle Fylo-Landingpage mit durchdachten Formularen und UX-Elementen."
         },
         "date": "2024-02-20",
-        "featured": false
+        "featured": false,
+        "slug": "fylo-landing",
+        "content_path": "content/portfolio/fylo-landing.md"
       },
       {
         "title": "Huddle Landing",
@@ -137,7 +145,9 @@
           "de": "Landingpage basierend auf modernem Flexbox-Layout."
         },
         "date": "2024-02-10",
-        "featured": true
+        "featured": true,
+        "slug": "huddle-landing",
+        "content_path": "content/portfolio/huddle-landing.md"
       },
       {
         "title": "Order Plan",
@@ -154,7 +164,9 @@
           "de": "Preisplan-Auswahloberfläche mit responsivem Grid für alle Geräte."
         },
         "date": "2024-01-25",
-        "featured": true
+        "featured": true,
+        "slug": "order-plan",
+        "content_path": "content/portfolio/order-plan.md"
       },
       {
         "title": "NFT Card",
@@ -172,7 +184,9 @@
           "de": "Stilvolle NFT-Karte mit einzigartigen Hover-Effekten und dynamischem Leuchten."
         },
         "date": "2024-01-15",
-        "featured": false
+        "featured": false,
+        "slug": "nft-card",
+        "content_path": "content/portfolio/nft-card.md"
       },
       {
         "title": "Social Links",
@@ -189,7 +203,9 @@
           "de": "Social Links Profilseite. Sauberes und klares UI."
         },
         "date": "2024-01-10",
-        "featured": false
+        "featured": false,
+        "slug": "social-links",
+        "content_path": "content/portfolio/social-links.md"
       },
       {
         "title": "Grid Sections",
@@ -206,7 +222,9 @@
           "de": "Beispiel für ein komplexes asymmetrisches Grid-Layout."
         },
         "date": "2024-01-05",
-        "featured": false
+        "featured": false,
+        "slug": "grid-sections",
+        "content_path": "content/portfolio/grid-sections.md"
       },
       {
         "title": "Stats Card",
@@ -223,7 +241,9 @@
           "de": "Statistik-Karte, die den Einsatz von Farbüberlagerungen zeigt."
         },
         "date": "2023-12-20",
-        "featured": false
+        "featured": false,
+        "slug": "stats-card",
+        "content_path": "content/portfolio/stats-card.md"
       },
       {
         "title": "Blog Preview",
@@ -240,7 +260,9 @@
           "de": "Blog-Vorschaukarte mit Fokus auf Typografie und Lesbarkeit."
         },
         "date": "2023-12-05",
-        "featured": false
+        "featured": false,
+        "slug": "blog-preview",
+        "content_path": "content/portfolio/blog-preview.md"
       },
       {
         "title": "Column Card",
@@ -256,7 +278,9 @@
           "de": "Drei-Spalten-Karte, umgesetzt mit CSS Grid."
         },
         "date": "2023-11-20",
-        "featured": false
+        "featured": false,
+        "slug": "column-card",
+        "content_path": "content/portfolio/column-card.md"
       },
       {
         "title": "Social Proof",
@@ -273,7 +297,9 @@
           "de": "Social Proof Sektion mit kaskadierender Darstellung der Elemente."
         },
         "date": "2023-11-10",
-        "featured": false
+        "featured": false,
+        "slug": "social-proof",
+        "content_path": "content/portfolio/social-proof.md"
       },
       {
         "title": "QR Code Component",
@@ -290,7 +316,9 @@
           "de": "Minimalistische QR-Code-Karte, ideal für Profile."
         },
         "date": "2023-10-15",
-        "featured": false
+        "featured": false,
+        "slug": "qr-code-component",
+        "content_path": "content/portfolio/qr-code-component.md"
       }
     ]
   },
@@ -412,7 +440,9 @@
           "de": "Klassisches Arcade-Spiel mit reinem JavaScript und HTML5 Canvas. Steuerung mit den Pfeiltasten."
         },
         "date": "2026-06-19",
-        "featured": true
+        "featured": true,
+        "slug": "ретро-аркада-snake-space-invaders",
+        "content_path": "content/games/ретро-аркада-snake-space-invaders.md"
       }
     ]
   }
