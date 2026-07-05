@@ -10,7 +10,11 @@
       "de": "Absolvierter IT-Spezialist (B.Sc. Computer Science). Spezialisiert auf responsive Webentwicklung, sauberes semantisches Markup und moderne JavaScript-Logik."
     },
     "avatar": "assets/profile/denys-2026.webp",
-    "badges": ["B.Sc. Computer Science", "Web Developer", "Open to Work"],
+    "badges": [
+      "B.Sc. Computer Science",
+      "Web Developer",
+      "Open to Work"
+    ],
     "links": [
       {
         "icon": "fa-brands fa-github",
@@ -33,7 +37,11 @@
     "posts": [
       {
         "title": "NFT Card",
-        "tags": ["HTML", "CSS", "UI"],
+        "tags": [
+          "HTML",
+          "CSS",
+          "UI"
+        ],
         "category": "layout",
         "image": "assets/images/nft.jpeg",
         "link": "pages/gh-nft-card/index.html",
@@ -47,7 +55,10 @@
       },
       {
         "title": "Order Plan",
-        "tags": ["Frontend", "Design"],
+        "tags": [
+          "Frontend",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Order-Plan.png",
         "link": "pages/gh-order-plan/index.html",
@@ -61,7 +72,10 @@
       },
       {
         "title": "Huddle Landing",
-        "tags": ["Flexbox", "CSS"],
+        "tags": [
+          "Flexbox",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Huddle.png",
         "link": "pages/gh-huddle/index.html",
@@ -75,7 +89,10 @@
       },
       {
         "title": "Blog Preview",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Blog-Preview.png",
         "link": "pages/gh-blog-preview/index.html",
@@ -89,7 +106,9 @@
       },
       {
         "title": "Column Card",
-        "tags": ["CSS Grid"],
+        "tags": [
+          "CSS Grid"
+        ],
         "category": "layout",
         "image": "assets/images/column-card.png",
         "link": "pages/gh-column-card/index.html",
@@ -103,7 +122,10 @@
       },
       {
         "title": "Fylo Landing",
-        "tags": ["Responsive", "UI"],
+        "tags": [
+          "Responsive",
+          "UI"
+        ],
         "category": "layout",
         "image": "assets/images/fylo.png",
         "link": "pages/gh-fylo/index.html",
@@ -117,7 +139,10 @@
       },
       {
         "title": "Grid Sections",
-        "tags": ["CSS Grid", "Layout"],
+        "tags": [
+          "CSS Grid",
+          "Layout"
+        ],
         "category": "layout",
         "image": "assets/images/grid-sections.png",
         "link": "pages/gh-grid-sections/index.html",
@@ -131,7 +156,10 @@
       },
       {
         "title": "Ingredients Component",
-        "tags": ["UI", "Logic"],
+        "tags": [
+          "UI",
+          "Logic"
+        ],
         "category": "js",
         "image": "assets/images/Ingredients.png",
         "link": "pages/gh-ingredients/index.html",
@@ -145,7 +173,10 @@
       },
       {
         "title": "QR Code Component",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/QR.png",
         "link": "pages/gh-qr-card/index.html",
@@ -159,7 +190,10 @@
       },
       {
         "title": "Social Proof",
-        "tags": ["CSS", "Design"],
+        "tags": [
+          "CSS",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Social-Proof.png",
         "link": "pages/gh-social-proof/index.html",
@@ -173,7 +207,10 @@
       },
       {
         "title": "Stats Card",
-        "tags": ["Typography", "CSS"],
+        "tags": [
+          "Typography",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/stats-card.png",
         "link": "pages/gh-stats-card/index.html",
@@ -187,7 +224,10 @@
       },
       {
         "title": "Score Summary",
-        "tags": ["JS", "UI"],
+        "tags": [
+          "JS",
+          "UI"
+        ],
         "category": "js",
         "image": "assets/images/score-summary.png",
         "link": "pages/gh-score-summary/index.html",
@@ -201,7 +241,10 @@
       },
       {
         "title": "Social Links",
-        "tags": ["Profile", "Links"],
+        "tags": [
+          "Profile",
+          "Links"
+        ],
         "category": "layout",
         "image": "assets/images/social-link.png",
         "link": "pages/gh-social-link-page/index.html",
@@ -211,6 +254,24 @@
           "de": "Social Links Profilseite. Sauberes und klares UI."
         },
         "date": "2024-01-10",
+        "featured": false
+      },
+      {
+        "title": "DigitalBank",
+        "tags": [
+          "JS",
+          "HTML",
+          "CSS"
+        ],
+        "category": "js",
+        "image": "assets/images/digitalbank.webp",
+        "link": "pages/gh-digitalbank-landing/index.html",
+        "desc": {
+          "ua": "Лендінг цифрового банку.",
+          "en": "Digital bank landing page.",
+          "de": "Digitalbank Landingpage."
+        },
+        "date": "2025-10-12",
         "featured": false
       }
     ]
@@ -226,7 +287,10 @@
       "de": "Artikel über Frontend-Entwicklung, Interface-Design und persönliche Erkenntnisse."
     },
     "avatar": "assets/profile/blog-cover.webp",
-    "badges": ["Articles", "Tech Notes"],
+    "badges": [
+      "Articles",
+      "Tech Notes"
+    ],
     "links": [
       {
         "icon": "fa-solid fa-rss",
@@ -236,31 +300,31 @@
     "themeClass": "blog-mode",
     "posts": [
       {
-        "title": "Мій шлях у Frontend розробці",
-        "tags": ["Веб-разработка", "Frontend"],
-        "category": "js",
+        "title": "mij-shlyah-u-frontend-rozrobci",
+        "slug": "mij-shlyah-u-frontend-rozrobci",
+        "content_path": "content/posts/mij-shlyah-u-frontend-rozrobci.md",
+        "tags": [],
+        "category": "blog",
         "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "Історія про те, як я починав, з якими викликами стикався та які технології обрав.",
-          "en": "The story of how I started, what challenges I faced, and which technologies I chose.",
-          "de": "Die Geschichte, wie ich begann, welche Herausforderungen ich hatte und welche Technologien ich wählte."
+          "ua": ""
         },
-        "date": "2026-06-19",
-        "featured": true
+        "date": "2026-07-05",
+        "featured": false
       },
       {
-        "title": "Як я модернізував свій сайт-портфоліо",
-        "tags": ["UI/UX", "Верстка"],
-        "category": "layout",
-        "image": "assets/images/portfolio-upgrade.webp",
+        "title": "yak-ja-modernizuvav-svij-sajt-portfolio",
+        "slug": "yak-ja-modernizuvav-svij-sajt-portfolio",
+        "content_path": "content/posts/yak-ja-modernizuvav-svij-sajt-portfolio.md",
+        "tags": [],
+        "category": "blog",
+        "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "Покроковий розбір того, як перетворити командний сайт на особисте портфоліо з блогом та іграми.",
-          "en": "Step-by-step analysis of turning a team website into a personal portfolio with blog and games.",
-          "de": "Schritt-für-Schritt-Analyse, wie man eine Team-Website in ein persönliches Portfolio mit Blog und Spielen verwandelt."
+          "ua": ""
         },
-        "date": "2026-06-20",
+        "date": "2026-07-05",
         "featured": false
       }
     ]
@@ -276,7 +340,11 @@
       "de": "Interaktive Mini-Spiele, HTML5 Canvas und JavaScript-Projekte zum Spaß."
     },
     "avatar": "assets/profile/games-cover.webp",
-    "badges": ["JS Games", "Canvas", "Playable"],
+    "badges": [
+      "JS Games",
+      "Canvas",
+      "Playable"
+    ],
     "links": [
       {
         "icon": "fa-solid fa-gamepad",
@@ -287,7 +355,10 @@
     "posts": [
       {
         "title": "Ретро Аркада (Snake / Space Invaders)",
-        "tags": ["JavaScript", "Canvas"],
+        "tags": [
+          "JavaScript",
+          "Canvas"
+        ],
         "category": "js",
         "image": "assets/images/arcade-game.webp",
         "link": "#",

@@ -290,26 +290,34 @@ function showModal(post) {
   const closeText = getText("btn_close") || "Close";
 
   content.innerHTML = `
-        <div class="modal-card">
-            <div class="modal-header-img" style="background-image: url('${post.image}')"></div>
-            <div class="modal-body">
-                <div class="modal-meta-bar">
-                    <span><i class="fa-regular fa-calendar"></i> ${post.date}</span>
-                    <div class="tags">${post.tags
-                      .map(tag => `<span class="tag">#${tag}</span>`)
-                      .join("")}</div>
-                </div>
-                <h2>${post.title}</h2>
-                <div class="description-section">
-                    <p>${desc}</p>
-                </div>
-                <div class="modal-footer-actions">
-                    ${post.link && post.link !== "#" ? `<a href="${post.link}" target="_blank" class="btn-open primary-action">${actionText}</a>` : ""}
-                    <button class="btn-secondary" onclick="closeModal()">${closeText}</button>
-                </div>
-            </div>
+      <div class="modal-card">
+        <div class="modal-header-img" style="background-image: url('${post.image}')"></div>
+        <div class="modal-body">
+          <div class="modal-meta-bar">
+            <span><i class="fa-regular fa-calendar"></i> ${post.date}</span>
+            <div class="tags">${post.tags
+              .map(tag => `<span class="tag">#${tag}</span>`)
+              .join("")}</div>
+          </div>
+          <h2>${post.title}</h2>
+          <div class="description-section">
+            <p>${desc}</p>
+          </div>
+          <div class="post-content markdown-content" aria-live="polite">
+            <p>Завантаження...</p>
+          </div>
+          <div class="modal-footer-actions">
+            ${post.link && post.link !== "#" ? `<a href="${post.link}" target="_blank" class="btn-open primary-action">${actionText}</a>` : ""}
+            <button class="btn-secondary" onclick="closeModal()">${closeText}</button>
+          </div>
         </div>
+      </div>
     `;
+
+  // Load full Markdown content only for blog posts or when a content_path is present
+  if ((post.content_path || post.slug) && userKey === "blog") {
+    loadPostContent(post);
+  }
 
   modal.style.display = "flex";
   document.body.style.overflow = "hidden";
@@ -385,6 +393,40 @@ function hidePreloader() {
     preloader.classList.add("hidden");
   }
   document.body.classList.remove("loading");
+}
+
+async function loadPostContent(post) {
+  const container = document.querySelector(".post-content");
+  if (!container) return;
+
+  const path =
+    post.content_path ||
+    `content/posts/${post.slug || post.title.replace(/\s+/g, "-").toLowerCase()}.md`;
+  try {
+    let res = await fetch(path);
+    if (!res.ok) {
+      // fallback to raw.githubusercontent.com
+      const rawUrl = `https://raw.githubusercontent.com/Gopdon32/DenyTeam/main/${path}`;
+      res = await fetch(rawUrl);
+    }
+    if (!res.ok) throw new Error("Not found");
+    let text = await res.text();
+    // remove YAML frontmatter if present
+    text = text.replace(/^---\n[\s\S]*?\n---\n/, "");
+    const html = typeof marked !== "undefined" ? marked.parse(text) : text;
+    container.innerHTML = html;
+    // highlight code blocks if Prism is available
+    try {
+      if (window.Prism && typeof window.Prism.highlightAll === "function") {
+        window.Prism.highlightAll();
+      }
+    } catch (e) {
+      console.warn("Prism highlight failed", e);
+    }
+  } catch (err) {
+    console.error("Failed to load post content", err);
+    container.innerHTML = "<p>Не вдалося завантажити повний текст статті.</p>";
+  }
 }
 
 function showToast(message) {

@@ -1,0 +1,11 @@
+{
+  "name": "denyteam-tools",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate-index": "node scripts/generate-index.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

@@ -11,7 +11,7 @@
   --def-clr: #fff;
   --heading-clr: hsl(0, 0%, 100%);
   --par-clr: hsla(0, 0%, 100%, 0.6);
-  --font-def: 300 15px/1.3 'Lexend Deca', sans-serif;
+  --font-def: 300 15px/1.3 "Lexend Deca", sans-serif;
 }
 
 /* По умолчанию */
@@ -43,7 +43,7 @@ body {
 
 /* Эффекты */
 .card__right::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -77,16 +77,15 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
-.card__text {}
 .text__title {
   font-size: 2rem;
   font-weight: 600;
 }
-  .text__title span {
-    color: var(--acent);
-    font-size: inherit;
-    font-weight: inherit;
-  }
+.text__title span {
+  color: var(--acent);
+  font-size: inherit;
+  font-weight: inherit;
+}
 .card__desc {
   color: var(--par-clr);
   margin: 1rem 1rem 0 0;
@@ -103,13 +102,13 @@ body {
   line-height: 2;
   letter-spacing: 1px;
 }
-  .stats span {
-    font: 700 1.5rem 'Inter';
-  }
-  .stats p {
-    color: var(--par-clr);
-    font-size: 0.8rem;
-  }
+.stats span {
+  font: 700 1.5rem "Inter";
+}
+.stats p {
+  color: var(--par-clr);
+  font-size: 0.8rem;
+}
 .card__right {
   position: relative;
 }
@@ -126,10 +125,8 @@ body {
     padding: 1rem;
   }
   .card {
-    flex-basis: 60%;
     flex-direction: column-reverse;
   }
-  .card__right {}
   .card__left {
     padding: 2rem 1.5rem;
     text-align: center;

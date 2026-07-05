@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: "Gopdon32/DenyTeam"
+  branch: "main"
+  auth_type: "oauth"
+  # Disable local backend so CMS uses GitHub OAuth to commit files
+  local_backend: false
+  # To enable login, register a GitHub OAuth App and set the client_id below
+  # 1) Register OAuth App in GitHub (Settings → Developer settings → OAuth Apps)
+  # 2) Set Authorization callback URL to: https://gopdon32.github.io/DenyTeam/admin/
+  # 3) Copy Client ID and paste it below (remove the leading '#')
+  client_id: "Ov23liCffDpzNbJ9SL19"
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "projects_json"
+    label: "Projects Index"
+    files:
+      - label: "Projects JSON"
+        name: "projects"
+        file: "data/projects.json"
+        fields:
+          - { label: "Raw JSON", name: "content", widget: "text" }
