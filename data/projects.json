@@ -326,13 +326,13 @@
           "Frontend"
         ],
         "category": "blog",
-        "image": "assets/images/blog-intro.webp",
+        "image": "/assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "Історія про те, як я починав і що допомогло у розвитку.",
-          "en": ""
+          "ua": "Мій шлях",
+          "en": "My weg"
         },
-        "date": "2026-06-19",
+        "date": "2026-06-19T00:00:00.000Z",
         "featured": false
       }
     ]
