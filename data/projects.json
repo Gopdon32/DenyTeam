@@ -36,43 +36,6 @@
     "themeClass": "default-mode",
     "posts": [
       {
-        "title": "Перший проект портфоліо",
-        "slug": "first-project",
-        "content_path": "content/portfolio/first-project.md",
-        "tags": [
-          "Portfolio",
-          "Design"
-        ],
-        "category": "layout",
-        "image": "assets/images/portfolio-intro.webp",
-        "link": "#",
-        "desc": {
-          "ua": "Початковий проект портфоліо для перевірки CMS.",
-          "en": "Starter portfolio project for CMS testing."
-        },
-        "date": "2026-07-05",
-        "featured": false
-      },
-      {
-        "title": "DigitalBank",
-        "slug": "digitalbank",
-        "content_path": "content/portfolio/digitalbank.md",
-        "tags": [
-          "JS",
-          "HTML",
-          "CSS"
-        ],
-        "category": "js",
-        "image": "/assets/images/digitalbank.webp",
-        "link": "pages/gh-digitalbank-landing/index.html",
-        "desc": {
-          "ua": "Лендінг цифрового банку.",
-          "en": "Digital bank landing page."
-        },
-        "date": "2025-10-12T00:00:00.000Z",
-        "featured": false
-      },
-      {
         "title": "Ingredients Component",
         "slug": "ingredients-component",
         "content_path": "content/portfolio/ingredients-component.md",
