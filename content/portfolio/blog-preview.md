@@ -2,7 +2,7 @@
 slug: blog-preview
 featured: false
 title: Blog Preview
-date: 2025-12-03T17:13:00.000+01:00
+date: "2025-12-03"
 tags:
   - HTML
   - CSS
@@ -12,6 +12,7 @@ desc_ua: Прев’ю-картка блогу з акцентом на типо
 desc_en: Blog preview card with focus on typography and readability.
 link: pages/gh-blog-preview/index.html
 ---
+
 # Blog Preview
 
 Прев’ю-картка блогу з акцентом на типографіку та читабельність. 123
