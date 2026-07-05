@@ -12,7 +12,6 @@ desc_ua: Прев’ю-картка блогу з акцентом на типо
 desc_en: Blog preview card with focus on typography and readability.
 link: pages/gh-blog-preview/index.html
 ---
-
 # Blog Preview
 
-Прев’ю-картка блогу з акцентом на типографіку та читабельність.
+Прев’ю-картка блогу з акцентом на типографіку та читабельність. 1
