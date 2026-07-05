@@ -36,7 +36,7 @@
     "themeClass": "default-mode",
     "posts": [
       {
-        "title": "������ ������ ��������",
+        "title": "Перший проект портфоліо",
         "slug": "first-project",
         "content_path": "content/portfolio/first-project.md",
         "tags": [
@@ -47,7 +47,7 @@
         "image": "assets/images/portfolio-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "���������� ������ �������� ��� �������� CMS.",
+          "ua": "Початковий проект портфоліо для перевірки CMS.",
           "en": "Starter portfolio project for CMS testing."
         },
         "date": "2026-07-05",
@@ -380,7 +380,7 @@
     "themeClass": "games-mode",
     "posts": [
       {
-        "title": "����� ���",
+        "title": "Перша гра",
         "slug": "first-game",
         "content_path": "content/games/first-game.md",
         "tags": [
@@ -391,7 +391,7 @@
         "image": "assets/images/game-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "��������� ��� ��� �������� ���� � CMS.",
+          "ua": "Початкова гра для каталогу ігор у CMS.",
           "en": "Starter game entry for the CMS games catalog."
         },
         "date": "2026-07-05",
