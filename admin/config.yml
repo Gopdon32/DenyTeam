@@ -2,16 +2,14 @@ backend:
   name: github
   repo: "Gopdon32/DenyTeam"
   branch: "main"
-  auth_type: "oauth"
+  auth_type: "implicit"
   # Disable local backend so CMS uses GitHub OAuth to commit files
   local_backend: false
-  # Explicit Netlify site slug for auth proxy
-  site_id: "charming-sherbet-9d1521"
-  # To enable login, register a GitHub OAuth App and set the callback URL below
-  # 1) Register OAuth App in GitHub (Settings → Developer settings → OAuth Apps)
-  # 2) Set Authorization callback URL to: https://charming-sherbet-9d1521.netlify.app/admin/
-  # 3) Copy Client ID and paste it below
-  client_id: "Ov23liCffDpzNbJ9SL19"
+  # Use GitHub OAuth implicit flow directly.
+  app_id: "Ov23liCffDpzNbJ9SL19"
+  # Optional: use Netlify auth endpoint for OAuth flow.
+  base_url: "https://api.netlify.com/auth"
+  # Callback URL for GitHub OAuth app: https://charming-sherbet-9d1521.netlify.app/admin/
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
