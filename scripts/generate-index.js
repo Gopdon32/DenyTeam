@@ -19,11 +19,6 @@ const SOURCES = [
     section: "games",
     defaultCategory: "js",
   },
-  {
-    dir: path.join(__dirname, "..", "content", "posts"),
-    section: null,
-    defaultCategory: "blog",
-  },
 ];
 
 function readPost(filePath) {

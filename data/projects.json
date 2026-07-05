@@ -36,19 +36,16 @@
     "themeClass": "default-mode",
     "posts": [
       {
-        "title": "������ ������ ��������",
+        "title": "first-project",
         "slug": "first-project",
         "content_path": "content/portfolio/first-project.md",
-        "tags": [
-          "Portfolio",
-          "Design"
-        ],
+        "tags": [],
         "category": "layout",
-        "image": "assets/images/portfolio-intro.webp",
+        "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "���������� ������ �������� ��� �������� CMS.",
-          "en": "Starter portfolio project for CMS testing."
+          "ua": "",
+          "en": ""
         },
         "date": "2026-07-05",
         "featured": false
@@ -318,39 +315,33 @@
     "themeClass": "blog-mode",
     "posts": [
       {
-        "title": "Як я модернізував свій сайт-портфоліо",
-        "slug": "yak-ja-modernizuvav-svij-sajt-portfolio",
-        "content_path": "content/blog/yak-ja-modernizuvav-svij-sajt-portfolio.md",
-        "tags": [
-          "UI/UX",
-          "Верстка"
-        ],
+        "title": "mij-shlyah-u-frontend-rozrobci",
+        "slug": "mij-shlyah-u-frontend-rozrobci",
+        "content_path": "content/blog/mij-shlyah-u-frontend-rozrobci.md",
+        "tags": [],
         "category": "blog",
-        "image": "/assets/images/more-works.jpg",
+        "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "Покроковий розбір перетворення командного сайту у портфоліо.",
+          "ua": "",
           "en": ""
         },
-        "date": "2026-06-20T00:00:00.000Z",
+        "date": "2026-07-05",
         "featured": false
       },
       {
-        "title": "Мій шлях у Frontend розробці",
-        "slug": "mij-shlyah-u-frontend-rozrobci",
-        "content_path": "content/blog/mij-shlyah-u-frontend-rozrobci.md",
-        "tags": [
-          "Веб-разработка",
-          "Frontend"
-        ],
+        "title": "yak-ja-modernizuvav-svij-sajt-portfolio",
+        "slug": "yak-ja-modernizuvav-svij-sajt-portfolio",
+        "content_path": "content/blog/yak-ja-modernizuvav-svij-sajt-portfolio.md",
+        "tags": [],
         "category": "blog",
-        "image": "/assets/images/blog-intro.webp",
+        "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "Мій шлях",
-          "en": "My weg"
+          "ua": "",
+          "en": ""
         },
-        "date": "2026-06-19T00:00:00.000Z",
+        "date": "2026-07-05",
         "featured": false
       }
     ]
@@ -380,19 +371,16 @@
     "themeClass": "games-mode",
     "posts": [
       {
-        "title": "����� ���",
+        "title": "first-game",
         "slug": "first-game",
         "content_path": "content/games/first-game.md",
-        "tags": [
-          "Game",
-          "JavaScript"
-        ],
+        "tags": [],
         "category": "js",
-        "image": "assets/images/game-intro.webp",
+        "image": "assets/images/blog-intro.webp",
         "link": "#",
         "desc": {
-          "ua": "��������� ��� ��� �������� ���� � CMS.",
-          "en": "Starter game entry for the CMS games catalog."
+          "ua": "",
+          "en": ""
         },
         "date": "2026-07-05",
         "featured": false
