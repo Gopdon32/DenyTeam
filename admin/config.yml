@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Gopdon32/DenyTeam
   branch: main
-  base_url: https://decap-cms-oauth-gate.vercel.app
-  auth_endpoint: /api/auth
+  local_backend: true
+  local_backend_url: http://localhost:8081/api/v1
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
