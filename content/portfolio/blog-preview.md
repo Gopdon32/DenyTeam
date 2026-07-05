@@ -2,7 +2,7 @@
 slug: blog-preview
 featured: false
 title: Blog Preview
-date: 2025-12-03T17:12:00.000+01:00
+date: 2025-12-03T17:13:00.000+01:00
 tags:
   - HTML
   - CSS
