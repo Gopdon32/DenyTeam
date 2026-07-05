@@ -6,9 +6,12 @@ permissions:
 on:
   push:
     paths:
-      - "content/posts/**"
+      - "content/blog/**"
+      - "content/portfolio/**"
+      - "content/games/**"
       - "scripts/generate-index.js"
       - "package.json"
+      - "admin/config.yml"
 
 jobs:
   build:
