@@ -55,6 +55,8 @@
       },
       {
         "title": "DigitalBank",
+        "slug": "digitalbank",
+        "content_path": "content/portfolio/digitalbank.md",
         "tags": [
           "JS",
           "HTML",
@@ -65,16 +67,15 @@
         "link": "pages/gh-digitalbank-landing/index.html",
         "desc": {
           "ua": "Лендінг цифрового банку.",
-          "en": "Digital bank landing page.",
-          "de": "Digitalbank Landingpage."
+          "en": "Digital bank landing page."
         },
         "date": "2025-10-12",
-        "featured": false,
-        "slug": "digitalbank",
-        "content_path": "content/portfolio/digitalbank.md"
+        "featured": false
       },
       {
         "title": "Ingredients Component",
+        "slug": "ingredients-component",
+        "content_path": "content/portfolio/ingredients-component.md",
         "tags": [
           "UI",
           "Logic"
@@ -84,16 +85,15 @@
         "link": "pages/gh-ingredients/index.html",
         "desc": {
           "ua": "Інтерактивний компонент інгредієнтів із динамічним списком.",
-          "en": "Interactive product ingredients component with dynamic list.",
-          "de": "Interaktive Zutatenkomponente mit dynamischer Liste."
+          "en": "Interactive product ingredients component with dynamic list."
         },
         "date": "2024-04-10",
-        "featured": false,
-        "slug": "ingredients-component",
-        "content_path": "content/portfolio/ingredients-component.md"
+        "featured": false
       },
       {
         "title": "Score Summary",
+        "slug": "score-summary",
+        "content_path": "content/portfolio/score-summary.md",
         "tags": [
           "JS",
           "UI"
@@ -103,16 +103,15 @@
         "link": "pages/gh-score-summary/index.html",
         "desc": {
           "ua": "Компонент підсумку оцінок із динамічним розрахунком балів.",
-          "en": "Results summary component with dynamic score calculation.",
-          "de": "Ergebniszusammenfassung mit dynamischer Punktauswertung."
+          "en": "Results summary component with dynamic score calculation."
         },
         "date": "2024-03-15",
-        "featured": false,
-        "slug": "score-summary",
-        "content_path": "content/portfolio/score-summary.md"
+        "featured": false
       },
       {
         "title": "Fylo Landing",
+        "slug": "fylo-landing",
+        "content_path": "content/portfolio/fylo-landing.md",
         "tags": [
           "Responsive",
           "UI"
@@ -122,16 +121,15 @@
         "link": "pages/gh-fylo/index.html",
         "desc": {
           "ua": "Темний лендінг Fylo з продуманими формами та UX-елементами.",
-          "en": "Fylo dark theme landing with polished forms and UX elements.",
-          "de": "Dunkle Fylo-Landingpage mit durchdachten Formularen und UX-Elementen."
+          "en": "Fylo dark theme landing with polished forms and UX elements."
         },
         "date": "2024-02-20",
-        "featured": false,
-        "slug": "fylo-landing",
-        "content_path": "content/portfolio/fylo-landing.md"
+        "featured": false
       },
       {
         "title": "Huddle Landing",
+        "slug": "huddle-landing",
+        "content_path": "content/portfolio/huddle-landing.md",
         "tags": [
           "Flexbox",
           "CSS"
@@ -141,16 +139,15 @@
         "link": "pages/gh-huddle/index.html",
         "desc": {
           "ua": "Лендінг, створений на основі сучасного Flexbox-макета.",
-          "en": "Landing page built using modern Flexbox layout principles.",
-          "de": "Landingpage basierend auf modernem Flexbox-Layout."
+          "en": "Landing page built using modern Flexbox layout principles."
         },
         "date": "2024-02-10",
-        "featured": true,
-        "slug": "huddle-landing",
-        "content_path": "content/portfolio/huddle-landing.md"
+        "featured": true
       },
       {
         "title": "Order Plan",
+        "slug": "order-plan",
+        "content_path": "content/portfolio/order-plan.md",
         "tags": [
           "Frontend",
           "Design"
@@ -160,16 +157,15 @@
         "link": "pages/gh-order-plan/index.html",
         "desc": {
           "ua": "Інтерфейс вибору тарифного плану з адаптивною сіткою для різних пристроїв.",
-          "en": "Pricing plan selection interface with responsive grid for all devices.",
-          "de": "Preisplan-Auswahloberfläche mit responsivem Grid für alle Geräte."
+          "en": "Pricing plan selection interface with responsive grid for all devices."
         },
         "date": "2024-01-25",
-        "featured": true,
-        "slug": "order-plan",
-        "content_path": "content/portfolio/order-plan.md"
+        "featured": true
       },
       {
         "title": "NFT Card",
+        "slug": "nft-card",
+        "content_path": "content/portfolio/nft-card.md",
         "tags": [
           "HTML",
           "CSS",
@@ -180,16 +176,15 @@
         "link": "pages/gh-nft-card/index.html",
         "desc": {
           "ua": "Стильна NFT-картка з унікальними ефектами наведення та динамічним підсвічуванням.",
-          "en": "Stylish NFT card with unique hover effects and custom glow.",
-          "de": "Stilvolle NFT-Karte mit einzigartigen Hover-Effekten und dynamischem Leuchten."
+          "en": "Stylish NFT card with unique hover effects and custom glow."
         },
         "date": "2024-01-15",
-        "featured": false,
-        "slug": "nft-card",
-        "content_path": "content/portfolio/nft-card.md"
+        "featured": false
       },
       {
         "title": "Social Links",
+        "slug": "social-links",
+        "content_path": "content/portfolio/social-links.md",
         "tags": [
           "Profile",
           "Links"
@@ -199,16 +194,15 @@
         "link": "pages/gh-social-link-page/index.html",
         "desc": {
           "ua": "Профіль посилань для соцмереж. Чистий і зрозумілий UI.",
-          "en": "Social links profile page. Clean and clear UI.",
-          "de": "Social Links Profilseite. Sauberes und klares UI."
+          "en": "Social links profile page. Clean and clear UI."
         },
         "date": "2024-01-10",
-        "featured": false,
-        "slug": "social-links",
-        "content_path": "content/portfolio/social-links.md"
+        "featured": false
       },
       {
         "title": "Grid Sections",
+        "slug": "grid-sections",
+        "content_path": "content/portfolio/grid-sections.md",
         "tags": [
           "CSS Grid",
           "Layout"
@@ -218,16 +212,15 @@
         "link": "pages/gh-grid-sections/index.html",
         "desc": {
           "ua": "Приклад складної асиметричної сітки на CSS Grid.",
-          "en": "Example of a complex asymmetric Grid layout.",
-          "de": "Beispiel für ein komplexes asymmetrisches Grid-Layout."
+          "en": "Example of a complex asymmetric Grid layout."
         },
         "date": "2024-01-05",
-        "featured": false,
-        "slug": "grid-sections",
-        "content_path": "content/portfolio/grid-sections.md"
+        "featured": false
       },
       {
         "title": "Stats Card",
+        "slug": "stats-card",
+        "content_path": "content/portfolio/stats-card.md",
         "tags": [
           "Typography",
           "CSS"
@@ -237,16 +230,15 @@
         "link": "pages/gh-stats-card/index.html",
         "desc": {
           "ua": "Картка зі статистикою, що демонструє роботу кольорових накладень.",
-          "en": "Stats preview card demonstrating color overlays.",
-          "de": "Statistik-Karte, die den Einsatz von Farbüberlagerungen zeigt."
+          "en": "Stats preview card demonstrating color overlays."
         },
         "date": "2023-12-20",
-        "featured": false,
-        "slug": "stats-card",
-        "content_path": "content/portfolio/stats-card.md"
+        "featured": false
       },
       {
         "title": "Blog Preview",
+        "slug": "blog-preview",
+        "content_path": "content/portfolio/blog-preview.md",
         "tags": [
           "HTML",
           "CSS"
@@ -256,16 +248,15 @@
         "link": "pages/gh-blog-preview/index.html",
         "desc": {
           "ua": "Прев’ю-картка блогу з акцентом на типографіку та читабельність.",
-          "en": "Blog preview card with focus on typography and readability.",
-          "de": "Blog-Vorschaukarte mit Fokus auf Typografie und Lesbarkeit."
+          "en": "Blog preview card with focus on typography and readability."
         },
         "date": "2023-12-05",
-        "featured": false,
-        "slug": "blog-preview",
-        "content_path": "content/portfolio/blog-preview.md"
+        "featured": false
       },
       {
         "title": "Column Card",
+        "slug": "column-card",
+        "content_path": "content/portfolio/column-card.md",
         "tags": [
           "CSS Grid"
         ],
@@ -274,16 +265,15 @@
         "link": "pages/gh-column-card/index.html",
         "desc": {
           "ua": "Трьохколонкова картка, реалізована за допомогою CSS Grid.",
-          "en": "3-column preview card implemented using CSS Grid.",
-          "de": "Drei-Spalten-Karte, umgesetzt mit CSS Grid."
+          "en": "3-column preview card implemented using CSS Grid."
         },
         "date": "2023-11-20",
-        "featured": false,
-        "slug": "column-card",
-        "content_path": "content/portfolio/column-card.md"
+        "featured": false
       },
       {
         "title": "Social Proof",
+        "slug": "social-proof",
+        "content_path": "content/portfolio/social-proof.md",
         "tags": [
           "CSS",
           "Design"
@@ -293,16 +283,15 @@
         "link": "pages/gh-social-proof/index.html",
         "desc": {
           "ua": "Секція відгуків із каскадною появою елементів.",
-          "en": "Social proof section with cascading elements appearance.",
-          "de": "Social Proof Sektion mit kaskadierender Darstellung der Elemente."
+          "en": "Social proof section with cascading elements appearance."
         },
         "date": "2023-11-10",
-        "featured": false,
-        "slug": "social-proof",
-        "content_path": "content/portfolio/social-proof.md"
+        "featured": false
       },
       {
         "title": "QR Code Component",
+        "slug": "qr-code-component",
+        "content_path": "content/portfolio/qr-code-component.md",
         "tags": [
           "HTML",
           "CSS"
@@ -312,13 +301,10 @@
         "link": "pages/gh-qr-card/index.html",
         "desc": {
           "ua": "Мінімалістична картка з QR-кодом, ідеальна для профілів.",
-          "en": "Minimalist QR code card. Perfect for profiles.",
-          "de": "Minimalistische QR-Code-Karte, ideal für Profile."
+          "en": "Minimalist QR code card. Perfect for profiles."
         },
         "date": "2023-10-15",
-        "featured": false,
-        "slug": "qr-code-component",
-        "content_path": "content/portfolio/qr-code-component.md"
+        "featured": false
       }
     ]
   },
@@ -427,6 +413,8 @@
       },
       {
         "title": "Ретро Аркада (Snake / Space Invaders)",
+        "slug": "ретро-аркада-snake-space-invaders",
+        "content_path": "content/games/ретро-аркада-snake-space-invaders.md",
         "tags": [
           "JavaScript",
           "Canvas"
@@ -436,13 +424,10 @@
         "link": "#",
         "desc": {
           "ua": "Класична аркадна гра на чистому JavaScript та HTML5 Canvas. Керуй стрілками.",
-          "en": "Classic arcade game written in pure JavaScript using HTML5 Canvas. Control with arrow keys!",
-          "de": "Klassisches Arcade-Spiel mit reinem JavaScript und HTML5 Canvas. Steuerung mit den Pfeiltasten."
+          "en": "Classic arcade game written in pure JavaScript using HTML5 Canvas. Control with arrow keys!"
         },
         "date": "2026-06-19",
-        "featured": true,
-        "slug": "ретро-аркада-snake-space-invaders",
-        "content_path": "content/games/ретро-аркада-snake-space-invaders.md"
+        "featured": true
       }
     ]
   }
