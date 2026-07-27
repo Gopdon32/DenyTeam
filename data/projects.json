@@ -38,7 +38,7 @@
         "tags": ["HTML", "CSS", "JavaScript"],
         "category": "landing",
         "image": "assets/images/digitalbank-landing.webp",
-        "link": "https://gopdon32.github.io/pages/gh-digitalbank-landing/",
+        "link": "pages/gh-digitalbank-landing/index.html",
         "desc": {
           "ua": "Сучасний лендинг для цифрового банку з презентацією мобільного додатка та переваг онлайн-банкінгу.",
           "en": "Modern digital bank landing page presenting a mobile app and online banking benefits."
@@ -53,7 +53,7 @@
         "tags": ["HTML", "CSS", "JavaScript"],
         "category": "layout",
         "image": "assets/images/kunze-v3.webp",
-        "link": "https://gopdon32.github.io/pages/gh-Kunze-v3/",
+        "link": "pages/gh-Kunze-v3/index.html",
         "desc": {
           "ua": "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери.",
           "en": "Car catalog website featuring electric vehicles, model details, and messenger contacts."
@@ -68,7 +68,7 @@
         "tags": ["HTML", "CSS"],
         "category": "component",
         "image": "assets/images/preview-card.webp",
-        "link": "https://gopdon32.github.io/pages/gh-preview-card/",
+        "link": "pages/gh-preview-card/index.html",
         "desc": {
           "ua": "Картка попереднього перегляду товару (Perfume) з адаптивним макетом за макетом Frontend Mentor.",
           "en": "Product preview card component (Perfume) with responsive layout based on Frontend Mentor."
@@ -83,7 +83,7 @@
         "tags": ["HTML", "CSS"],
         "category": "component",
         "image": "assets/images/profile-card.webp",
-        "link": "https://gopdon32.github.io/pages/gh-profile-card/",
+        "link": "pages/gh-profile-card/index.html",
         "desc": {
           "ua": "Адаптивний компонент картки профілю користувача з фоновими елементами та статистикою.",
           "en": "Responsive user profile card component with background accents and statistics."
