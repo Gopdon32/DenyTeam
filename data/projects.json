@@ -36,6 +36,80 @@
     "themeClass": "default-mode",
     "posts": [
       {
+        "title": "Digitalbank Landing Page",
+        "slug": "digitalbank-landing",
+        "content_path": "content/portfolio/digitalbank-landing.md",
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "category": "landing",
+        "image": "assets/images/digitalbank-landing.webp",
+        "link": "https://gopdon32.github.io/gh-digitalbank-landing/",
+        "desc": {
+          "ua": "Сучасний лендинг для цифрового банку з презентацією мобільного додатка та переваг онлайн-банкінгу.",
+          "en": "Modern digital bank landing page presenting a mobile app and online banking benefits."
+        },
+        "date": "2026-07-27",
+        "featured": true
+      },
+      {
+        "title": "Kunze Auto",
+        "slug": "kunze-v3",
+        "content_path": "content/portfolio/kunze-v3.md",
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "category": "layout",
+        "image": "assets/images/kunze-v3.webp",
+        "link": "https://gopdon32.github.io/gh-Kunze-v3/",
+        "desc": {
+          "ua": "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери.",
+          "en": "Car catalog website featuring electric vehicles, model details, and messenger contacts."
+        },
+        "date": "2026-07-27",
+        "featured": true
+      },
+      {
+        "title": "Product Preview Card",
+        "slug": "preview-card",
+        "content_path": "content/portfolio/preview-card.md",
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
+        "category": "component",
+        "image": "assets/images/preview-card.webp",
+        "link": "https://gopdon32.github.io/gh-preview-card/",
+        "desc": {
+          "ua": "Картка попереднього перегляду товару (Perfume) з адаптивним макетом за макетом Frontend Mentor.",
+          "en": "Product preview card component (Perfume) with responsive layout based on Frontend Mentor."
+        },
+        "date": "2026-07-27",
+        "featured": false
+      },
+      {
+        "title": "Profile Card Component",
+        "slug": "profile-card",
+        "content_path": "content/portfolio/profile-card.md",
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
+        "category": "component",
+        "image": "assets/images/profile-card.webp",
+        "link": "https://gopdon32.github.io/gh-profile-card/",
+        "desc": {
+          "ua": "Адаптивний компонент картки профілю користувача з фоновими елементами та статистикою.",
+          "en": "Responsive user profile card component with background accents and statistics."
+        },
+        "date": "2026-07-27",
+        "featured": false
+      },
+      {
         "title": "Blog Preview",
         "slug": "blog-preview",
         "content_path": "content/portfolio/blog-preview.md",
@@ -50,7 +124,7 @@
           "ua": "Прев’ю-картка блогу з акцентом на типографіку та читабельність.",
           "en": "Blog preview card with focus on typography and readability."
         },
-        "date": "2025-12-03T16:13:00.000Z",
+        "date": "2025-12-03",
         "featured": false
       },
       {
