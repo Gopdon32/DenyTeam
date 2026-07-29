@@ -1,49 +1,49 @@
 ---
-title: "Kunze Auto"
-date: "2026-07-27"
-slug: "kunze-v3"
+title: "NFT Card"
+date: "2024-01-15"
+slug: "nft-card"
 category: "layout"
-image: "assets/images/kunze-v3.webp"
-link: "https://gopdon32.github.io/gh-Kunze-v3/"
+image: "assets/images/nft.jpeg"
+link: "pages/gh-nft-card/index.html"
 tags:
   - "HTML"
   - "CSS"
-  - "JavaScript"
-desc_ua: "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери."
-desc_en: "Car catalog website featuring electric vehicles, model details, and messenger contacts."
-desc_de: "Fahrzeugkatalog-Website mit Elektrofahrzeugen, Modell-Details und Messenger-Verbindung."
-featured: true
+  - "UI"
+desc_ua: "Стильна NFT-картка з унікальними ефектами наведення та динамічним підсвічуванням."
+desc_en: "Stylish NFT card with unique hover effects and custom glow."
+desc_de: "Stilvolle NFT-Karte mit einzigartigen Hover-Effekten und individuellem Leuchten."
+featured: false
 ---
 
 <!-- :::ua -->
 
-Сучасний автокаталог для компанії **Kunze**, що спеціалізується на продажі електромобілів (BYD, GAC Toyota тощо).
+Стильний компонент NFT-картки з акцентом на Web3 та крипто-тематику. Проєкт демонструє використання прозорості, яскравих акцентних кольорів та інтерактивних ефектів при наведенні курсора.
 
 ### Особливості:
 
-- **Інтерактивний каталог:** детальна інформація про моделі, технічні характеристики та ціни.
-- **Мультимовність та зв'язок:** підтримка декількох мов та швидкий перехід до зв'язку через месенджери.
-- **Адаптивна верстка:** зручний перегляд та навігація на будь-яких смартфонах і планшетах.
+- **Hover Effects:** ефект накладання оверлею на зображення та підсвічування токена.
+- **Web3 Метадані:** відображення ціни в Ethereum (ETH) та залишку часу аукціону.
+- **Авторський блок:** стилізований аватар та інформація про творця NFT.
 <!-- ::: -->
 
 <!-- :::en -->
 
-A modern automotive catalog for **Kunze**, specializing in electric vehicles (BYD, GAC Toyota, etc.).
+A stylish NFT preview card component designed around Web3 and crypto aesthetics. Demonstrates custom image hover overlays, vibrant accent glow, and clean layout structure.
 
 ### Features:
 
-- **Interactive Catalog:** detailed model information, specs, and current pricing.
-- **Multilingual & Messaging:** multi-language support and direct links for messaging.
-- **Responsive Layout:** seamless viewing experience optimized for smartphones and tablets.
+- **Hover Effects:** active image overlay effect and glowing interactive links.
+- **Web3 Metadata:** displays Ethereum (ETH) pricing and remaining auction time.
+- **Creator Info:** dedicated avatar section and artist attribution.
 <!-- ::: -->
 
 <!-- :::de -->
 
-Ein moderner Fahrzeugkatalog für das Unternehmen **Kunze**, spezialisiert auf Elektrofahrzeuge (BYD, GAC Toyota usw.).
+Eine stilvolle NFT-Vorschaukarte im Web3- und Krypto-Design. Demonstriert individuelle Hover-Overlays auf Bildern, leuchtende Akzentfarben und ein sauberes Layout.
 
 ### Merkmale:
 
-- **Interaktiver Katalog:** Detaillierte Modellinformationen, technische Daten und Preise.
-- **Mehrsprachigkeit & Messenger:** Unterstützung mehrerer Sprachen und direkter Kontakt über Messenger.
-- **Responsive Layout:** Komfortable Nutzung optimiert für Smartphones und Tablets.
+- **Hover-Effekte:** Interaktiver Overlay-Effekt auf dem Bild und leuchtende Links.
+- **Web3-Metadaten:** Anzeige von Ethereum (ETH)-Preisen und verbleibender Auktionszeit.
+- **Ersteller-Info:** Eigener Avatar-Bereich mit Angaben zum Künstler.
 <!-- ::: -->
