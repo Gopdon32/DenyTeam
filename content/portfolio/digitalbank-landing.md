@@ -14,12 +14,32 @@ desc_en: "Modern digital bank landing page presenting a mobile app and online ba
 featured: true
 ---
 
-# Digitalbank Landing Page
+<!-- :::ua -->
 
 Лендинг для цифрового банкінгу нового покоління **Digitalbank**.
 
 ### Особливості:
 
-- Чистий та мінімалістичний дизайн із сучасними градієнтами.
-- Презентація мобільного додатку та ключових переваг сервісу.
-- Повністю адаптивна верстка для всіх типів екранів.
+- Чистий та мінімалістичний дизайн.
+- Презентація мобільного додатку.
+<!-- ::: -->
+
+<!-- :::en -->
+
+Landing page for the new generation digital banking **Digitalbank**.
+
+### Features:
+
+- Clean and minimalist design.
+- Mobile app presentation.
+<!-- ::: -->
+
+<!-- :::de -->
+
+Landing Page für Digital Banking der nächsten Generation **Digitalbank**.
+
+### Merkmale:
+
+- Cleaned und minimalistisches Design.
+- Präsentation der mobilen App.
+<!-- ::: -->

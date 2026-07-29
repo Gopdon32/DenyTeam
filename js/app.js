@@ -13,6 +13,7 @@ let activeSearch = "";
 const PAGE_SIZE = 6;
 let currentPage = 1;
 let revealObserver = null;
+let currentActivePost = null; // 👈 Додано: зберігає поточний активний пост
 
 const getText = key =>
   dictionary[currentLang]?.[key] ||
@@ -71,6 +72,11 @@ function setLanguage(lang) {
   if (langBtn) langBtn.textContent = currentLang.toUpperCase();
   currentPage = 1;
   render(activeFilter, false, activeSearch, currentPage);
+
+  // 🔄 Якщо модалка відкрита, оновлюємо її контент новою мовою
+  if (currentActivePost) {
+    showModal(currentActivePost);
+  }
 }
 
 /**
@@ -405,7 +411,6 @@ async function loadPostContent(post) {
   let rawPath = post.content_path;
   if (!rawPath) {
     const fileName = `${post.slug || post.title.replace(/\s+/g, "-").toLowerCase()}.md`;
-    // Перевіряємо категорію або дефолтимо на portfolio
     rawPath =
       post.category === "blog"
         ? `content/blog/${fileName}`
@@ -417,10 +422,9 @@ async function loadPostContent(post) {
   }
 
   try {
-    // 2. Перша спроба: відносний fetch з крапкою попереду
+    // 2. Fetch-запити (відносний шлях + fallback на GitHub Raw)
     let res = await fetch("./" + rawPath);
 
-    // 3. Друга спроба (резервна): якщо файлу немає за відносним шляхом — стукаємо на GitHub Raw
     if (!res.ok) {
       const rawUrl = `https://raw.githubusercontent.com/Gopdon32/DenyTeam/main/${rawPath}`;
       res = await fetch(rawUrl);
@@ -430,10 +434,32 @@ async function loadPostContent(post) {
 
     let text = await res.text();
 
-    // Прибираємо Frontmatter (блок усередині --- ... ---)
+    // 3. Прибираємо Frontmatter (блок усередині --- ... ---)
     text = text.replace(/^---\n[\s\S]*?\n---\n/, "");
 
-    // Видаляємо дублюючий заголовок H1/H2, якщо він збігається з назвою
+    // 4. Парсимо мовний блок (<!-- :::ua --> ... <!-- ::: -->)
+    const lang = currentLang || "ua";
+    const langRegex = new RegExp(
+      `<!-- :::${lang} -->([\\s\\S]*?)<!-- ::: -->`,
+      "i",
+    );
+    const match = text.match(langRegex);
+
+    if (match && match[1]) {
+      // Якщо знайшли блок для поточної мови
+      text = match[1].trim();
+    } else {
+      // Fallback 1: Спробуємо знайти український блок <!-- :::ua -->
+      const uaMatch = text.match(/<!-- :::ua -->([\s\S]*?)<!-- ::: -->/i);
+      if (uaMatch && uaMatch[1]) {
+        text = uaMatch[1].trim();
+      } else {
+        // Fallback 2: Якщо мовних тегів немає взагалі, просто очищаємо від усіх розмиток :::
+        text = text.replace(/<!-- :::\w+ -->|<!-- ::: -->/g, "").trim();
+      }
+    }
+
+    // 5. Видаляємо дублюючий заголовок H1/H2, якщо він збігається з назвою
     const headingMatch = text.match(/^\s*(#{1,2})\s*(.+?)\s*\n+/);
     if (headingMatch) {
       const headingText = headingMatch[2].trim();
@@ -447,11 +473,11 @@ async function loadPostContent(post) {
       }
     }
 
-    // Рендеримо Markdown у HTML
+    // 6. Рендеримо Markdown у HTML
     const html = typeof marked !== "undefined" ? marked.parse(text) : text;
     container.innerHTML = html;
 
-    // Підсвітка коду Prism, якщо є
+    // 7. Підсвітка коду Prism
     if (window.Prism && typeof window.Prism.highlightAll === "function") {
       window.Prism.highlightAll();
     }
