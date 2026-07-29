@@ -74,25 +74,6 @@
         "featured": true
       },
       {
-        "title": "Kunze Auto",
-        "slug": "kunze-v3",
-        "content_path": "content/portfolio/nft-card.md",
-        "tags": [
-          "HTML",
-          "CSS",
-          "JavaScript"
-        ],
-        "category": "layout",
-        "image": "assets/images/kunze-v3.webp",
-        "link": "https://gopdon32.github.io/gh-Kunze-v3/",
-        "desc": {
-          "ua": "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери.",
-          "en": "Car catalog website featuring electric vehicles, model details, and messenger contacts."
-        },
-        "date": "2026-07-27",
-        "featured": true
-      },
-      {
         "title": "Product Preview Card",
         "slug": "preview-card",
         "content_path": "content/portfolio/preview-card.md",
@@ -235,6 +216,25 @@
         },
         "date": "2024-01-25",
         "featured": true
+      },
+      {
+        "title": "NFT Card",
+        "slug": "nft-card",
+        "content_path": "content/portfolio/nft-card.md",
+        "tags": [
+          "HTML",
+          "CSS",
+          "UI"
+        ],
+        "category": "layout",
+        "image": "assets/images/nft.jpeg",
+        "link": "pages/gh-nft-card/index.html",
+        "desc": {
+          "ua": "Стильна NFT-картка з унікальними ефектами наведення та динамічним підсвічуванням.",
+          "en": "Stylish NFT card with unique hover effects and custom glow."
+        },
+        "date": "2024-01-15",
+        "featured": false
       },
       {
         "title": "Social Links",
