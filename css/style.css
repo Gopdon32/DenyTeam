@@ -693,7 +693,6 @@ body.hide-filters .filter-bar {
 .tags {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
@@ -886,11 +885,19 @@ body.hide-filters .filter-bar {
   padding: 30px;
 }
 
+.modal-main-content h3 {
+  margin: 15px 0;
+}
+.modal-main-content ul {
+  margin: 20px 0;
+}
+
 /* Полоска с мета-данными */
 .modal-meta-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  align-items: center;
   padding-bottom: 20px;
   margin-bottom: 25px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -906,6 +913,10 @@ body.hide-filters .filter-bar {
 
 .meta-block i {
   color: var(--accent-green);
+}
+
+.meta-block h2 {
+  margin: 0 0 15px 0;
 }
 
 /* Описание */
