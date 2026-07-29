@@ -918,6 +918,9 @@ body.hide-filters .filter-bar {
 }
 
 /* Описание */
+.description-section {
+  margin: 0 0 15px 0;
+}
 .description-section h3 {
   font-size: 1rem;
   color: var(--accent-green);
