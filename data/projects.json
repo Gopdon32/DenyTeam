@@ -10,7 +10,11 @@
       "de": "Absolvierter IT-Spezialist (B.Sc. Computer Science). Spezialisiert auf responsive Webentwicklung, sauberes semantisches Markup und moderne JavaScript-Logik."
     },
     "avatar": "assets/profile/denys-2026.webp",
-    "badges": ["B.Sc. Computer Science", "Web Developer", "Open to Work"],
+    "badges": [
+      "B.Sc. Computer Science",
+      "Web Developer",
+      "Open to Work"
+    ],
     "links": [
       {
         "icon": "fa-brands fa-github",
@@ -35,10 +39,14 @@
         "title": "Digitalbank Landing Page",
         "slug": "digitalbank-landing",
         "content_path": "content/portfolio/digitalbank-landing.md",
-        "tags": ["HTML", "CSS", "JavaScript"],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
         "category": "landing",
         "image": "assets/images/digitalbank-landing.webp",
-        "link": "pages/gh-digitalbank-landing/index.html",
+        "link": "https://gopdon32.github.io/gh-digitalbank-landing/",
         "desc": {
           "ua": "Сучасний лендинг для цифрового банку з презентацією мобільного додатка та переваг онлайн-банкінгу.",
           "en": "Modern digital bank landing page presenting a mobile app and online banking benefits."
@@ -50,10 +58,33 @@
         "title": "Kunze Auto",
         "slug": "kunze-v3",
         "content_path": "content/portfolio/kunze-v3.md",
-        "tags": ["HTML", "CSS", "JavaScript"],
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
         "category": "layout",
         "image": "assets/images/kunze-v3.webp",
-        "link": "pages/gh-Kunze-v3/index.html",
+        "link": "https://gopdon32.github.io/gh-Kunze-v3/",
+        "desc": {
+          "ua": "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери.",
+          "en": "Car catalog website featuring electric vehicles, model details, and messenger contacts."
+        },
+        "date": "2026-07-27",
+        "featured": true
+      },
+      {
+        "title": "Kunze Auto",
+        "slug": "kunze-v3",
+        "content_path": "content/portfolio/nft-card.md",
+        "tags": [
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ],
+        "category": "layout",
+        "image": "assets/images/kunze-v3.webp",
+        "link": "https://gopdon32.github.io/gh-Kunze-v3/",
         "desc": {
           "ua": "Вебсайт каталогу автомобілів з електромобілями, деталізацією моделей та зв'язком через месенджери.",
           "en": "Car catalog website featuring electric vehicles, model details, and messenger contacts."
@@ -65,10 +96,13 @@
         "title": "Product Preview Card",
         "slug": "preview-card",
         "content_path": "content/portfolio/preview-card.md",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "component",
         "image": "assets/images/preview-card.webp",
-        "link": "pages/gh-preview-card/index.html",
+        "link": "https://gopdon32.github.io/gh-preview-card/",
         "desc": {
           "ua": "Картка попереднього перегляду товару (Perfume) з адаптивним макетом за макетом Frontend Mentor.",
           "en": "Product preview card component (Perfume) with responsive layout based on Frontend Mentor."
@@ -80,10 +114,13 @@
         "title": "Profile Card Component",
         "slug": "profile-card",
         "content_path": "content/portfolio/profile-card.md",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "component",
         "image": "assets/images/profile-card.webp",
-        "link": "pages/gh-profile-card/index.html",
+        "link": "https://gopdon32.github.io/gh-profile-card/",
         "desc": {
           "ua": "Адаптивний компонент картки профілю користувача з фоновими елементами та статистикою.",
           "en": "Responsive user profile card component with background accents and statistics."
@@ -92,10 +129,13 @@
         "featured": false
       },
       {
-        "title": "Blog Preview",
+        "title": "Blog Preview Card",
         "slug": "blog-preview",
         "content_path": "content/portfolio/blog-preview.md",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Blog-Preview.png",
         "link": "pages/gh-blog-preview/index.html",
@@ -110,7 +150,10 @@
         "title": "Ingredients Component",
         "slug": "ingredients-component",
         "content_path": "content/portfolio/ingredients-component.md",
-        "tags": ["UI", "Logic"],
+        "tags": [
+          "UI",
+          "Logic"
+        ],
         "category": "js",
         "image": "assets/images/Ingredients.png",
         "link": "pages/gh-ingredients/index.html",
@@ -125,7 +168,10 @@
         "title": "Score Summary",
         "slug": "score-summary",
         "content_path": "content/portfolio/score-summary.md",
-        "tags": ["JS", "UI"],
+        "tags": [
+          "JS",
+          "UI"
+        ],
         "category": "js",
         "image": "assets/images/score-summary.png",
         "link": "pages/gh-score-summary/index.html",
@@ -140,7 +186,10 @@
         "title": "Fylo Landing",
         "slug": "fylo-landing",
         "content_path": "content/portfolio/fylo-landing.md",
-        "tags": ["Responsive", "UI"],
+        "tags": [
+          "Responsive",
+          "UI"
+        ],
         "category": "layout",
         "image": "assets/images/fylo.png",
         "link": "pages/gh-fylo/index.html",
@@ -155,7 +204,10 @@
         "title": "Huddle Landing",
         "slug": "huddle-landing",
         "content_path": "content/portfolio/huddle-landing.md",
-        "tags": ["Flexbox", "CSS"],
+        "tags": [
+          "Flexbox",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/Huddle.png",
         "link": "pages/gh-huddle/index.html",
@@ -170,7 +222,10 @@
         "title": "Order Plan",
         "slug": "order-plan",
         "content_path": "content/portfolio/order-plan.md",
-        "tags": ["Frontend", "Design"],
+        "tags": [
+          "Frontend",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Order-Plan.png",
         "link": "pages/gh-order-plan/index.html",
@@ -182,25 +237,13 @@
         "featured": true
       },
       {
-        "title": "NFT Card",
-        "slug": "nft-card",
-        "content_path": "content/portfolio/nft-card.md",
-        "tags": ["HTML", "CSS", "UI"],
-        "category": "layout",
-        "image": "assets/images/nft.jpeg",
-        "link": "pages/gh-nft-card/index.html",
-        "desc": {
-          "ua": "Стильна NFT-картка з унікальними ефектами наведення та динамічним підсвічуванням.",
-          "en": "Stylish NFT card with unique hover effects and custom glow."
-        },
-        "date": "2024-01-15",
-        "featured": false
-      },
-      {
         "title": "Social Links",
         "slug": "social-links",
         "content_path": "content/portfolio/social-links.md",
-        "tags": ["Profile", "Links"],
+        "tags": [
+          "Profile",
+          "Links"
+        ],
         "category": "layout",
         "image": "assets/images/social-link.png",
         "link": "pages/gh-social-link-page/index.html",
@@ -215,7 +258,10 @@
         "title": "Grid Sections",
         "slug": "grid-sections",
         "content_path": "content/portfolio/grid-sections.md",
-        "tags": ["CSS Grid", "Layout"],
+        "tags": [
+          "CSS Grid",
+          "Layout"
+        ],
         "category": "layout",
         "image": "assets/images/grid-sections.png",
         "link": "pages/gh-grid-sections/index.html",
@@ -230,7 +276,10 @@
         "title": "Stats Card",
         "slug": "stats-card",
         "content_path": "content/portfolio/stats-card.md",
-        "tags": ["Typography", "CSS"],
+        "tags": [
+          "Typography",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/stats-card.png",
         "link": "pages/gh-stats-card/index.html",
@@ -245,7 +294,9 @@
         "title": "Column Card",
         "slug": "column-card",
         "content_path": "content/portfolio/column-card.md",
-        "tags": ["CSS Grid"],
+        "tags": [
+          "CSS Grid"
+        ],
         "category": "layout",
         "image": "assets/images/column-card.png",
         "link": "pages/gh-column-card/index.html",
@@ -260,7 +311,10 @@
         "title": "Social Proof",
         "slug": "social-proof",
         "content_path": "content/portfolio/social-proof.md",
-        "tags": ["CSS", "Design"],
+        "tags": [
+          "CSS",
+          "Design"
+        ],
         "category": "layout",
         "image": "assets/images/Social-Proof.png",
         "link": "pages/gh-social-proof/index.html",
@@ -275,7 +329,10 @@
         "title": "QR Code Component",
         "slug": "qr-code-component",
         "content_path": "content/portfolio/qr-code-component.md",
-        "tags": ["HTML", "CSS"],
+        "tags": [
+          "HTML",
+          "CSS"
+        ],
         "category": "layout",
         "image": "assets/images/QR.png",
         "link": "pages/gh-qr-card/index.html",
@@ -299,7 +356,10 @@
       "de": "Artikel über Frontend-Entwicklung, Interface-Design und persönliche Erkenntnisse."
     },
     "avatar": "assets/profile/blog-cover.webp",
-    "badges": ["Articles", "Tech Notes"],
+    "badges": [
+      "Articles",
+      "Tech Notes"
+    ],
     "links": [
       {
         "icon": "fa-solid fa-rss",
@@ -312,7 +372,10 @@
         "title": "Як я модернізував свій сайт-портфоліо",
         "slug": "yak-ja-modernizuvav-svij-sajt-portfolio",
         "content_path": "content/blog/yak-ja-modernizuvav-svij-sajt-portfolio.md",
-        "tags": ["UI/UX", "Верстка"],
+        "tags": [
+          "UI/UX",
+          "Верстка"
+        ],
         "category": "blog",
         "image": "/assets/images/more-works.jpg",
         "link": "#",
@@ -327,7 +390,10 @@
         "title": "Мій шлях у Frontend розробці",
         "slug": "mij-shlyah-u-frontend-rozrobci",
         "content_path": "content/blog/mij-shlyah-u-frontend-rozrobci.md",
-        "tags": ["Веб-разработка", "Frontend"],
+        "tags": [
+          "Веб-разработка",
+          "Frontend"
+        ],
         "category": "blog",
         "image": "/assets/images/blog-intro.webp",
         "link": "#",
@@ -351,7 +417,11 @@
       "de": "Interaktive Mini-Spiele, HTML5 Canvas und JavaScript-Projekte zum Spaß."
     },
     "avatar": "assets/profile/games-cover.webp",
-    "badges": ["JS Games", "Canvas", "Playable"],
+    "badges": [
+      "JS Games",
+      "Canvas",
+      "Playable"
+    ],
     "links": [
       {
         "icon": "fa-solid fa-gamepad",
@@ -364,7 +434,10 @@
         "title": "Перша гра",
         "slug": "first-game",
         "content_path": "content/games/first-game.md",
-        "tags": ["Game", "JavaScript"],
+        "tags": [
+          "Game",
+          "JavaScript"
+        ],
         "category": "js",
         "image": "assets/images/game-intro.webp",
         "link": "#",
@@ -379,7 +452,10 @@
         "title": "Ретро Аркада (Snake / Space Invaders)",
         "slug": "ретро-аркада-snake-space-invaders",
         "content_path": "content/games/ретро-аркада-snake-space-invaders.md",
-        "tags": ["JavaScript", "Canvas"],
+        "tags": [
+          "JavaScript",
+          "Canvas"
+        ],
         "category": "js",
         "image": "assets/images/arcade-game.webp",
         "link": "#",
