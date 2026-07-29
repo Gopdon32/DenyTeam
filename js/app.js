@@ -401,36 +401,57 @@ async function loadPostContent(post) {
   const container = document.querySelector(".modal-main-content");
   if (!container) return;
 
-  const path =
-    post.content_path ||
-    `content/posts/${post.slug || post.title.replace(/\s+/g, "-").toLowerCase()}.md`;
+  // 1. Формуємо та очищаємо шлях до файлу
+  let rawPath = post.content_path;
+  if (!rawPath) {
+    const fileName = `${post.slug || post.title.replace(/\s+/g, "-").toLowerCase()}.md`;
+    // Перевіряємо категорію або дефолтимо на portfolio
+    rawPath =
+      post.category === "blog"
+        ? `content/blog/${fileName}`
+        : `content/portfolio/${fileName}`;
+  }
+
+  if (rawPath.startsWith("/")) {
+    rawPath = rawPath.slice(1);
+  }
+
   try {
-    let res = await fetch(path);
+    // 2. Перша спроба: відносний fetch з крапкою попереду
+    let res = await fetch("./" + rawPath);
+
+    // 3. Друга спроба (резервна): якщо файлу немає за відносним шляхом — стукаємо на GitHub Raw
     if (!res.ok) {
-      const rawUrl = `https://raw.githubusercontent.com/Gopdon32/DenyTeam/main/${path}`;
+      const rawUrl = `https://raw.githubusercontent.com/Gopdon32/DenyTeam/main/${rawPath}`;
       res = await fetch(rawUrl);
     }
+
     if (!res.ok) throw new Error("Not found");
 
     let text = await res.text();
+
+    // Прибираємо Frontmatter (блок усередині --- ... ---)
     text = text.replace(/^---\n[\s\S]*?\n---\n/, "");
 
+    // Видаляємо дублюючий заголовок H1/H2, якщо він збігається з назвою
     const headingMatch = text.match(/^\s*(#{1,2})\s*(.+?)\s*\n+/);
     if (headingMatch) {
       const headingText = headingMatch[2].trim();
       const normalize = str =>
         str
           .toLowerCase()
-          .replace(/[^a-z0-9а-яёіїєґ]+/gi, " ")
+          .replace(/[^a-z0-9а-яєіїґ]+/gi, " ")
           .trim();
       if (normalize(headingText) === normalize(post.title)) {
         text = text.slice(headingMatch[0].length);
       }
     }
 
+    // Рендеримо Markdown у HTML
     const html = typeof marked !== "undefined" ? marked.parse(text) : text;
     container.innerHTML = html;
 
+    // Підсвітка коду Prism, якщо є
     if (window.Prism && typeof window.Prism.highlightAll === "function") {
       window.Prism.highlightAll();
     }
