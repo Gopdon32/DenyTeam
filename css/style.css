@@ -884,12 +884,14 @@ body.hide-filters .filter-bar {
 .modal-body {
   padding: 30px;
 }
-
+.modal-body h2 {
+  margin: 0 0 15px 0;
+}
 .modal-main-content h3 {
   margin: 15px 0;
 }
 .modal-main-content ul {
-  margin: 20px 0;
+  margin: 0 20px;
 }
 
 /* Полоска с мета-данными */
@@ -913,10 +915,6 @@ body.hide-filters .filter-bar {
 
 .meta-block i {
   color: var(--accent-green);
-}
-
-.meta-block h2 {
-  margin: 0 0 15px 0;
 }
 
 /* Описание */
