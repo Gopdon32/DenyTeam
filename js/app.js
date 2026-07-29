@@ -316,8 +316,8 @@ function showModal(post) {
       </div>
     `;
 
-  // Load full Markdown content only for blog posts or when a content_path is present
-  if ((post.content_path || post.slug) && userKey === "blog") {
+  // ✅ Завантажуємо Markdown контент для ВСІХ постів, де є content_path або slug
+  if (post.content_path || post.slug) {
     loadPostContent(post);
   }
 
