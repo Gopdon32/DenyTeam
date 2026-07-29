@@ -1,63 +1,39 @@
-# 🌐 DenyTeam — Custom Frontend Portfolio Platform
+# 🌐 DenyTeam — Personal Frontend Portfolio
 
-Welcome to the central repository of my frontend ecosystem. This project is a custom-built, highly optimized personal portfolio website that dynamically manages, filters, and renders my web development works.
+Ласкаво просимо до мого центрального репозиторію! Це інтерактивне веб-портфоліо, де зібрані мої найкращі проєкти, UI-компоненти та посадкові сторінки.
 
-ℹ️ **Live Showcase:** You can view the fully operational interactive portfolio here: [https://gopdon32.github.io/DenyTeam/](https://gopdon32.github.io/DenyTeam/)
-
----
-
-## 🛠️ Architecture & Technical Features
-
-Instead of hardcoding components, I designed this platform to follow clean and scalable software engineering principles:
-
-- 🗄️ **Dynamic Data Management (CMS-like):** Project data, descriptions, dates, and images are managed via a structured local configuration layer (`lang.json` / `data/`).
-- 🔍 **Interactive Filtering System:** Built-in client-side filtering logic allowing users to seamlessly sort projects by tags (e.g., "All", "Layout/HTML/CSS", "JavaScript Core").
-- 📦 **Modular Architecture:** The repository serves as a monorepo-style structure where independent sub-projects are neatly organized inside the `/pages/` directory and routed dynamically.
-- 📱 **Advanced Responsive Layouts:** Optimized for high performance and fluid responsiveness across all viewports using modern CSS Grid, Flexbox, and Mobile-First strategies.
+🚀 **Онлайн-версія портфоліо:** [gopdon32.github.io/DenyTeam](https://gopdon32.github.io/DenyTeam/)
 
 ---
 
-## 📂 Repository Structure Highlights
+## 👨‍💻 Про мене / About Me
 
-- `/pages/` — Contains isolated, standalone production-ready UI web apps, components, and responsive pages.
-- `/js/` & `/css/` — Main architecture driving the central portfolio engine, themes, and animations.
-- `/data/` — Configuration schemas and data objects driving the dynamic portfolio content.
+### 🇺🇦 Українська
+Привіт! Я **Frontend-розробник**, який захоплюється створенням сучасних, швидких та зручних веб-інтерфейсів. Моя мета — перетворювати складні ідеї та дизайн-макети на чистий, адаптивний та ефективний код. У кожному проєкті приділяю особливу увагу деталям: від піксельної точності (Pixel Perfect) та плавних анімацій до оптимізації швидкості й доступності.
 
----
+### 🇬🇧 English
+Hello! I am a **Frontend Developer** passionate about building modern, fast, and user-friendly web interfaces. My goal is to transform complex ideas and design concepts into clean, responsive, and maintainable code. I pay strong attention to detail: from pixel-perfect execution and smooth animations to performance optimization and accessibility.
 
-## 🚀 Technical Stack
-
-- **Core:** Semantic HTML5, Advanced CSS3 (Grid/Flexbox/Variables), JavaScript (ES6+ Architecture)
-- **Design System:** Translated from precision Figma templates into clean production code
-- **Environment:** VS Code, Git version control, GitHub Actions / Pages deployment
+### 🇩🇪 Deutsch
+Hallo! Ich bin ein **Frontend-Entwickler** mit einer Leidenschaft für die Entwicklung moderner, schneller und benutzerfreundlicher Weboberflächen. Mein Ziel ist es, komplexe Designentwürfe in sauberen, responsiven und effizienten Code zu verwandeln. Ich lege großen Wert auf Details: von Pixel-Perfect-Umsetzung bis hin zu Ladezeiten-Optimierung.
 
 ---
 
-## ✅ Added: Markdown blog + Decap (Netlify) CMS
+## 🛠️ Технологічний стек / Tech Stack
 
-I added a Markdown-based blog workflow and a minimal Decap (Netlify) CMS admin UI.
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Layouts & Styling:** CSS Grid, Flexbox, Adaptive & Responsive Design, Mobile-First Strategy
+- **Tools & Workflow:** Git, GitHub Actions, VS Code, Figma
+- **Languages:** Ukrainian, English, German
 
-- `content/posts/` — store full posts as Markdown with YAML frontmatter.
-- `admin/` — Decap CMS UI and `admin/config.yml` configured for GitHub backend.
-- `scripts/generate-index.js` + `.github/workflows/generate-index.yml` — a GitHub Action that regenerates `data/projects.json` from Markdown frontmatter on push.
+---
 
-### Quick actions for final setup
+## 📬 Контакти / Contact & Links
 
-1. Commit & push current changes to `main`:
+* 🌐 **Live Website:** [DenyTeam Portfolio](https://gopdon32.github.io/DenyTeam/)
+* 💻 **GitHub Profile:** [@gopdon32](https://github.com/gopdon32)
 
-```powershell
-git add .
-git commit -m "Add markdown blog, admin UI and index generator"
-git push origin main
-```
-
-2. Register a GitHub OAuth App to enable CMS login:
-   - Settings → Developer settings → OAuth Apps → New OAuth App
-   - Application name: DenyTeam CMS
-   - Homepage URL: https://gopdon32.github.io/DenyTeam/
-   - Authorization callback URL: https://gopdon32.github.io/DenyTeam/admin/
-   - Copy the `Client ID` and paste it into `admin/config.yml` (uncomment `client_id`).
-
-3. After pushing, check Actions → `Generate blog index` to verify the Action runs and updates `data/projects.json`.
-
-If you want, paste the `Client ID` here and I will add it to `admin/config.yml` and commit the change for you.
+---
+<p align="center">
+  <i>Created with passion and attention to detail by DenyTeam</i>
+</p>
